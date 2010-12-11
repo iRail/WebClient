@@ -15,7 +15,7 @@
         <div class="container">
             <div class="toolbar anchorTop">
                 <div class="title"><a href=".."><?=$i18n["settings"] ?></a> </div>
-                <div style="text-align:right;float:right;margin-right:10px"><a href="settings"><img style="vertical-align:middle;" border="0" src="/img/i.png" alt="Settings"></a></div>
+                <div style="text-align:right;float:right;margin-right:10px"><a href="settings"><img style="vertical-align:middle;" border="0" src="templates/iRail/img/i.png" alt="Settings"></a></div>
                 <br>
                 <div class="toolbar">
                     <div id="toolbar" style="height: 14px; padding: 2px; background-color: #efefef; text-align: center; color: #555; font-size: 12px; font-weight: normal;">
@@ -30,7 +30,7 @@
                                        <tr>
                                         <td width="100"><?=$i18n["language"] ?></td>
                                         <td colspan="2"><select name="lang" id="lang">
-                                                <option value="EN">English</option>
+		                                <option value="EN">English</option>
                                                 <option value="NL">Nederlands</option>
                                                 <option value="FR">Fran&#231;ais</option>
                                                 <option value="DE">Deutsch</option>
@@ -50,13 +50,13 @@
 <?=$globals["GoogleAnalytics"]?>
     <script>
         var ID = "";
-        if("{lang}" == "EN"){
+        if("<?=$page["lang"]?>" == "EN"){
             ID= 0;
-        }else if("{lang}" == "NL"){
+        }else if("<?=$page["lang"]?>" == "NL"){
             ID= 1;
-        }else if("{lang}" == "FR"){
+        }else if("<?=$page["lang"]?>" == "FR"){
             ID= 2;
-        }else if("{lang}" == "DE"){
+        }else if("<?=$page["lang"]?>" == "DE"){
             ID= 3;
         }
         document.getElementById("lang").options[ID].selected = true;

@@ -1,5 +1,6 @@
 <?php
-/* 	Copyright 2008, 2009, 2010 Yeri "Tuinslak" Tiete (http://yeri.be), and others
+/* 	Copyright 2008, 2009, 2010, 2011 iRail vzw
+       Author Pieter Colpaert <pieter@iRail.be> (http://bonsansnom.wordpress.com)
 	
 	This file is part of iRail.
 
