@@ -151,17 +151,6 @@ for($i = 0; $i<6;$i++){
                                         </td>
                                     </tr>
                                     <tr><td colspan="3"><br></td></tr>
-                                    <tr>
-                                        <td colspan="3">
-                                            <table width="100%" border="0" align="center" style="text-align:center;">
-                                                <tr>
-                                                    <td class="footer" width="50%"><a href="/">Nat</a></td>
-
-                                                    <td class="footer" width="50%"><a href="international">Int</a></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
                                 </table>
                             </td>
                         </form>
