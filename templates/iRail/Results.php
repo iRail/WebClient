@@ -11,6 +11,7 @@ function formatDuration($dur){
      }
      return  $h.":".$i;
 }
+
 function formatDate($time){
      return date("d/m/Y",$time);
 }
@@ -20,10 +21,10 @@ function formatTime($time){
 }
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-<title>iRail - {from} to {to}</title>
+     <title><?=$page["title"]?>: <?=$content["connection"][0]["departure"]["station"]?> - <?=$content["connection"][0]["arrival"]["station"]?> </title>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 <link href="templates/iRail/css/query.css" rel="stylesheet" type="text/css" />
 <link rel="apple-touch-icon" href="img/irail.png" />
