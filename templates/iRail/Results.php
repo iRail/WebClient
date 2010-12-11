@@ -3,7 +3,7 @@
 function formatDuration($dur){
      $i = $dur/60%60;
      $h = floor($dur/3600);
-     //    if($h < 10){ // don't do this. too much zero's
+     //    if($h < 10){ // don't do this. too much zeros
      //	  $h = "0" . $h;
      //   }
      if($i<10){
@@ -93,21 +93,17 @@ if(isset($connection["vias"])){
       if($connection["vias"]["number"] > 1){
 	   foreach($connection["vias"]["via"] as $via){
 		if(is_numeric($via["departure"]["platform"])){	     
-		     echo $via["departure"]["platform"] . " -";
-		}else{ 
-		     echo " -" ; 
+		     echo $via["departure"]["platform"] . " - ";
 		}
-		echo " " . $via["station"] . "<br/>\n";
+		$via["station"] . "<br/>\n";
 	   }
       }
       else if($connection["vias"]["number"] == 1){
 	   $via = $connection["vias"]["via"];
 	   if(is_numeric($via["departure"]["platform"])){
-		echo $via["departure"]["platform"] . " -";
-	   }else{
-		echo " -";
+		echo $via["departure"]["platform"] . " - ";
 	   }
-	   echo " " . $via["station"]. "<br/>\n";
+	   echo $via["station"]. "<br/>\n";
       }	
 }else{
      echo "-";
