@@ -23,11 +23,13 @@ abstract class Page {
 
 
    /**
+    * Function is used for API Requests
     * @return array will return an associative array of page specific variables.
     */
     protected abstract function loadContent();
 
 /**
+ * Function is used for page variables
  * @return array will return an assoc array
  */    
     protected abstract function loadPage();
