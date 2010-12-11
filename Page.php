@@ -52,7 +52,7 @@ abstract class Page {
         if (isset($_COOKIE["language"])) {
             $this->setLanguage($_COOKIE["language"]);
         }else if(in_array(strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2)), $this->AVAILABLE_LANGUAGES)){
-            $this->setLanguage(strtoupper($_SERVER['HTTP_ACCEPT_LANGUAGE']));
+	     $this->setLanguage(strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2)));
         }else{
             $this->setLanguage("EN");
         }
