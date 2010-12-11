@@ -13,7 +13,10 @@ function formatDuration($dur){
 }
 
 function formatDelay($del){    
-     return $del/60;
+     if($del>0){
+	  return"+" . $del/60;
+     }
+     return "/";
 }
 
 function formatDate($time){
@@ -21,7 +24,7 @@ function formatDate($time){
 }
 
 function formatTime($time){
-     return date("h:i",$time);
+     return date("H:i",$time);
 }
 ?>
 
@@ -85,15 +88,14 @@ foreach($content["connection"] as $connection){
         <td>
 <? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?>
 <br/>
-<? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?>
+<!-- arrival platform: <? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?>-->
         </td>
         <td>
 <?
 if(isset($connection["vias"])){	  
       if($connection["vias"]["number"] != "1" && $connection["vias"]["number"] != "0"){
 	   foreach($connection["vias"]["via"] as $via){
-		
-		if(is_numeric($via["departure"]["platform"])){	     
+		if(is_numeric($via["departure"]["platform"])){
 		     echo $via["departure"]["platform"] . " - ";
 		}
 		echo $via["station"] . "<br/>\n";
