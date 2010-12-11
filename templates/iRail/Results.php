@@ -90,12 +90,13 @@ foreach($content["connection"] as $connection){
         <td>
 <?
 if(isset($connection["vias"])){	  
-      if($connection["vias"]["number"] > 1){
+      if($connection["vias"]["number"] != "1" && $connection["vias"]["number"] != "0"){
 	   foreach($connection["vias"]["via"] as $via){
+		
 		if(is_numeric($via["departure"]["platform"])){	     
 		     echo $via["departure"]["platform"] . " - ";
 		}
-		$via["station"] . "<br/>\n";
+		echo $via["station"] . "<br/>\n";
 	   }
       }
       else if($connection["vias"]["number"] == 1){
@@ -106,7 +107,7 @@ if(isset($connection["vias"])){
 	   echo $via["station"]. "<br/>\n";
       }	
 }else{
-     echo "-";
+     echo "/";
 }
 ?>
         </td>
