@@ -21,16 +21,21 @@
 	source available at http://github.com/Tuinslak/iRail
 */
 
-include("Page.php");
+include_once("Page.php");
 
 class NoResults extends Page {
-    function __construct() {
+    function loadPage() {
         $this->page = array(
             "title" => "iRail.be",
             "subtitle" => "{i18n_error}",
             "msg" => "{i18n_errormessage}"
         );
     }
+    function loadContent(){
+	 return array();
+	 
+    }
+    
 }
 
 //__MAIN__
@@ -39,7 +44,7 @@ $page = new NoResults();
 if(isset($_COOKIE["language"])){
     $page -> setLanguage($_COOKIE["language"]);
 }
-$page -> buildPage("NoResults.tpl");
+$page -> buildPage("NoResults");
 
     
 ?>

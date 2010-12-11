@@ -1,7 +1,7 @@
 <?php
 /**
- *  Copyright 2008, 2009, 2010 Yeri "Tuinslak" Tiete (http://yeri.be), and others
-    Copyright 2010 Pieter Colpaert (pieter@irail.be - http://bonsansnom.wordpress.com)
+ *  Copyright 2010,2011 iRail vzw
+    Author:  Pieter Colpaert (pieter@irail.be - http://bonsansnom.wordpress.com)
 
 	This file is part of iRail.
 
@@ -20,10 +20,8 @@
 
 	http://project.irail.be - http://irail.be
 
-	source available at http://github.com/Tuinslak/iRail
+	source available at http://github.com/iRail
 
-
- * @author pieterc
  */
 
 include_once("Page.php");
