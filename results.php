@@ -65,12 +65,7 @@ include_once "Page.php";
 include_once "config.php";
 class Results extends Page{
 
-/**
-   * This function will do the API request to iRail.
-   *
-   * @return associative array of connections
-   */
-     private function resolveConnections() {
+     protected function loadContent(){
 	  global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
 	  global $APIurl, $iRailAgent;
 	  
@@ -85,16 +80,12 @@ class Results extends Page{
 	  return json_decode($json,true);
      }
 
-     protected function loadContent(){
-	  $connections = $this-> resolveConnections();
-	  return $connections;
-     }
-
      protected function loadPage(){
 	  $page = array();
 	  $page["title"] = "iRail.be";
+	  $page["strike"] = false;
 	  return $page;
-     }     
+     }
 };
 
 //##PHASE3: creating a class and generate the page ##

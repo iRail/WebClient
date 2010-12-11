@@ -1,3 +1,25 @@
+<?
+//let's first create some helpfunctions so we can output the json more easily
+function formatDuration($dur){
+     $i = $dur/60%60;
+     $h = floor($dur/3600);
+     if($h < 10){
+	  $h = "0" . $h;
+     }
+     if($i<10){
+	  $i = "0" . $i;
+     }
+     return  $h.":".$i;
+}
+function formatDate($time){
+     return date("d/m/Y",$time);
+}
+
+function formatTime($time){
+     return date("h:i",$time);
+}
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
 <head>
@@ -23,15 +45,15 @@ if($page["strike"]){
 ?>
 <!-- compass image by Yusuke Kamiyamane, Creative Commons (Attribution 3.0 Unported) -->
 <table>
-<tr>
-<td><?=$i18n["map"] ?>: <a href="http://maps.google.be/?saddr={location1}&daddr={location2}" target="_blank"><img border="0" class="icon" src="img/map.png" width="14" height="14" alt="Local Map" title="Click for map" /></a>
+<tr><?//TODO: ADD BETTER LOCATIONINFORMATION TO JSON?>
+<td><a href="http://maps.google.be/?saddr=<? echo $content["connection"][0]["departure"]["station"]["locationY"] . " ".$content["connection"][0]["departure"]["station"]; ?>&daddr=<? echo $content["connection"][0]["arrival"]["station"] . " ".$content["connection"][0]["arrival"]["station"]["locationX"]; ?>" target="_blank"><img border="0" class="icon" src="img/map.png" width="20" height="20" alt="Local Map" title="Click for map" /></a>
 </td>
-<td><?=$i18n["date"] ?>: {date}
+<td><?=$i18n["date"] ?>: <?=formatDate($content["connection"][0]["arrival"]["time"])?>
 </td>
 </tr>
 <tr>
-<td><?=$i18n["from"] ?>: <b> {from}</b></td>
-<td><?=$i18n["to"] ?>: <b> {to}</b></td></tr></table>
+<td><?=$i18n["from"] ?>: <b><?=$content["connection"][0]["departure"]["station"]?></b></td>
+<td><?=$i18n["to"] ?>: <b><?=$content["connection"][0]["arrival"]["station"]?></b></td></tr></table>
 <table align="left" cellpadding="0" cellspacing="1" bgcolor="FFFFFF" summary="Train Info">
 <tr>
 <th><?=$i18n["time"] ?></th>
@@ -39,35 +61,51 @@ if($page["strike"]){
 <th><?=$i18n["delay"] ?></th>
 <th><?=$i18n["platform"] ?></th>
 <th><?=$i18n["transfers"] ?></th>
-<th><?=$i18n["transportation"] ?></th>
 </tr>
 <?
-foreach($content["connection"] as $key => $value){
-
-      foreach($value as $key2 => $value2){
-      echo $key2 . " " . $value2 . " \n ";
-      }
-      
-      
+foreach($content["connection"] as $connection){
 ?>
-    <tr class="color{colorindex}">
-        <td>
-            {departtime}<br/>{arrivaltime}
+    <tr class="color<? echo $connection["id"]%2; ?>">
+        <td><?=formatTime($connection["departure"]["time"]); ?>
+<br/><?=formatTime($connection["arrival"]["time"]); ?>
         </td>
         <td>
-            {duration}
+<?=formatDuration($connection["duration"])?>
         </td>
-        <td class="{delayed}">
-            {delay}
-        </td>
-        <td>
-            {platform}
+        <td class="<? if($connection["arrival"]["delay"] > 0 ) {echo "delayed";} ?>">
+<?=formatDuration($connection["arrival"]["delay"]); ?>
         </td>
         <td>
-            {transfers}
+<? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?>
+<br/>
+<? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?>
         </td>
         <td>
-            {trains}
+<?
+if(isset($connection["vias"])){	  
+      if($connection["vias"]["number"] > 1){
+	   foreach($connection["vias"]["via"] as $via){
+		if(is_numeric($via["departure"]["platform"])){	     
+		     echo $via["departure"]["platform"];
+		}else{ 
+		     echo " -" ; 
+		}
+		echo " " . $via["station"] . "<br/>\n";
+	   }
+      }
+      else if($connection["vias"]["number"] == 1){
+	   $via = $connection["vias"]["via"];
+	   if(is_numeric($via["departure"]["platform"])){
+		echo $via["departure"]["platform"];
+	   }else{
+		echo " -";
+	   }
+	   echo " " . $via["station"]. "<br/>\n";
+      }	
+}else{
+     echo "-";
+}
+?>
         </td>
 <?
 }

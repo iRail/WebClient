@@ -1,7 +1,7 @@
 <?php
 /**
- *  Copyright 2008, 2009, 2010 Yeri "Tuinslak" Tiete (http://yeri.be), and others
-    Copyright 2010 Pieter Colpaert (pieter@irail.be - http://bonsansnom.wordpress.com)
+    Copyright 2010-2011 iRail vzw
+    Author: Pieter Colpaert (pieter@irail.be - http://bonsansnom.wordpress.com)
 
 	This file is part of iRail.
 
@@ -20,23 +20,24 @@
 
 	http://project.irail.be - http://irail.be
 
-	source available at http://github.com/Tuinslak/iRail
+	source available at http://github.com/iRail/
 
-
- * @author pieterc
  */
 
-include("Page.php");
+include_once("Page.php");
 
-class AboutPage extends Page { 
-
-    function __construct() {
-        $this->page = array(
+class AboutPage extends Page {
+     protected function loadContent(){
+	  return array();
+     }
+     
+    protected function loadPage() {
+        $page = array(
             "title" => "iRail.be",
             "subtitle" => "project.iRail.be"
         );
+	return $page;
     }
-
 }
 
 //__MAIN__
@@ -48,5 +49,5 @@ if(isset($_COOKIE["language"])){
 if(isset($_GET["output"])){
     $page ->setTemplate($_GET["output"]);
 }
-$page -> buildPage("About.tpl");
+$page -> buildPage("About");
 ?>

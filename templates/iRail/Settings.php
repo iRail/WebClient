@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{title} - {i18n_settings}</title>
+        <title><?=$page["title"]?> - <?=$i18n["settings"] ?></title>
         <link href="templates/iRail/css/mobile.css" rel="stylesheet">
         <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
         <script>
@@ -14,12 +14,12 @@
     <body>
         <div class="container">
             <div class="toolbar anchorTop">
-                <div class="title"><a href="..">{i18n_settings}</a> </div>
+                <div class="title"><a href=".."><?=$i18n["settings"] ?></a> </div>
                 <div style="text-align:right;float:right;margin-right:10px"><a href="settings"><img style="vertical-align:middle;" border="0" src="/img/i.png" alt="Settings"></a></div>
                 <br>
                 <div class="toolbar">
                     <div id="toolbar" style="height: 14px; padding: 2px; background-color: #efefef; text-align: center; color: #555; font-size: 12px; font-weight: normal;">
-                        {i18n_savedinacookie}
+                        <?=$i18n["savedinacookie"] ?>
                     </div>
 
                     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
@@ -28,7 +28,7 @@
                             <td>
                                 <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF" style="color:#000000";>
                                        <tr>
-                                        <td width="100">{i18n_language}</td>
+                                        <td width="100"><?=$i18n["language"] ?></td>
                                         <td colspan="2"><select name="lang" id="lang">
                                                 <option value="EN">English</option>
                                                 <option value="NL">Nederlands</option>
@@ -38,16 +38,16 @@
                                     </tr>
                                     <tr><td colspan="3"><br></td></tr>
                                     <tr>
-                                        <td colspan="3"><div style="text-align:center;"><input type="submit" name="submit" value="{i18n_save}!"></div></td>
+                                        <td colspan="3"><div style="text-align:center;"><input type="submit" name="submit" value="<?=$i18n["save"] ?>!"></div></td>
                                     </tr>
                                 </table>
                             </td>
                         </form>
                         </tr></table>
-{footer}
+<?=$globals["footer"]?>
                 </div></div></div>
     </body>
-{GoogleAnalytics}
+<?=$globals["GoogleAnalytics"]?>
     <script>
         var ID = "";
         if("{lang}" == "EN"){

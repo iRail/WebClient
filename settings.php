@@ -23,20 +23,24 @@
 
 // Settings page iRail
 
-include("Page.php");
+include_once("Page.php");
 
 class Settings extends Page {
-
-    function __construct() {
-        $this->page = array(
+     function loadContent(){
+	  return array();
+}
+     
+    function loadPage() {
+        $page = array(
             "title" => "iRail.be",
+
         );
         if(isset($_COOKIE["language"])){
-            $this->page["lang"] = $_COOKIE["language"];
+            $page["lang"] = $_COOKIE["language"];
         }else{
-            $this->page["lang"] = "EN";
+            $page["lang"] = "EN";
         }
-
+	return $page;
     }
 
 }
@@ -47,7 +51,7 @@ $page = new Settings();
 if(isset($_COOKIE["language"])){
     $page -> setLanguage($_COOKIE["language"]);
 }
-$page -> buildPage("Settings.tpl");
+$page -> buildPage("Settings");
 
 
 ?>

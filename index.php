@@ -32,7 +32,6 @@ include_once("config.php");
 class Main extends Page {
 
     function loadContent(){
-	  global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
 	  global $APIurl, $iRailAgent;
 	  
 	  $url = $APIurl . "stations/?&format=json&lang=" . parent::getLang();
