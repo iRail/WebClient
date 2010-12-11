@@ -11,6 +11,9 @@ function reset_from() {
 function reset_to() {
     document.getElementById("to").value = '';
 }
+function validate_form() {
+    return document.getElementById("from").value && document.getElementById("to").value;
+}
 addEventListener('load', function() { 
 		     setTimeout(hideAddressBar, 0); 
 		     //data is an array with all stations in it
