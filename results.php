@@ -29,7 +29,9 @@
 global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
 extract($_COOKIE);
 extract($_POST);
-$lang = $_COOKIE["language"];
+if(isset($language)){
+     $lang = $language;
+}
 
 // if bad stations, go back -- TODO: should be checked in javascript before submitting!
 
