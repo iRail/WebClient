@@ -75,10 +75,10 @@ for($i = 1; $i <= 12;$i ++){
 	  $j = $i;
      }
      $selected = "";
-     if($j == date("m")){
+     if($i == date("n")){
 	  $selected="selected=\"selected\"";
      }
-     echo "<option VALUE=\"" .$j ." ". $selected ."\">" . $j . "</option>";
+     echo "<option VALUE=\"" .$j ."\" ". $selected .">" . $j . "</option>";
 }
 
 ?>
@@ -108,7 +108,7 @@ for($i = 0; $i<24;$i++){
 	  $j = $i;
      }
      $selected = "";
-     if($i == date("h")){
+     if($i == date("H")){
 	  $selected="selected=\"selected\"";
      }
      echo "<option VALUE=\"" .$j ."\" ". $selected .">" . $j . "</option>";
