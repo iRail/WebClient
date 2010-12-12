@@ -61,6 +61,10 @@ a:hover {
     top: 0;
 }
 
+#delayed {
+    color: #F22;
+}
+
 body {
     margin: 0px;
     font-family: Helvetica;
