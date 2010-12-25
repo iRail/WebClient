@@ -26,7 +26,7 @@
 // National query page
 
 //##PHASE 1: let's check all variables as given and let's set the cookies where needed##
-global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
+global $lang, $timesel, $from, $to, $results, $typeOfTransport, $template, $time;
 extract($_COOKIE);
 extract($_POST);
 if(isset($language)){
@@ -71,7 +71,7 @@ class Results extends Page{
 	  global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
 	  global $APIurl, $iRailAgent;
 	  
-	  $url = $APIurl . "connections/?from=" . $from . "&to=".$to . "&date=" . date("dmy",$time) . "&time=" . date("H:i") . "&format=json&lang=" . parent::getLang();
+	  $url = $APIurl . "connections/?from=" . $from . "&to=".$to . "&date=" . date("dmy",$time) . "&time=" . date("H:i",$time) . "&format=json&lang=" . parent::getLang();
 	  $request_options = array(
 	       "referer" => "http://iRail.be/",
 	       "timeout" => "30",
