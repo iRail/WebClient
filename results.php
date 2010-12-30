@@ -94,8 +94,10 @@ class Results extends Page{
 
 $page = new Results();
 $page ->setDetectLanguageAndTemplate(true);
-$page -> buildPage("Results");
-
-
+try{
+	$page -> buildPage("Results");
+}catch(Exception $e){
+	header('Location: noresults/');
+}
 
 ?>
