@@ -15,7 +15,7 @@
         <div class="container">
             <div class="toolbar anchorTop">
                 <div class="title"><a href=".."><?=$i18n["settings"] ?></a> </div>
-                <div style="text-align:right;float:right;margin-right:10px"><a href="settings"><img style="vertical-align:middle;" border="0" src="templates/iRail/img/i.png" alt="Settings"></a></div>
+                <div style="text-align:right;float:right;margin-right:10px"><a href="settings"><img style="vertical-align:middle;" border="0" src="./templates/iRail/img/i.png" alt="Settings"></a></div>
                 <br>
                 <div class="toolbar">
                     <div id="toolbar" style="height: 14px; padding: 2px; background-color: #efefef; text-align: center; color: #555; font-size: 12px; font-weight: normal;">
