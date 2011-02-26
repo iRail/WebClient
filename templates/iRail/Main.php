@@ -135,8 +135,8 @@ for($i = 0; $i<6;$i++){
                                     <tr>
                                         <td></td>
                                         <td colspan="2">
-                                            <input type="radio" name="timesel" value="depart" checked><span style="font-weight:normal;font-size:18px;"><?=$i18n["depart"] ?></span>
-                                            <input type="radio" name="timesel" value="arrive"><span style="font-weight:normal;font-size:18px;"><?=$i18n["arrival"] ?></span>
+                                            <input type="radio" name="timeSel" value="depart" checked><span style="font-weight:normal;font-size:18px;"><?=$i18n["depart"] ?></span>
+                                            <input type="radio" name="timeSel" value="arrive"><span style="font-weight:normal;font-size:18px;"><?=$i18n["arrival"] ?></span>
 
                                         </td>
                                     </tr>
