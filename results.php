@@ -50,9 +50,12 @@ $time = mktime($h,$m,0,$mo+0,$d+0,("20" . $y)+0);
 if(!isset($lang)) {
 	$lang = "EN";
 }
-if(!isset($_POST["timesel"])){
+if(!isset($_POST["timeSel"])){
     $timesel = "depart";
+}else if($_POST["timeSel"] == "arrive"){
+     $timesel = "arrive";
 }
+
 
 $results = 6;
 $typeOfTransport = "all";
@@ -71,7 +74,7 @@ class Results extends Page{
 	  global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
 	  global $APIurl, $iRailAgent;
 	  
-	  $url = $APIurl . "connections/?from=" . $from . "&to=".$to . "&date=" . date("dmy",$time) . "&time=" . date("H:i",$time) . "&format=json&lang=" . parent::getLang();
+	  $url = $APIurl . "connections/?from=" . $from . "&to=".$to . "&date=" . date("dmy",$time) . "&time=" . date("H:i",$time) . "&format=json&lang=" . parent::getLang() . "&timeSel=" . $timesel;
 	  $request_options = array(
 	       "referer" => "http://iRail.be/",
 	       "timeout" => "30",
