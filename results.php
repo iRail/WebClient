@@ -73,15 +73,16 @@ class Results extends Page{
      protected function loadContent(){
 	  global $lang, $timesel, $from, $to, $results,$typeOfTransport, $template, $time;
 	  global $APIurl, $iRailAgent;
-	  
-	  $url = $APIurl . "connections/?from=" . $from . "&to=".$to . "&date=" . date("dmy",$time) . "&time=" . date("H:i",$time) . "&format=json&lang=" . parent::getLang() . "&timeSel=" . $timesel;
+	  $addition = "connections/?from=" . urlencode($from) . "&to=".urlencode($to) . "&date=" . urlencode(date("dmy",$time)) . "&time=" . urlencode(date("H:i",$time)) . "&format=json&lang=" . urlencode(parent::getLang()) . "&timeSel=" . urlencode($timesel);
+	  $url = $APIurl . $addition;
 	  $request_options = array(
 	       "referer" => "http://iRail.be/",
 	       "timeout" => "30",
 	       "useragent" => $iRailAgent
-	     );
+	     );	  
 	  $post = http_post_data($url, "", $request_options) or die("");
 	  $json = http_parse_message($post)->body;
+	  
 	  return json_decode($json,true);
      }
 
