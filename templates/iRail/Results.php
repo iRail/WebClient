@@ -91,21 +91,12 @@ foreach($content["connection"] as $connection){
         <td>
 <?
 if(isset($connection["vias"])){	  
-      if($connection["vias"]["number"] != "1" && $connection["vias"]["number"] != "0"){
-	   foreach($connection["vias"]["via"] as $via){
+   foreach($connection["vias"]["via"] as $via){
 		if(is_numeric($via["departure"]["platform"])){
 		     echo $via["departure"]["platform"] . " - ";
 		}
 		echo $via["station"] . "<br/>\n";
-	   }
-      }
-      else if($connection["vias"]["number"] == 1){
-	   $via = $connection["vias"]["via"];
-	   if(is_numeric($via["departure"]["platform"])){
-		echo $via["departure"]["platform"] . " - ";
-	   }
-	   echo $via["station"]. "<br/>\n";
-      }	
+   } 
 }else{
      echo "/";
 }
