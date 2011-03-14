@@ -50,12 +50,11 @@ $time = mktime($h,$m,0,$mo+0,$d+0,("20" . $y)+0);
 if(!isset($lang)) {
 	$lang = "EN";
 }
-if(!isset($_POST["timeSel"])){
+if($_POST["timeSel"] == "depart" ){
     $timesel = "depart";
 }else if($_POST["timeSel"] == "arrive"){
      $timesel = "arrive";
 }
-
 
 $results = 6;
 $typeOfTransport = "all";
