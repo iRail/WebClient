@@ -52,7 +52,7 @@ if($page["strike"]){
 <!-- compass image by Yusuke Kamiyamane, Creative Commons (Attribution 3.0 Unported) -->
 <table>
 <tr><?//TODO: ADD BETTER LOCATIONINFORMATION TO JSON?>
-<td><a href="http://maps.google.be/?saddr=<? echo $content["connection"][0]["departure"]["stationinfo"]["locationY"] . " ".$content["connection"][0]["departure"]["stationinfo"]["locationX"]; ?>&daddr=<? echo $content["connection"][0]["arrival"]["stationinfo"]["locationY"] . " ".$content["connection"][0]["arrival"]["station"]["locationX"]; ?>" target="_blank"><img border="0" class="icon" src="templates/iRail/img/map.png" width="20" height="20" alt="Local Map" title="Click for map" /></a>
+<td><a href="http://maps.google.be/?saddr=<? echo $content["connection"][0]["departure"]["stationinfo"]["locationY"] . " ".$content["connection"][0]["departure"]["stationinfo"]["locationX"]; ?>&daddr=<? echo $content["connection"][0]["arrival"]["stationinfo"]["locationY"] . " ".$content["connection"][0]["arrival"]["stationinfo"]["locationX"]; ?>" target="_blank"><img border="0" class="icon" src="templates/iRail/img/map.png" width="20" height="20" alt="Local Map" title="Click for map" /></a>
 </td>
      <td><?=$i18n["date"] ?>: <?=formatDate($content["connection"][0]["arrival"]["time"])?>
 </td>
