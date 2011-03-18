@@ -29,8 +29,8 @@
             <div class="searchContainer">
                 <div class="containerMenu">
                     <div class="containerButtons noMargins">
-                        <div class="buttonActive settingsButtonL">Log in</div>
-                        <div class="settingsButtonR">Register</div>
+                        <div class="settingsButtonL">Log in</div>
+                        <div class="buttonActive settingsButtonR">Register</div>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="containerSubMenuBtn">
                 <div class="centerDivBtn">
-                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="Log in"/>
+                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="Register"/>
                 </div>
             </div>
         </div>

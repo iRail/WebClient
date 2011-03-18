@@ -1,77 +1,143 @@
-<?php
-/**
- *  Copyright 2010,2011 iRail vzw
-    Author:  Pieter Colpaert (pieter@irail.be - http://bonsansnom.wordpress.com)
-
-	This file is part of iRail.
-
-    iRail is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    iRail is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with iRail.  If not, see <http://www.gnu.org/licenses/>.
-
-	http://project.irail.be - http://irail.be
-
-	source available at http://github.com/iRail
-
- */
-
-include_once("Page.php");
-include_once("config.php");
-
-class Main extends Page {
-
-    function loadContent(){
-	  global $APIurl, $iRailAgent;
-	  
-	  $url = $APIurl . "stations/?&format=json&lang=" . parent::getLang();
-	  $request_options = array(
-	       "referer" => "http://iRail.be/",
-	       "timeout" => "30",
-	       "useragent" => $iRailAgent
-	     );
-	  $post = http_post_data($url, "", $request_options) or die("");
-	  $json = http_parse_message($post)->body;
-	  $json = json_decode($json,true);
-	  $stationarray = array();
-	  $i = 0;
-	  foreach($json["station"] as $tag => $value){
-	       $stationarray[$i] = "\"".$value["name"]."\"";
-	       $i++;
-	  }
-	  return $stationarray;
-    }
-
-    function loadPage(){
-	$page = array();
-        $page["stationarray"] = "";
-        $page["date"] = date("D d/m/Y H:i");
-        if(isset($_COOKIE["from"]))
-            $page["from"] = $_COOKIE["from"];
-        else
-            $page["from"] = "";
-
-        if(isset($_COOKIE["to"]))
-            $page["to"] = $_COOKIE["to"];
-        else
-            $page["to"] = "";
-	$page["title"]= "iRail.be";
-	
-	return $page;
-    }
-}
-
-//__MAIN__
-
-$page = new Main();
-$page -> setDetectLanguageAndTemplate(true);
-$page -> buildPage("Main");
-?>
+<!DOCTYPE html>
+<html lang="en" manifest="appcache.mf">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width:device-width; height:device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+        <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
+        <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
+        <title>iRail.be</title>
+        <link rel="shortcut icon" href="favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <script type="text/javascript" src="js/main.js"></script>
+    </head>
+    <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
+        <div class="MainContainer">
+            <div class="bannerContainer">
+                <div class="bannerCubeContainerFixedLogo gradient">
+                    <div class="Top">iRail</div>
+                    <div class="Bot">
+                        <div class="blackFlagColor"></div>
+                        <div class="yelFlagColor"></div>
+                        <div class="redFlagColor"></div>
+                    </div>
+                </div>
+                <a href="index.php"><div class="bannerCubeContainerFixed bannerLinkActive">Route</div></a>
+                <a href="board.php"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
+                <a href="settings.php"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
+                <div class="bannerCubeContainerScaleFill gradientBanner"></div>
+            </div>
+            <div class="searchContainer">
+                <div class="containerFrom">
+                    <div class="fillDotLeft"></div>
+                    <div class="fillDotRight"></div>
+                    <div class="listButton">
+                        <div class="buttonFav"><a href="yourRoutes.php"><img src="images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a></div>
+                    </div>
+                    <div class="fromHeader">From</div>
+                </div>
+                <div class="inputFrom">
+                    <input class="inputStyle" onkeyup="autoComplete('from')" type="text" id="from" name="from"/>
+                    <div id="autoCmpletefrom" class="autoCmpletefrom">
+                    </div>
+                </div>
+                <div class="inputChange"><img class="pointer" src="images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
+                <div class="inputMid"></div>
+                <div class="toHeader">To</div>
+                <div class="inputTo">
+                    <input class="inputStyle" onkeyup="autoComplete('to')" type="text" id="to" name="to"/>
+                    <div id="autoCmpleteto" class="autoCmpleteto">
+                    </div>
+                </div>
+            </div>
+            <div class="subMenuContainer">
+                <div class="containerMenu">
+                    <div class="containerButtons">
+                        <div id="arrAt" onclick="changeActive('arrive')" class="buttonActive buttonL"><div class="subMenuBtnText">Arrive at</div></div>
+                        <div id="deprtAt" onclick="changeActive('depart')" class="buttonR"><div class="subMenuBtnText">Depart at</div></div>
+                    </div>
+                </div>
+                <div class="containerSubMenuDate">
+                    <div class="centerDiv">
+                        <select name="d" class="selectFont" id="timeselectd">
+                            <?
+                            for ($i = 1; $i <= 31; $i++) {
+                                if ($i < 10) {
+                                    $j = "0" . $i;
+                                } else {
+                                    $j = $i;
+                                }
+                                $selected = "";
+                                if ($i == date("j")) {
+                                    $selected = "selected=\"selected\"";
+                                }
+                                echo "<option value=\"" . $j . "\" " . $selected . ">" . $j . "</option>";
+                            }
+                            ?>
+                        </select> / <select name="mo" class="selectFont" id="timeselectmo">
+                            <?
+                            for ($i = 1; $i <= 12; $i++) {
+                                if ($i < 10) {
+                                    $j = "0" . $i;
+                                } else {
+                                    $j = $i;
+                                }
+                                $selected = "";
+                                if ($i == date("n")) {
+                                    $selected = "selected=\"selected\"";
+                                }
+                                echo "<option value=\"" . $j . "\" " . $selected . ">" . $j . "</option>";
+                            }
+                            ?>
+                        </select> / <select class="selectFont" name="y">
+                            <?
+                            $dummy = date("Y") + 1;
+                            echo "<option value=\"" . date("Y") . "\">" . date("Y") . "</option>";
+                            echo "<option value=\"" . $dummy . "\">" . $dummy . "</option>";
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="containerSubMenuTime">
+                    <div class="centerDiv">
+                        <select name="h" class="selectFont" id="timeselecth">
+                            <?
+                            for ($i = 0; $i < 24; $i++) {
+                                if ($i < 10) {
+                                    $j = "0" . $i;
+                                } else {
+                                    $j = $i;
+                                }
+                                $selected = "";
+                                if ($i == date("H")) {
+                                    $selected = "selected=\"selected\"";
+                                }
+                                echo "<option value=\"" . $j . "\" " . $selected . ">" . $j . "</option>";
+                            }
+                            ?>
+                        </select> : <select name="m" class="selectFont" id="timeselectm">
+                            <?
+                            for ($i = 0; $i < 6; $i++) {
+                                $selected = "";
+                                if ($i == floor(date("i") / 10)) {
+                                    $selected = "selected=\"selected\"";
+                                }
+                                if ($i == 0) {
+                                    $j = "00";
+                                } else {
+                                    $j = $i * 10;
+                                }
+                                echo "<option value=\"" . $j . "\" " . $selected . ">" . $j . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="containerSubMenuBtn">
+                    <div class="centerDivBtn">
+                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="Search route"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

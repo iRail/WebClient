@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <script type="text/javascript" src="js/main.js"></script>
     </head>
-    <body class="bckgroundDarkGrey">
+    <body>
         <div class="MainContainer">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient">
@@ -21,30 +21,35 @@
                         <div class="redFlagColor"></div>
                     </div>
                 </div>
-                <a href="index.php"><div class="bannerCubeContainerFixed gradientBanner">Route</div></a>
+                <a href="index.php"><div class="bannerCubeContainerFixed bannerLinkActive">Route</div></a>
                 <a href="board.php"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
-                <a href="settings.php"><div class="bannerCubeContainerFixedSettings  bannerLinkActive">Settings</div></a>
+                <a href="settings.php"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
-                <div class="containerMenu">
-                    <div class="containerButtons noMargins">
-                        <div class="buttonActive settingsButtonL">Log in</div>
-                        <div class="settingsButtonR">Register</div>
+                <div class="containerHeader">Your routes
+                    <a href="yourRoutes.php"><img src="images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
+                </div>
+                <div class="containerMenuRoutes">
+                    <div class="containerButtonsFav">
+                        <div onclick="changeActiveFav('favourite')" id="favourite" class="favButtonActive favButtonL">Favourite</div>
+                        <div onclick="changeActiveFav('nearby')" id="nearby" class="favButtonR">Nearby</div>
+                        <div onclick="changeActiveFav('mostUsed')" id="mostUsed" class="favButtonMid">Most used</div>
                     </div>
                 </div>
             </div>
-            <div class="headerText">Username</div>
-            <div class="inputFieldLogin">
-                <input class="width100" type="text" name="username" id="username"/>
-            </div>
-            <div class="headerText">Password</div>
-            <div class="inputFieldLogin">
-                <input class="width100" type="password" name="password" id="password"/>
-            </div>
-            <div class="containerSubMenuBtn">
-                <div class="centerDivBtn">
-                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="Log in"/>
+            <div class="containerResults">
+                <div class="containerResultsBoxBlue">
+
+                </div>
+                <div class="containerResultsBoxWhite">
+
+                </div>
+                <div class="containerResultsBoxBlue">
+
+                </div>
+                <div class="containerResultsBoxWhite">
+
                 </div>
             </div>
         </div>

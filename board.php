@@ -22,29 +22,35 @@
                     </div>
                 </div>
                 <a href="index.php"><div class="bannerCubeContainerFixed gradientBanner">Route</div></a>
-                <a href="board.php"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
-                <a href="settings.php"><div class="bannerCubeContainerFixedSettings  bannerLinkActive">Settings</div></a>
+                <a href="board.php"><div class="bannerCubeContainerFixed bannerLinkActive removeBorderLeft">Board</div></a>
+                <a href="settings.php"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
-                <div class="containerMenu">
-                    <div class="containerButtons noMargins">
-                        <div class="buttonActive settingsButtonL">Log in</div>
-                        <div class="settingsButtonR">Register</div>
+                <div class="containerFrom">
+                    <div class="fillDotLeft"></div>
+                    <div class="fillDotRight"></div>
+                    <div class="listButton">
+                        <div class="buttonFav"><a href="yourRoutes.php"><img src="images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a></div>
                     </div>
+                    <div class="fromHeader">Of</div>
                 </div>
+                <div class="inputFrom">
+                    <input class="inputStyle" type="text" id="of" name="of"/>
+                </div>
+                <div class="inputChange"><img class="pointer" src="images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
+                <div class="inputMid"></div>
+                <div class="toHeader">To (optional)</div>
+                <div class="inputTo">
+                    <input class="inputStyle" type="text" id="to" name="to"/>
+                </div>
+
             </div>
-            <div class="headerText">Username</div>
-            <div class="inputFieldLogin">
-                <input class="width100" type="text" name="username" id="username"/>
-            </div>
-            <div class="headerText">Password</div>
-            <div class="inputFieldLogin">
-                <input class="width100" type="password" name="password" id="password"/>
-            </div>
-            <div class="containerSubMenuBtn">
-                <div class="centerDivBtn">
-                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="Log in"/>
+            <div class="subMenuContainer">
+                <div class="containerSubMenuBtn">
+                    <div class="centerDivBtn">
+                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="Show live board"/>
+                    </div>
                 </div>
             </div>
         </div>
