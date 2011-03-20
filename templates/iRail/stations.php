@@ -13,7 +13,7 @@
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
         </script>
-        <script type="text/javascript" src="/templates/iRail/js/main.js"></script>
+        <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body>
         <div class="MainContainer">
