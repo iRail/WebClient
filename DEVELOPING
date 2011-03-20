@@ -1,8 +1,5 @@
 This is a short developers manual written by Pieter Colpaert. If you want to start fixing bugs, reusing code or extending functionality, you will want to know this:
 
-ARCHITECTURE
--------------
-
 We have a MVC architecture. This means we have a Model (in the datamodel/ dir), which will fetch all our data, we have a View (in the templates/ dir) which contains all generate client-code (probably css/js/html/images) and last but not least, there is the Controler (in the requesthandlers/ dir) which will be the start for every page-load.
 
 iRail/WebClient$ ls
@@ -18,5 +15,9 @@ dir  templates/		our Views
 
 Since the web works with page-loads we always have a certain dataflow from input(a HTTP-request) to output (HTTP-response):
 
-Opening the main page:
-requesthandlers/controller.php → will create an APICall 
+Opening any page:
+0. .htaccess will refer the right url to a controller page:
+1. requesthandlers/controller.php?page=pagename will get the get vars
+2. datamodel/DataLayer.class.php will get the right information through APICall.class.php from the iRail api
+3. requesthandlers/Page.class.php will be overloaded in the controller and will take care of all basic handling: language detection, headers, i18n, errorhandling...
+4. the right template file will be included and will be able to use the array variables: $content - which is the API reply and can be used as if it were the API. $i18n["string"] any string that is outputed should go through the i18n system. You can add string in i18n/XX.php
