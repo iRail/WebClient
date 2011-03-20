@@ -25,9 +25,23 @@ class Controller extends Page{
 	  //Step 2: Get the get vars, change them to the right format & boom
 	  extract($_GET); //this will get all the GET vars and put them in normal PHP vars
 	  if($page == "boardresult"){
+	       if(!isset($arrdep)){
+		    $arrdep = "DEP";
+	       }
+	       if(!isset($time)){
+		    $time=date("Hi");
+	       }
 	       return $data->getLiveboard($station,$arrdep,$time);
 	  }else if($page == "routeresult"){
-	       return $data->getConnections($from, $to, $arrdep, $time, $date);
+	       if(!isset($arrdep)){
+		    $arrdep = "departure";
+	       }
+	       if(!isset($time)){
+		    $time=date("Hi");
+	       }if(!isset($date_)){
+		    $date_ = date("dmy");
+	       }
+	       return $data->getConnections($from, $to, $arrdep, $time, $date_);
 	  }else if($page != "error"){
 	       //let's not do a request if there is an error page
 	       //in other cases, just output the stationslist - needed on most pages

@@ -13,6 +13,10 @@ RewriteRule ^route[/]?$ requesthandlers/controller.php?page=route [QSA,NC,L]
 RewriteRule ^board[/]?$ requesthandlers/controller.php?page=board [QSA,NC,L]
 RewriteRule ^settings[/]?$ requesthandlers/controller.php?page=settings [QSA,NC,L]
 RewriteRule ^stations[/]?$ requesthandlers/controller.php?page=stations [QSA,NC,L]
+RewriteRule ^route/(.*)/(.*)/$ requesthandlers/controller.php?page=routeresult&from=$1&to=$2 [QSA,NC,L]
+RewriteRule ^board/(.*)/$ requesthandlers/controller.php?page=boardresult&station=$1 [QSA,NC,L]
+#RewriteRule ^/$  [R]
+
 </IfModule>
 
 ErrorDocument 404 /requesthandlers/controller.php?page=error&message=Page%20not%20found

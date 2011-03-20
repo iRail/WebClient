@@ -19,14 +19,18 @@ class APICall {
 	  $functionname= urlencode($functionname);
           //url encode the argumentsarray so we have a good call to the API
 	  $arguments = "";
-	  foreach($argumentarray as $argument){
-	       $arguments .= "&" . urlencode($argument);
+	  foreach($argumentarray as $key => $val){
+	       $arguments .= "&" . urlencode($key) . "=" . urlencode($val);
 	  }
 	  include("config.php");
 	  $url = $APIurl . $functionname . "/?format=json" . $arguments;
 	  //Now let's fire up the call to the api and return the result
 	  try{
-	       return json_decode(APICall::httpcall($url), true);
+	       $json = json_decode(APICall::httpcall($url), true);
+	       if(isset($json["error"])){
+		    throw new Exception($json["message"]); 
+	       }
+	       return $json;
 	  }
 	  catch(Exception $e){
 	       throw $e;
@@ -41,6 +45,8 @@ class APICall {
 	       "timeout" => "30",
 	       "useragent" => $iRailAgent
 	       );
+//	  echo $url;
+	  
 	  $post = http_post_data($url, "", $request_options) or die("");
 	  if($post == ""){
 	       throw new Exception("Failed to contact the server");

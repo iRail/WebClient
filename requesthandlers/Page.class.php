@@ -18,7 +18,8 @@ abstract class Page {
      protected $AVAILABLE_TEMPLATES = array("iRail");
      protected $AVAILABLE_LANGUAGES = array("EN", "NL", "FR", "DE");
      private $template = "iRail";
-     private $detectLanguage = false;
+     private $detectLanguage = true;
+     private $doErrorhandling = true;
 
      //DON'T TOUCH
      private $lang = "EN";
@@ -39,10 +40,12 @@ abstract class Page {
 	       $globals = $this->loadGlobals();
 	       $i18n = $this->loadI18n();
 	       $file = "templates/" . $this->template . "/" . $pageName . ".php";
-	       //../ added because that's the iniset
+	       //../ added because that's the iniset's includepath
 	       if(!file_exists("../" . $file)){
 	           throw new Exception("Wrong pagename given");
 	       }
+	       //we want to ensure that no new page will be generated when the page is being created - so we're only going to log the error.
+	       set_error_handler("logerror");
 	       include($file);
 	  }catch(Exception $e){
 	       $this->buildError($this->getLang(), $pageName, $e);
@@ -103,18 +106,21 @@ abstract class Page {
      }
 
      public function buildError($lang, $pageName, $e){
-	  //1. TODO: Of course we'll need to log the error first in a file
-
-	  //2. We'll return a nice error page to our users so they are not getting too frustrated
-	  errorhandler("500",$e->getMessage());
-	  
+	  if($this->doErrorhandling)
+	       errorhandler(500,$e->getMessage());
      }
   }
 
 //error handling function
 function errorhandler($errno,$errstr){
-	  $content = array("message"=> $errstr);
-	  $file = "templates/iRail/error.php";
-	  include($file);
+     logerror($errno,$errstr);
+     $content = array("message"=> $errstr);
+     $file = "templates/iRail/error.php";
+     include($file);
+     exit(0);
 }
+function logerror($errno,$errstr){
+     //TODO
+}
+
 ?>
