@@ -8,11 +8,11 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-RewriteRule ^$ requesthandlers/controller.php?page=route [NC,L]
-RewriteRule ^route[/]?$ requesthandlers/controller.php?page=route [NC,L]
-RewriteRule ^board[/]?$ requesthandlers/controller.php?page=board [NC,L]
-RewriteRule ^settings[/]?$ requesthandlers/controller.php?page=settings [NC,L]
-RewriteRule ^stations[/]?$ requesthandlers/controller.php?page=stations [NC,L]
+RewriteRule ^$ requesthandlers/controller.php?page=route [QSA,NC,L]
+RewriteRule ^route[/]?$ requesthandlers/controller.php?page=route [QSA,NC,L]
+RewriteRule ^board[/]?$ requesthandlers/controller.php?page=board [QSA,NC,L]
+RewriteRule ^settings[/]?$ requesthandlers/controller.php?page=settings [QSA,NC,L]
+RewriteRule ^stations[/]?$ requesthandlers/controller.php?page=stations [QSA,NC,L]
 </IfModule>
 
 ErrorDocument 404 /requesthandlers/controller.php?page=error&message=Page%20not%20found

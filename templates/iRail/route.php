@@ -26,9 +26,9 @@
                         <div class="redFlagColor"></div>
                     </div>
                 </div>
-                <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive">Route</div></a>
-                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
+                <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
+                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><?=$i18n["settings"] ?></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
@@ -36,9 +36,9 @@
                     <div class="fillDotLeft"></div>
                     <div class="fillDotRight"></div>
                     <div class="listButton">
-                        <div class="buttonFav"><a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a></div>
+                        <div class="buttonFav"><a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="<?=$i18n["favourite"] ?>" width="40" height="25" class="floatRight"/></a></div>
                     </div>
-                    <div class="fromHeader">From</div>
+                    <div class="fromHeader"><?=$i18n["from"] ?></div>
                 </div>
                 <div class="inputFrom">
                     <input class="inputStyle" onkeyup="autoComplete('from')" type="text" id="from" name="from"/>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
                 <div class="inputMid"></div>
-                <div class="toHeader">To</div>
+                <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">
                     <input class="inputStyle" onkeyup="autoComplete('to')" type="text" id="to" name="to"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
@@ -57,8 +57,8 @@
             <div class="subMenuContainer">
                 <div class="containerMenu">
                     <div class="containerButtons">
-                        <div id="arrAt" onclick="changeActive('arrive')" class="buttonActive buttonL"><div class="subMenuBtnText">Arrive at</div></div>
-                        <div id="deprtAt" onclick="changeActive('depart')" class="buttonR"><div class="subMenuBtnText">Depart at</div></div>
+                        <div id="arrAt" onclick="changeActive('arrive')" class="buttonActive buttonL"><div class="subMenuBtnText"><?=$i18n["arrival_at"] ?></div></div>
+                        <div id="deprtAt" onclick="changeActive('depart')" class="buttonR"><div class="subMenuBtnText"><?=$i18n["departure_at"] ?></div></div>
                     </div>
                 </div>
                 <div class="containerSubMenuDate">
@@ -139,7 +139,7 @@
                 </div>
                 <div class="containerSubMenuBtn">
                     <div class="centerDivBtn">
-                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="Search route"/>
+                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="<?=$i18n["search"] ?>"/>
                     </div>
                 </div>
             </div>
