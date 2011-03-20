@@ -1,0 +1,22 @@
+This is a short developers manual written by Pieter Colpaert. If you want to start fixing bugs, reusing code or extending functionality, you will want to know this:
+
+ARCHITECTURE
+-------------
+
+We have a MVC architecture. This means we have a Model (in the datamodel/ dir), which will fetch all our data, we have a View (in the templates/ dir) which contains all generate client-code (probably css/js/html/images) and last but not least, there is the Controler (in the requesthandlers/ dir) which will be the start for every page-load.
+
+iRail/WebClient$ ls
+file .htaccess		Contains the rewrite rules to have nice URLs
+file config.php		Configuration such as API-url and useragent
+file favicon.ico 	Little icon for your browser	
+file Page.class.php	Pages will be gnerated through this class
+file README.md		More information
+dir  i18n/	 	Internationalisation files: needed for translation
+dir  datamodel/	 	our Model
+dir  requesthandlers/	our Controllers
+dir  templates/		our Views
+
+Since the web works with page-loads we always have a certain dataflow from input(a HTTP-request) to output (HTTP-response):
+
+Opening the main page:
+requesthandlers/controller.php → will create an APICall 
