@@ -11,18 +11,17 @@
    * @author Pieter Colpaert
    * @license aGPL
    */
-
 abstract class Page {
 
      //CONFIGURATION OF THIS CLASS
      protected $AVAILABLE_TEMPLATES = array("iRail");
      protected $AVAILABLE_LANGUAGES = array("EN", "NL", "FR", "DE");
+     private $template = "iRail";
      private $detectLanguage = false;
 
      //DON'T TOUCH
-     private $template = "iRail";
      private $lang = "EN";
-     private $pageName = "index";
+     private $pageName;
 
      /**
       * Function is used for API Requests
@@ -38,9 +37,13 @@ abstract class Page {
 	       $content = $this->loadContent();
 	       $globals = $this->loadGlobals();
 	       $i18n = $this->loadI18n();
-	       include("templates/" . $this->template . "/" . $pageName . ".php");
+	       $file = "templates/" . $this->template . "/" . $pageName . ".php";	       
+	       if(!file_exists($file)){
+		    throw new Exception("Wrong pagename given");
+	       }
+	       include($file);
 	  }catch(Exception $e){
-	       $this->buildError($lang, $pageName, $e);
+	       $this->buildError($this->getLang(), $pageName, $e);
 	  }
      }
 
@@ -88,16 +91,7 @@ abstract class Page {
 
      private function loadI18n() {
 	  if(in_array($this->lang,$this->AVAILABLE_LANGUAGES)){
-	       include_once("i18n/". strtoupper($this->lang) . ".php");
-	  }
-	  if ($this->lang == "EN") {
-	       include_once("i18n/EN.php");
-	  } else if ($this->lang == "NL") {
-	       include_once("i18n/NL.php");
-	  } else if ($this->lang == "FR") {
-	       include_once("i18n/FR.php");
-	  } else if ($this->lang == "DE") {
-	       include_once("i18n/DE.php");
+	       include("i18n/". strtoupper($this->lang) . ".php");
 	  }
 	  return $i18n;
      }
@@ -109,8 +103,11 @@ abstract class Page {
      public function buildError($lang, $pageName, $e){
 	  //1. TODO: Of course we'll need to log the error first in a file
 
-	  //2. We'll return a nice error page to our users so they are not getting too frustrated - TODO: better solution for this
-	  header("Location: http://iRail.be/oops");
+	  //2. We'll return a nice error page to our users so they are not getting too frustrated
+	  $content = array("error"=> $e->getMessage());
+	  $file = "templates/" . $this->template . "/" . $pageName . ".php";
+	  include($file);
      }
   }
+
 ?>

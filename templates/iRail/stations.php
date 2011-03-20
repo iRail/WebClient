@@ -7,8 +7,8 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="templates/iRail/css/main.css" />
-        <script type="text/javascript" src="templates/iRail/js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <script type="text/javascript" src="/templates/iRail/js/main.js"></script>
     </head>
     <body>
         <div class="MainContainer">
@@ -21,9 +21,9 @@
                         <div class="redFlagColor"></div>
                     </div>
                 </div>
-                <a href="route/"><div class="bannerCubeContainerFixed bannerLinkActive">Route</div></a>
-                <a href="board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
-                <a href="settings/"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
+                <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive">Route</div></a>
+                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">

@@ -38,8 +38,6 @@ class APICall {
 	       );
 	  $post = http_post_data($url, "", $request_options) or die("");
 	  return http_parse_message($post)->body;
-     }
-     
-     
+     }     
 }
 ?>
