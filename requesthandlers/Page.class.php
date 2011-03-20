@@ -11,6 +11,7 @@
    * @author Pieter Colpaert
    * @license aGPL
    */
+set_error_handler("errorhandler");
 abstract class Page {
 
      //CONFIGURATION OF THIS CLASS
@@ -105,10 +106,15 @@ abstract class Page {
 	  //1. TODO: Of course we'll need to log the error first in a file
 
 	  //2. We'll return a nice error page to our users so they are not getting too frustrated
-	  $content = array("message"=> $e->getMessage());
-	  $file = "templates/" . $this->template . "/" . $pageName . ".php";
-	  include($file);
+	  errorhandler("500",$e->getMessage());
+	  
      }
   }
 
+//error handling function
+function errorhandler($errno,$errstr){
+	  $content = array("message"=> $errstr);
+	  $file = "templates/iRail/error.php";
+	  include($file);
+}
 ?>

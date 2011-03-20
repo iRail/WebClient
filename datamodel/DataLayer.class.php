@@ -42,7 +42,7 @@ class DataLayer {
      }
 
      public function getConnections($from, $to, $direction, $time, $date){
-//preconditions: from is an ID, to is an ID, direction is arrival or departure, time is Hi, date is dmY.
+//preconditions: from is a stationname, to is a stationname, direction is arrival or departure, time is Hi, date is dmY.
 	  $args = array(
 	       "lang" => $this->lang,
 	       "from" => $from,

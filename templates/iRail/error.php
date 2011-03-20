@@ -22,7 +22,7 @@
                 <h1 class="err404h1 removePadding">We're so sorry!</h1>
                 <p class="removePadding">Something went wrong.</p>
 <!--<p class="err404underline"><?=$content["message"] ?></p>-->
-                <p class="err404underline removePadding"><a href="javascript:location.history.back()">Go back and try again.</a></p>
+                <p class="err404underline removePadding"><a href="javascript:history.back()">Go back</a> or try to <a href="javascript:location.reload(true)">refresh the page</a>.</p>
             </div>
         </div>
     </body>

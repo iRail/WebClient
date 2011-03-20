@@ -37,9 +37,9 @@ class Controller extends Page{
 	  }else if($page == "error"){
 //this will only be apache errors
 	       if(isset($message)){
-		    return $message;
+		    return array("message" => $message);
 	       }
-	       return "";
+	       return array("message" => "unknown error");
 	  }
      }
 }
