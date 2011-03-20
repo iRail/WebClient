@@ -33,7 +33,7 @@
             </div>
             <div class="searchContainer">
                 <div class="containerHeader">Your routes
-                    <a href="yourRoutes.php"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
+                    <a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
                 </div>
                 <div class="containerMenuRoutes">
                     <div class="containerButtonsFav">
