@@ -37,9 +37,10 @@ abstract class Page {
 	       $content = $this->loadContent();
 	       $globals = $this->loadGlobals();
 	       $i18n = $this->loadI18n();
-	       $file = "templates/" . $this->template . "/" . $pageName . ".php";	       
-	       if(!file_exists($file)){
-		    throw new Exception("Wrong pagename given");
+	       $file = "templates/" . $this->template . "/" . $pageName . ".php";
+	       //../ added because that's the iniset
+	       if(!file_exists("../" . $file)){
+	           throw new Exception("Wrong pagename given");
 	       }
 	       include($file);
 	  }catch(Exception $e){
@@ -104,7 +105,7 @@ abstract class Page {
 	  //1. TODO: Of course we'll need to log the error first in a file
 
 	  //2. We'll return a nice error page to our users so they are not getting too frustrated
-	  $content = array("error"=> $e->getMessage());
+	  $content = array("message"=> $e->getMessage());
 	  $file = "templates/" . $this->template . "/" . $pageName . ".php";
 	  include($file);
      }

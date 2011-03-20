@@ -8,7 +8,12 @@
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-        <script type="text/javascript" src="/templates/iRail/js/main.js"></script>
+        <script>
+      var stations= [<? foreach($content["station"] as $station){
+	   echo "\"" . $station["name"] . "\",";
+      } ?>];
+        </script>
+        <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
         <div class="MainContainer">

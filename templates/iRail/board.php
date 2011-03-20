@@ -8,7 +8,7 @@
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-        <script type="text/javascript" src="/templates/iRail/js/main.js"></script>
+        <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body class="bckgroundDarkGrey">
         <div class="MainContainer">
@@ -38,7 +38,7 @@
                 <div class="inputFrom">
                     <input class="inputStyle" type="text" id="of" name="of"/>
                 </div>
-                <div class="inputChange"><img class="pointer" src="templates/iRail/images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
+                <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="change" width="25" height="30"/></div>
                 <div class="inputMid"></div>
                 <div class="toHeader">To (optional)</div>
                 <div class="inputTo">

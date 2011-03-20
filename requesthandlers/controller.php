@@ -23,7 +23,7 @@ class Controller extends Page{
      protected function loadContent(){
 	  $data = new DataLayer($this->getLang());
 	  //Step 2: Get the get vars, change them to the right format & boom
-	  extract($_GET);
+	  extract($_GET); //this will get all the GET vars and put them in normal PHP vars
 	  if($page == "boardresult"){
 	       return $data->getLiveboard($station,$arrdep,$time);
 	  }else if($page == "routeresult"){
@@ -31,10 +31,16 @@ class Controller extends Page{
 	  }else if($page != "error"){
 	       //let's not do a request if there is an error page
 	       //in other cases, just output the stationslist - needed on most pages
+	       $stations=$data->getStations();
+
 	       return $data->getStations();
+	  }else if($page == "error"){
+//this will only be apache errors
+	       if(isset($message)){
+		    return $message;
+	       }
+	       return "";
 	  }
-	  
-	  
      }
 }
 

@@ -25,7 +25,12 @@ class APICall {
 	  include("config.php");
 	  $url = $APIurl . $functionname . "/?format=json" . $arguments;
 	  //Now let's fire up the call to the api and return the result
-	  return json_decode(APICall::httpcall($url), true);
+	  try{
+	       return json_decode(APICall::httpcall($url), true);
+	  }
+	  catch(Exception $e){
+	       throw $e;
+	  }
      }
 
      private static function httpcall($url){
@@ -37,6 +42,9 @@ class APICall {
 	       "useragent" => $iRailAgent
 	       );
 	  $post = http_post_data($url, "", $request_options) or die("");
+	  if($post == ""){
+	       throw new Exception("Failed to contact the server");
+	  }
 	  return http_parse_message($post)->body;
      }     
 }

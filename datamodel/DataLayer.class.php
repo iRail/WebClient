@@ -32,7 +32,11 @@ class DataLayer {
      public function getStations(){
           //check if the stationslist hasn't been loaded yet
 	  if(!isset($this->stations)){
-	       $this->stations = APICall::execute("stations");
+	       try{
+		    $this->stations = APICall::execute("stations");
+	       }catch(Exception $e){
+		    throw $e;
+	       }
 	  }
 	  return $this->stations;
      }
@@ -47,7 +51,11 @@ class DataLayer {
 	       "time" => $time,
 	       "date" => $date
 	       );
-	  return APICall::execute("connections", $args);
+	  try{
+	       return APICall::execute("connections", $args);
+	  }catch(Exception $e){
+	       throw $e;
+	  }
      }
 
      public function getLiveboard($station, $direction, $time){
@@ -57,7 +65,11 @@ class DataLayer {
 	       "arrdep" => $direction,
 	       "time" => $time
 	       );
-	  return APICall::execute("liveboard", $args);
+	  try{
+	       return APICall::execute("liveboard", $args);
+	  }catch(Exception $e){
+	       throw $e;
+	  }
      }
 
      public function getVehicleinfo($vehicleid){
@@ -65,7 +77,13 @@ class DataLayer {
 	       "lang" => $this->lang,
 	       "id" => $vehicleid
 	       );
-	  return APICall::execute("vehicle", $args);
+	  try{
+	       return APICall::execute("vehicle", $args);
+	  }
+	  catch(Exception $e){
+	       throw $e;
+	  }
+	  
      }     
 
 }

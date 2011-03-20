@@ -38,53 +38,45 @@ function autoComplete(elmID){
 }
 function showUser(str, elmID)
 {
-    var xmlhttp;
+//TODO: if return has been pressed, the first answer has to be entered and the focus should be the next field in the form
     var holdtext =  "autoCmplete"+elmID;
     var holder = document.getElementById(holdtext);//the holder div
     holder.setAttribute("class", holdtext);
 
-
-    if (str=="")
-    {
-        while(holder.hasChildNodes()){
-            holder.removeChild(holder.lastChild);
-        }
-        return;
+    var stationsautocomp = autocompletestring(str);
+    //if (str==""){
+//Do we want to remove everything on each keydown? Or are we going to remove the wrong divs when a character has been added, and add other matches when a character has been removed?
+    while(holder.hasChildNodes()){
+        holder.removeChild(holder.lastChild);
     }
-    if (window.XMLHttpRequest)
-    {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
+//        return;
+//    }
+    if(stationsautocomp.length > 0){
+	for(var i=0; i<stationsautocomp.length;i++){
+            var newdiv = document.createElement('div');
+            newdiv.setAttribute("class", "autoBox");
+            newdiv.setAttribute("id", "autoBox");
+            newdiv.setAttribute("onclick", "set_"+elmID+"('"+stationsautocomp[i]+"')");
+            newdiv.appendChild(document.createTextNode(stationsautocomp[i]));
+            holder.appendChild(newdiv);
+	}
     }
-    else
-    {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function()
-    {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-            while(holder.hasChildNodes()){
-                holder.removeChild(holder.lastChild);
-            }
-            if(document.getElementById(elmID).value.length >= 2){
-                xmlDoc = xmlhttp.responseXML;
-                var names = xmlDoc.getElementsByTagName('name');
-                holder.setAttribute("class", "autoCmpleteBorder"+elmID+"");
-
-                for(var i=0; i<names.length;i++){
-                    var newdiv = document.createElement('div');
-                    newdiv.setAttribute("class", "autoBox");
-                    newdiv.setAttribute("id", "autoBox");
-                    newdiv.setAttribute("onclick", "set_"+elmID+"('"+names[i].textContent+"')");
-                    newdiv.appendChild(document.createTextNode(names[i].textContent));
-                    holder.appendChild(newdiv);
-                }
-            }
-        }
-    }
-    xmlhttp.open("GET","getTrainInfo.php?name="+str,true);
-    xmlhttp.send();
 }
+//str is the user given string so far
+//It will return an array of stations which contain the given string
+function autocompletestring(str){
+    var autocomp = [];
+    if(str.length > 2){
+	for(var i=0;i<stations.length; i++){
+	    //if str is indexed at -1 in the stationname it doesn't match, otherwise it does
+	    if(stations[i].toLowerCase().indexOf(str.toLowerCase()) != -1){
+		autocomp.push(stations[i]);
+	    }
+	}
+    }
+    return autocomp;
+}
+
 //End Auto complete
 
 //set "to" input to text selected from the autocomplete
