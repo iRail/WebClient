@@ -1,5 +1,7 @@
 //Public vars
 
+var MAXTOCOMP = 10; // limit size of autocompletion list
+
 //End Public vars
 function changeActive(btn){
     if(btn == "depart"){
@@ -43,21 +45,19 @@ function showUser(str, elmID)
     var holder = document.getElementById(holdtext);//the holder div
     holder.setAttribute("class", holdtext);
 
-    var stationsautocomp = autocompletestring(str);
-    //if (str==""){
-//Do we want to remove everything on each keydown? Or are we going to remove the wrong divs when a character has been added, and add other matches when a character has been removed?
+    var completionlist = autocompletestring(str);
+
     while(holder.hasChildNodes()){
         holder.removeChild(holder.lastChild);
     }
-//        return;
-//    }
-    if(stationsautocomp.length > 0){
-	for(var i=0; i<stationsautocomp.length;i++){
+
+    if(completionlist.length < MAXTOCOMP){
+	for(var i=0; i<completionlist.length;i++){
             var newdiv = document.createElement('div');
             newdiv.setAttribute("class", "autoBox");
             newdiv.setAttribute("id", "autoBox");
-            newdiv.setAttribute("onclick", "set_"+elmID+"('"+stationsautocomp[i]+"')");
-            newdiv.appendChild(document.createTextNode(stationsautocomp[i]));
+            newdiv.setAttribute("onclick", "set_"+elmID+"('"+completionlist[i]+"')");
+            newdiv.appendChild(document.createTextNode(completionlist[i]));
             holder.appendChild(newdiv);
 	}
     }
@@ -66,7 +66,8 @@ function showUser(str, elmID)
 //It will return an array of stations which contain the given string
 function autocompletestring(str){
     var autocomp = [];
-    if(str.length > 2){
+    //only if there's something in the string
+    if(str.length > 0){
 	for(var i=0;i<stations.length; i++){
 	    //if str is indexed at -1 in the stationname it doesn't match, otherwise it does
 	    if(stations[i].toLowerCase().indexOf(str.toLowerCase()) != -1){
