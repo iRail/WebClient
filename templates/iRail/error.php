@@ -7,7 +7,7 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be - <?=$content["message"] ?></title>
         <link rel="shortcut icon" href="/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="../templates/iRail/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
         <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body class="bckgroundDarkBlue">

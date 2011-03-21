@@ -7,7 +7,7 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="../templates/iRail/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
         <script>
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
@@ -33,7 +33,7 @@
             </div>
             <div class="searchContainer">
                 <div class="containerHeader"><?=$i18n["your_routes"] ?>
-                    <a href="/stations/"><img src="../templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
+                    <a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
                 </div>
                 <div class="containerMenuRoutes">
                     <div class="containerButtonsFav">
