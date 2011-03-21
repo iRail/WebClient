@@ -7,7 +7,7 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../templates/iRail/css/main.css" />
         <script>
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
@@ -26,20 +26,20 @@
                         <div class="redFlagColor"></div>
                     </div>
                 </div>
-                <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive">Route</div></a>
-                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
+                <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
+                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><?=$i18n["settings"] ?></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
-                <div class="containerHeader">Your routes
-                    <a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
+                <div class="containerHeader"><?=$i18n["your_routes"] ?>
+                    <a href="/stations/"><img src="../templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a>
                 </div>
                 <div class="containerMenuRoutes">
                     <div class="containerButtonsFav">
-                        <div onclick="changeActiveFav('favourite')" id="favourite" class="favButtonActive favButtonL">Favourite</div>
-                        <div onclick="changeActiveFav('nearby')" id="nearby" class="favButtonR">Nearby</div>
-                        <div onclick="changeActiveFav('mostUsed')" id="mostUsed" class="favButtonMid">Most used</div>
+                        <div onclick="changeActiveFav('favourite')" id="favourite" class="favButtonActive favButtonL"><?=$i18n["favourite"] ?></div>
+                        <div onclick="changeActiveFav('nearby')" id="nearby" class="favButtonR"><?=$i18n["nearby"] ?></div>
+                        <div onclick="changeActiveFav('mostUsed')" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
                     </div>
                 </div>
             </div>

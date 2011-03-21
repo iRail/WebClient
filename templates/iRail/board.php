@@ -7,7 +7,7 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../templates/iRail/css/main.css" />
         <script>
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
@@ -26,9 +26,9 @@
                         <div class="redFlagColor"></div>
                     </div>
                 </div>
-                <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner">Route</div></a>
-                <a href="/board/"><div class="bannerCubeContainerFixed bannerLinkActive removeBorderLeft">Board</div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner">Settings</div></a>
+                <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
+                <a href="/board/"><div class="bannerCubeContainerFixed bannerLinkActive removeBorderLeft"><?=$i18n["board"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><?=$i18n["settings"] ?></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
@@ -36,16 +36,16 @@
                     <div class="fillDotLeft"></div>
                     <div class="fillDotRight"></div>
                     <div class="listButton">
-                        <div class="buttonFav"><a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a></div>
+                        <div class="buttonFav"><a href="/stations/"><img src="../templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a></div>
                     </div>
-                    <div class="fromHeader">Of</div>
+                    <div class="fromHeader"><?=$i18n["of"] ?></div>
                 </div>
                 <div class="inputFrom">
                     <input class="inputStyle" type="text" id="of" name="of"/>
                 </div>
-                <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="change" width="25" height="30"/></div>
+                <div class="inputChange"><img class="pointer" src="../templates/iRail/images/change.png" onclick="swap_From_To()" alt="change" width="25" height="30"/></div>
                 <div class="inputMid"></div>
-                <div class="toHeader">To (optional)</div>
+                <div class="toHeader"><?=$i18n["to_optional"] ?></div>
                 <div class="inputTo">
                     <input class="inputStyle" type="text" id="to" name="to"/>
                 </div>
@@ -54,7 +54,7 @@
             <div class="subMenuContainer">
                 <div class="containerSubMenuBtn">
                     <div class="centerDivBtn">
-                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="Show live board"/>
+                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="<?=$i18n["show_live_board"] ?>"/>
                     </div>
                 </div>
             </div>

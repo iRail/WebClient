@@ -47,11 +47,11 @@ class APICall {
 	       );
 //	  echo $url;
 	  
-	  $post = http_post_data($url, "", $request_options) or die("");
-	  if($post == ""){
-	       throw new Exception("Failed to contact the server");
-	  }
-	  return http_parse_message($post)->body;
-     }     
+	  //$post = http_post_data($url, "", $request_options) or die("");
+	  //if($post == ""){
+	  //    throw new Exception("Failed to contact the server");
+	  //}
+	  //return http_parse_message($post)->body;
+    }     
 }
 ?>

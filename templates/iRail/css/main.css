@@ -276,8 +276,8 @@ body {
 }
 .subMenuBtnText{
     padding-top: 5px;
-    padding-left: 15px;
     cursor: pointer;
+    text-align: center;
 }
 
 .containerMenu{

@@ -7,13 +7,13 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../templates/iRail/css/main.css" />
         <script>
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
         </script>
-        <script src="/templates/iRail/js/main.js"></script>
+        <script src="../templates/iRail/js/main.js"></script>
     </head>
     <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
         <div class="MainContainer">
@@ -36,7 +36,7 @@
                     <div class="fillDotLeft"></div>
                     <div class="fillDotRight"></div>
                     <div class="listButton">
-                        <div class="buttonFav"><a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="<?=$i18n["favourite"] ?>" width="40" height="25" class="floatRight"/></a></div>
+                        <div class="buttonFav"><a href="/stations/"><img src="../templates/iRail/images/fav.png" alt="<?=$i18n["favourite"] ?>" width="40" height="25" class="floatRight"/></a></div>
                     </div>
                     <div class="fromHeader"><?=$i18n["from"] ?></div>
                 </div>
@@ -45,7 +45,7 @@
                     <div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
                 </div>
-                <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
+                <div class="inputChange"><img class="pointer" src="../templates/iRail/images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">

@@ -7,7 +7,7 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../templates/iRail/css/main.css" />
         <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body class="bckgroundDarkGrey">
@@ -21,30 +21,30 @@
                         <div class="redFlagColor"></div>
                     </div>
                 </div>
-                <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner">Route</div></a>
-                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft">Board</div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings  bannerLinkActive">Settings</div></a>
+                <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
+                <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings  bannerLinkActive"><?=$i18n["settings"] ?></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
                 <div class="containerMenu">
                     <div class="containerButtons noMargins">
-                        <div class="buttonActive settingsButtonL">Log in</div>
-                        <div class="settingsButtonR">Register</div>
+                        <div class="buttonActive settingsButtonL"><?=$i18n["log_in"] ?></div>
+                        <div class="settingsButtonR"><?=$i18n["register"] ?></div>
                     </div>
                 </div>
             </div>
-            <div class="headerText">Username</div>
+            <div class="headerText"><?=$i18n["username"] ?></div>
             <div class="inputFieldLogin">
                 <input class="width100" type="text" name="username" id="username"/>
             </div>
-            <div class="headerText">Password</div>
+            <div class="headerText"><?=$i18n["password"] ?></div>
             <div class="inputFieldLogin">
                 <input class="width100" type="password" name="password" id="password"/>
             </div>
             <div class="containerSubMenuBtn">
                 <div class="centerDivBtn">
-                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="Log in"/>
+                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="<?=$i18n["log_in"] ?>"/>
                 </div>
             </div>
         </div>
