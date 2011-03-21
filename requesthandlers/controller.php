@@ -33,15 +33,15 @@ class Controller extends Page{
 	       }
 	       return $data->getLiveboard($station,$arrdep,$time);
 	  }else if($page == "routeresult"){
-	       if(!isset($arrdep)){
-		    $arrdep = "departure";
+	       if(!isset($direction)){
+		    $direction = "depart";
 	       }
 	       if(!isset($time)){
 		    $time=date("Hi");
 	       }if(!isset($date_)){
 		    $date_ = date("dmy");
 	       }
-	       return $data->getConnections($from, $to, $arrdep, $time, $date_);
+	       return $data->getConnections($from, $to, $direction, $time, $date_);
 	  }else if($page != "error"){
 	       //let's not do a request if there is an error page
 	       //in other cases, just output the stationslist - needed on most pages
