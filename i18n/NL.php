@@ -23,6 +23,10 @@ $i18n=array(
 		"refresh_page" => "te vernieuwen",
 		"of" => "Van",
 		"to_optional" => "Naar (optioneel)",
-		"show_live_board" => "Toon live bord"
+		"show_live_board" => "Toon live bord",
+		"earliestRide" => "Vroegste Rit",
+		"rideEarlier" => "Rit vroeger",
+		"rideLater" => "Rit later",
+		"latestRide" => "Laatste rit"
      );
 ?>

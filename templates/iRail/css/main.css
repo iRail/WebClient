@@ -89,6 +89,75 @@ body {
 
 .searchContainer{background-color: #cccccc;width: 100%;clear: both;padding-bottom: 5px;}
 .subMenuContainer{background-color: #cccccc;width: 100%;clear: both;}
+.routeContainer{width: 100%;}
+
+.routeHeader{
+	width: 100%;
+	border-top-color: #6c7980;
+	border-top-style: solid;
+	border-top-width: 10px;
+}
+
+.routeHeader p {
+	float:left;
+	padding: 5px;
+}
+
+.routeCube{
+	border-bottom: #FFFFFF solid 5px;
+	border-top: #FFFFFF solid 5px;
+	color: #594a00;
+	clear: both;
+}
+.routeCubeHeader{
+	background-color: #ffd400;
+	padding: 5px;
+	height: 20px;
+}
+.routeCubeInfo{
+	color: #594a00;
+	padding: 5px;
+	clear: both;
+	position: absolute;
+	visibility: hidden;
+}
+
+.routeCubeLeft{
+	float: left;
+	width: 180px;
+}
+
+.routeCubeRight{
+	float: right;
+	width: 100px;
+}
+
+.routeHeaderAddFavBtn{
+	float: right;
+	background-image: url("../images/addfav.gif");
+	width: 47px;
+	height: 45px;
+	margin-top: 6px;;
+}
+
+.routeBottomBtnContainer{
+	height: 30px;
+	background-color: #cccccc;
+	border-bottom: #545e63 solid 2px;
+	border-top: #545e63 solid 2px;
+	border-right: #545e63 solid 2px;
+	clear: both;
+	font-size: 0.6em;
+}
+
+.routeBottomBtn{
+	float:left;
+	padding-top: 9px;
+	width: 24%;
+	height: 23px;
+	border-left: #545e63 solid 2px;
+	text-align: center;
+}
 
 .containerFrom{
     width: 100%;

@@ -1,3 +1,9 @@
+﻿<?
+	if($_GET['to'] && $_GET['from']){
+		$dYEAR = substr($_GET['y'],-2);
+		header( 'Location: http://muhammet.irail.be/route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR);			
+	}
+?>
 <!DOCTYPE html>
 <html lang="en" manifest="appcache.mf">
     <head>
@@ -17,6 +23,7 @@
     </head>
     <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
         <div class="MainContainer">
+		<form method="get" action="">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient">
                     <div class="Top">iRail</div>
@@ -139,10 +146,12 @@
                 </div>
                 <div class="containerSubMenuBtn">
                     <div class="centerDivBtn">
-                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="<?=$i18n["search"] ?>"/>
+                        <input class="gradientBtnSearch Btn" type="submit" name="search" id="search" value="<?=$i18n["search"] ?>"/>
                     </div>
                 </div>
             </div>
+		</form>
         </div>
     </body>
 </html>
+

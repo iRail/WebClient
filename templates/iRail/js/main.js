@@ -51,7 +51,9 @@ function showUser(str, elmID)
         holder.removeChild(holder.lastChild);
     }
 
+	
     if(completionlist.length < MAXTOCOMP){
+	holder.setAttribute("class", "autoCmpleteBorder"+elmID+"");
 	for(var i=0; i<completionlist.length;i++){
             var newdiv = document.createElement('div');
             newdiv.setAttribute("class", "autoBox");
@@ -127,4 +129,29 @@ function swap_From_To(){
     var from = document.getElementById("from").value
     document.getElementById("from").value = document.getElementById("to").value;
     document.getElementById("to").value = from;
+}
+
+function fold(elm){
+	var children = elm.childNodes;
+	var fold;
+	var found = false;
+
+	for(i = 0; i < children.length; i++)
+	{
+		var link = children.item(i);
+		if(link.id == "routeCubeInfo"){
+			fold = link;
+			found = true;
+		}
+	}
+	
+	if(found){
+		if(fold.style.visibility == 'hidden'){
+			fold.style.visibility = 'visible';
+			fold.style.position = "static";
+		}else{
+			fold.style.visibility = 'hidden';
+			fold.style.position = "absolute";
+		}
+	}
 }
