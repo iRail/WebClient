@@ -129,7 +129,8 @@ body {
 
 .routeCubeRight{
 	float: right;
-	width: 100px;
+	width: 70px;
+	text-align: right;
 }
 
 .routeHeaderAddFavBtn{
@@ -410,6 +411,16 @@ body {
     font-size: 1.2em;
 }
 
+
+.platformStyle{
+	width: 25px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	background-color: #cccccc;
+	text-align: center;
+}
+
 a{
     text-decoration: none;
 }
@@ -626,6 +637,7 @@ input {
 .removePadding{
     padding 0;
 }
+
 
 /* 404 style */
 .bckgroundDarkBlue{

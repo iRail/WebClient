@@ -54,30 +54,39 @@ function formatTime($time){
 				<div class="routeHeaderAddFavBtn"></div>
 			</div>
 			
+			<?
+			foreach($content["connection"] as $connection){
+			?>
 			<!-- START: Class routeCube will be multiplied by x quantity of steps passenger has to take to reach destination -->
 			<div class="routeCube" id="routeCube" onclick="fold(this)">
 				<div class="routeCubeHeader">
-					<div class="routeCubeLeft">lol</div>
-					<div class="routeCubeRight">lol</div>
+					<div class="routeCubeLeft">
+						<?=formatTime($connection["departure"]["time"]); ?> -> -> ->
+						<?=formatTime($connection["arrival"]["time"]); ?>
+					</div>
+					<div class="routeCubeRight">
+						| <?=formatDuration($connection["duration"])?> |
+					</div>
 				</div>
 				<div class="routeCubeInfo" id="routeCubeInfo" style="visibility: hidden; position: absolute;">
-				<p>
-					It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-				</p>
-				</div>
-			</div>
-			<div class="routeCube" id="routeCube" onclick="fold(this)">
-				<div class="routeCubeHeader">
-					<div class="routeCubeLeft">lol</div>
-					<div class="routeCubeRight">lol</div>
-				</div>
-				<div class="routeCubeInfo" id="routeCubeInfo" style="visibility: hidden; position: absolute;">
-				<p>
-					It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-				</p>
+					<table>
+					<tr>
+						<td><?=formatTime($connection["departure"]["time"]); ?></td>
+						<td style="width:100%; text-align:center;"><?=$content["connection"][0]["departure"]["station"]?></td>
+						<td><div class="platformStyle"><? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div></td>
+					</tr>
+					<tr>
+						<td><?=formatTime($connection["arrival"]["time"]); ?></td>
+						<td style="text-align:center;"><?=$content["connection"][0]["arrival"]["station"]?></td>
+						<td><div class="platformStyle"><? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?></div></td>
+					</tr>
+					</table> 
 				</div>
 			</div>
 			<!-- END -->
+			<?
+			}
+			?>
 			
 			<div class="routeBottomBtnContainer">
 				<div class="routeBottomBtn"><p>|< <?=$i18n["earliestRide"] ?></p></div>
