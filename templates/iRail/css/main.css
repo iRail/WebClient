@@ -32,6 +32,11 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
     font-weight: bold;
 }
+
+.hideRadioBtn{
+	visibility: hidden;
+}
+
 .bckgroundDarkGrey{
     background-color: #6c7980;
 }
@@ -342,7 +347,7 @@ body {
 }
 
 .containerButtons{
-    width: 210px;
+    width: 260px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 5px;
@@ -363,7 +368,7 @@ body {
 }
 
 .buttonL{
-    width: 100px;
+    width: 120px;
     background-color: #aaafb2;
     float: left;
     height: 25px;
@@ -377,7 +382,7 @@ body {
     border-top-right-radius: 10px;
 }
 .buttonR{
-    width: 100px;
+    width: 120px;
     height: 25px;
     color: #6c7980;
     font-weight: bold;
@@ -394,6 +399,7 @@ body {
     padding-top: 5px;
     cursor: pointer;
     text-align: center;
+	margin-right: 20px;
 }
 
 .containerMenu{

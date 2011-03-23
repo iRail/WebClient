@@ -33,7 +33,6 @@ function changeActiveFav(btn){
     }
 }
 //Auto complete, event: onkeyup
-//This will change, we will load all stations onload
 function autoComplete(elmID){
     var input = document.getElementById(elmID).value;
     showUser(input, elmID);
