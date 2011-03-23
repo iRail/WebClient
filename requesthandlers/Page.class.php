@@ -115,6 +115,8 @@ abstract class Page {
 function errorhandler($errno,$errstr){
      logerror($errno,$errstr);
      $content = array("message"=> $errstr);
+//temp fix
+include("i18n/EN.php");
      $file = "templates/iRail/error.php";
      include($file);
      exit(0);
