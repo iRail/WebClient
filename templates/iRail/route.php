@@ -57,7 +57,7 @@
                     <div class="fromHeader"><?=$i18n["from"] ?></div>
                 </div>
                 <div class="inputFrom">
-                    <input class="inputStyle" onkeyup="autoComplete('from')" type="text" id="from" name="from"/>
+                    <input autocomplete="off" class="inputStyle" value="<?=$_GET["from"] ?>" onkeyup="autoComplete('from')" type="text" id="from" name="from"/>
                     <div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">
-                    <input class="inputStyle" onkeyup="autoComplete('to')" type="text" id="to" name="to"/>
+                    <input autocomplete="off" class="inputStyle" value="<?=$_GET["to"] ?>" onkeyup="autoComplete('to')" type="text" id="to" name="to"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>
                 </div>

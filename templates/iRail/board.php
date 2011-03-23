@@ -47,13 +47,13 @@
                     <div class="fromHeader"><?=$i18n["of"] ?></div>
                 </div>
                 <div class="inputFrom">
-                    <input class="inputStyle" type="text" id="of" name="of"/>
+                    <input autocomplete="off" class="inputStyle" type="text" id="of" name="of"/>
                 </div>
                 <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="change" width="25" height="30"/></div>
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to_optional"] ?></div>
                 <div class="inputTo">
-                    <input class="inputStyle" type="text" id="to" name="to"/>
+                    <input autocomplete="off" class="inputStyle" type="text" id="to" name="to"/>
                 </div>
 
             </div>
