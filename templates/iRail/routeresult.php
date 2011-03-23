@@ -1,32 +1,3 @@
-<?
-//let's first create some helpfunctions so we can output the json more easily
-function formatDuration($dur){
-     $i = $dur/60%60;
-     $h = floor($dur/3600);
-     //    if($h < 10){ // don't do this. too much zeros
-     //	  $h = "0" . $h;
-     //   }
-     if($i<10){
-	  $i = "0" . $i;
-     }
-     return  $h.":".$i;
-}
-
-function formatDelay($del){    
-     if($del>0){
-	  return"+" . $del/60;
-     }
-     return "/";
-}
-
-function formatDate($time){
-     return date("d/m/Y",$time);
-}
-
-function formatTime($time){
-     return date("H:i",$time);
-}
-?>
 <!DOCTYPE html>
 <html lang="en" manifest="appcache.mf">
     <head>
@@ -45,6 +16,21 @@ function formatTime($time){
         <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body>
+	<div class="MainContainer">
+		<div class="bannerContainer">
+			<div class="bannerCubeContainerFixedLogo gradient">
+				<div class="Top">iRail</div>
+				<div class="Bot">
+					<div class="blackFlagColor"></div>
+					<div class="yelFlagColor"></div>
+					<div class="redFlagColor"></div>
+				</div>
+			</div>
+			<a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
+			<a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
+			<a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><?=$i18n["settings"] ?></div></a>
+			<div class="bannerCubeContainerScaleFill gradientBanner"></div>
+		</div>
 		<div class="routeContainer">
 			<div class="routeHeader">
 				<p>
@@ -95,5 +81,6 @@ function formatTime($time){
 				<div class="routeBottomBtn"><p><?=$i18n["latestRide"] ?> >|</p></div>
 			</div>
 		</div>
+	</div>
 	</body>
 </html>
