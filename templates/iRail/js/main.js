@@ -51,7 +51,7 @@ function showUser(str, elmID)
     }
 
 	
-    if(completionlist.length < MAXTOCOMP){
+    if(completionlist.length < MAXTOCOMP && completionlist.length > 0){
 	holder.setAttribute("class", "autoCmpleteBorder"+elmID+"");
 	for(var i=0; i<completionlist.length;i++){
             var newdiv = document.createElement('div');
