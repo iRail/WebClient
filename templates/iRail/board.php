@@ -1,3 +1,8 @@
+<?
+	if($_GET['of']){
+		header( 'Location: http://muhammet.irail.be/board/'.$_GET['of'].'/');			
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">    
     <head>
@@ -17,6 +22,7 @@
     </head>
     <body class="bckgroundDarkGrey">
         <div class="MainContainer">
+		<form method="get" action="">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient">
                     <div class="Top">iRail</div>
@@ -54,10 +60,11 @@
             <div class="subMenuContainer">
                 <div class="containerSubMenuBtn">
                     <div class="centerDivBtn">
-                        <input class="gradientBtnSearch Btn" type="button" name="search" id="search" value="<?=$i18n["show_live_board"] ?>"/>
+                        <input class="gradientBtnSearch Btn" type="submit" name="search" id="search" value="<?=$i18n["show_live_board"] ?>"/>
                     </div>
                 </div>
             </div>
+		</form>
         </div>
     </body>
 </html>

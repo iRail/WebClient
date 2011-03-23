@@ -90,6 +90,52 @@ body {
 .searchContainer{background-color: #cccccc;width: 100%;clear: both;padding-bottom: 5px;}
 .subMenuContainer{background-color: #cccccc;width: 100%;clear: both;}
 .routeContainer{width: 100%;}
+.boardContainer{width: 100%; border-top: #cccccc solid 10px;padding-top: 10px;}
+
+.change_opacity {
+  opacity: 0;
+  filter: alpha(opacity = 0);
+}
+
+
+.boardInfo{
+	height: 25px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+
+.boardInfoBackColorGrey{
+	height: 25px;
+	background-color: #f4f4f4;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+}
+
+.boardPlatform{
+	width: 50px;
+	float: left;
+}
+
+.boardStation{
+	color: #4b5572;
+	width: 100%;
+}
+
+.boardTime{
+	color: #4b5572;
+	width: 60px;
+	float: right;
+}
+
+.boardDelay{
+	color: #e8755e;
+	width: 25px;
+	float: right;
+	height: 100%;
+}
+
 
 .routeHeader{
 	width: 100%;
@@ -419,6 +465,7 @@ body {
     border-radius: 5px;
 	background-color: #cccccc;
 	text-align: center;
+	color: #000000;
 }
 
 a{

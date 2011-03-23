@@ -1,7 +1,16 @@
 ﻿<?
-	if($_GET['to'] && $_GET['from']){
+	$activeBtn = "arrive";
+	
+	if($_GET["directionBtn"] == "Vertrek"){
+		$activeBtn = "depart";
+	}
+	if($_GET["directionBtn"] == "Aankomst"){
+		$activeBtn = "arrive";
+	}
+
+	if($_GET['to'] != "" && $_GET['from'] != ""){
 		$dYEAR = substr($_GET['y'],-2);
-		header( 'Location: http://muhammet.irail.be/route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR);			
+		header( 'Location: http://muhammet.irail.be/route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR . '&timeSel=' . $activeBtn);			
 	}
 ?>
 <!DOCTYPE html>
@@ -64,8 +73,8 @@
             <div class="subMenuContainer">
                 <div class="containerMenu">
                     <div class="containerButtons">
-                        <div id="arrAt" onclick="changeActive('arrive')" class="buttonActive buttonL"><div class="subMenuBtnText"><?=$i18n["arrival_at"] ?></div></div>
-                        <div id="deprtAt" onclick="changeActive('depart')" class="buttonR"><div class="subMenuBtnText"><?=$i18n["departure_at"] ?></div></div>
+                        <div id="arrAt" class="<? if($activeBtn == "arrive"){ echo "buttonActive buttonL"; }else{ echo "buttonL"; } ?>"><div class="subMenuBtnText"><input style="position: absolute;" class="change_opacity" type="submit" name="directionBtn" id="directionBtn" value="<?=$i18n["arrival_at"] ?>"/><?=$i18n["arrival_at"] ?></div></div>
+                        <div id="deprtAt" class="<? if($activeBtn == "depart"){ echo "buttonActive buttonR"; }else{ echo "buttonR"; } ?>"><div class="subMenuBtnText"><input style="position: absolute;" class="change_opacity" type="submit" name="directionBtn" id="directionBtn" value="<?=$i18n["departure_at"] ?>"/><?=$i18n["departure_at"] ?></div></div>
                     </div>
                 </div>
                 <div class="containerSubMenuDate">
