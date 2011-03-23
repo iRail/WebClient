@@ -58,7 +58,7 @@ class DataLayer {
 	  }
      }
 
-     public function getLiveboard($station, $direction, $time){
+     public function getLiveboard($station, $direction, $time, $destination = ""){
 	  $args = array(
 	       "lang" => $this->lang,
 	       "station" => $station,
@@ -66,11 +66,30 @@ class DataLayer {
 	       "time" => $time
 	       );
 	  try{
-	       return APICall::execute("liveboard", $args);
+	       $liveboard= APICall::execute("liveboard", $args);
+	       if($destination != ""){
+		    //only get the destinations out of it
+		    $liveboard = $this->findInLiveboard($liveboard,$destination);
+	       }
+	       return $liveboard;
 	  }catch(Exception $e){
 	       throw $e;
 	  }
      }
+
+     private function findInLiveboard($lb,$dest){
+	  $newarray = array();
+	  foreach($lb["departures"]["departure"] as $dep){
+	       if(strtolower($dep["station"]) == strtolower($dest)){
+		    $newarray[sizeof($newarray)] = $dep;
+	       }
+	  }
+	  unset($lb["departures"]["departure"]);
+	  $lb["departures"]["departure"] = $newarray;
+	  $lb["departures"]["number"] = sizeof($newarray);
+	  return $lb;
+     }
+     
 
      public function getVehicleinfo($vehicleid){
 	  $args = array(

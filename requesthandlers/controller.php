@@ -30,6 +30,8 @@ class Controller extends Page{
 	       }
 	       if(!isset($time)){
 		    $time=date("Hi");
+	       }if(isset($destination)){
+		    return $data->getLiveboard($station,$arrdep,$time,$destination);
 	       }
 	       return $data->getLiveboard($station,$arrdep,$time);
 	  }else if($page == "routeresult"){
