@@ -8,3 +8,4 @@ templates/iRail/images/fil.png
 templates/iRail/images/trein.png
 board/
 route/
+stations/

@@ -32,8 +32,9 @@ class DataLayer {
      public function getStations(){
           //check if the stationslist hasn't been loaded yet
 	  if(!isset($this->stations)){
+	       $args = array("lang" =>$this->lang);
 	       try{
-		    $this->stations = APICall::execute("stations");
+		    $this->stations = APICall::execute("stations", $args);
 	       }catch(Exception $e){
 		    throw $e;
 	       }
