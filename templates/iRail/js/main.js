@@ -32,15 +32,32 @@ function changeActiveFav(btn){
 
     }
 }
-//Auto complete, event: onkeyup
-function autoComplete(elmID){
-    var input = document.getElementById(elmID).value;
-    showUser(input, elmID);
-}
-function showUser(str, elmID)
+
+function disableEnterKey(e)
 {
-//TODO: if return has been pressed, the first answer has to be entered and the focus should be the next field in the form
-    var holdtext =  "autoCmplete"+elmID;
+	 var key;     
+	 if(window.event)
+		  key = window.event.keyCode; //IE
+	 else
+		  key = e.which; //firefox     
+
+	 return (key != 13);
+}
+
+
+//Auto complete, event: onkeyup
+function autoComplete(elmID, e){
+    var input = document.getElementById(elmID).value;
+    showUser(input, elmID, e);
+}
+
+function underlineXchars(txt, aantal){
+	
+}
+
+function showUser(str, elmID, e)
+{
+	var holdtext =  "autoCmplete"+elmID;
     var holder = document.getElementById(holdtext);//the holder div
     holder.setAttribute("class", holdtext);
 
@@ -50,7 +67,7 @@ function showUser(str, elmID)
         holder.removeChild(holder.lastChild);
     }
 
-	
+		
     if(completionlist.length < MAXTOCOMP && completionlist.length > 0){
 	holder.setAttribute("class", "autoCmpleteBorder"+elmID+"");
 	for(var i=0; i<completionlist.length;i++){
@@ -62,6 +79,16 @@ function showUser(str, elmID)
             holder.appendChild(newdiv);
 	}
     }
+	var key=e.keyCode || e.which;
+	if (key==13){
+		if(holder.hasChildNodes()){
+			var fromInput = document.getElementById(elmID);
+			fromInput.value = holder.firstChild.innerHTML;
+		}
+
+		clearHolder(elmID);
+	}
+	return false;
 }
 //str is the user given string so far
 //It will return an array of stations which contain the given string

@@ -396,10 +396,8 @@ body {
     border-top-right-radius: 10px;
 }
 .subMenuBtnText{
-    padding-top: 5px;
+    padding-top: 2px;
     cursor: pointer;
-    text-align: center;
-	margin-right: 20px;
 }
 
 .containerMenu{
@@ -634,7 +632,7 @@ a{
 
 .settingsButtonL{
     text-align: center;
-    width: 100px;
+    width: 120px;
     height: 25px;
     color: #000000;
     font-weight: bold;
@@ -650,7 +648,7 @@ a{
 }
 .settingsButtonR{
     text-align: center;
-    width: 100px;
+    width: 120px;
     height: 25px;
     color: #000000;
     font-weight: bold;

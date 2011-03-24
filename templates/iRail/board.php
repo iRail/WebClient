@@ -1,7 +1,11 @@
 <?
-	if($_GET['of']){
-		header( 'Location: http://muhammet.irail.be/board/'.$_GET['of'].'/');			
+if($_GET['from']){
+	if($_GET["to"] != ""){
+		header( 'Location: http://muhammet.irail.be/board/'.$_GET['from'].'/'.$_GET['to'].'/');			
+	}else{
+		header( 'Location: http://muhammet.irail.be/board/'.$_GET['from'].'/');					
 	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">    
@@ -20,7 +24,7 @@
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body class="bckgroundDarkGrey">
+    <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
@@ -47,14 +51,18 @@
                     <div class="fromHeader"><?=$i18n["of"] ?></div>
                 </div>
                 <div class="inputFrom">
-                    <input autocomplete="off" class="inputStyle" type="text" id="of" name="of"/>
-                </div>
+                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event)" class="inputStyle" type="text" id="from" name="from"/>
+					<div id="autoCmpletefrom" class="autoCmpletefrom">
+                    </div>
+				</div>
                 <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="change" width="25" height="30"/></div>
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to_optional"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" class="inputStyle" type="text" id="to" name="to"/>
-                </div>
+                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event)" class="inputStyle" type="text" id="to" name="to"/>
+                    <div id="autoCmpleteto" class="autoCmpleteto">
+                    </div>               
+			   </div>
 
             </div>
             <div class="subMenuContainer">
