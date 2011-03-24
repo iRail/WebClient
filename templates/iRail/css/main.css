@@ -612,6 +612,16 @@ a{
     height: 60px;
 }
 
+.resultsName{
+	float: left;
+	padding: 20px;
+}
+
+.resultsDistance{
+	float: right;
+	padding: 20px;
+}
+
 
 .settingsButtonL.buttonActive{
     color: #ffffff;

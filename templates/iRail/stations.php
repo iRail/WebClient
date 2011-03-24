@@ -9,13 +9,114 @@
         <link rel="shortcut icon" href="favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
         <script>
-      var stations= [<? foreach($content["station"] as $station){
-	   echo "\"" . $station["name"] . "\",";
-      } ?>];
+		var stations = [<? foreach($content["station"] as $station){?>
+			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
+		<?} ?>];
+		
+		function compareDistance(a, b) {
+			return a.distance - b.distance;
+		}
+		
+		function getClosestStations(x, y, vicinity){
+			var output = new Array();
+		
+			for (i in stations)
+			{
+				var dist = distance(x,stations[i].getX(),y,stations[i].getY());
+				if(dist < vicinity){
+					var obj = new stationObject(stations[i].getName(), stations[i].getX(),stations[i].getY());
+					obj.distance = dist;
+					output.push(obj);
+				}
+			}
+			// for(var i = 1; i < output.length; i ++){
+				// var h = output[i];
+				// var j = i-1;
+				// while(j >= 0 & output[j].getDistance() < h.getDistance()){
+					// output[j+1] = output[j];
+					// j--;
+				// }
+				// $output[j+1] = h;
+			// }			
+			return output.sort(compareDistance);
+		}
+
+		function distance(x1, x2, y1, y2){
+			return (Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1))) * 111.325;
+		}		
+		
+		
+		
+		function getLocation() {
+			// Get location no more than 10 minutes old. 600000 ms = 10 minutes.
+			navigator.geolocation.getCurrentPosition(showLocation, showError, {enableHighAccuracy:true,maximumAge:0});
+		}
+
+		function showError(error) {
+			alert(error.code + ' ' + error.message);
+		}
+
+		function showLocation(position) {
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+
+			if(latitude != ""){				
+				var nearbyStations = getClosestStations(longitude, latitude, 50);
+				
+				var teller = 1;
+				for(i in nearbyStations){
+					var mainHolder = document.getElementById("containerResults");
+					var resultHolder = document.createElement('div');
+					if(teller % 2 == 0){
+						resultHolder.setAttribute("class", "containerResultsBoxWhite");
+					}else{
+						resultHolder.setAttribute("class", "containerResultsBoxBlue");
+					}
+					
+					var nameDiv = document.createElement('div');
+					var distanceDiv = document.createElement('div');
+					
+					nameDiv.setAttribute("class", "resultsName");
+					distanceDiv.setAttribute("class", "resultsDistance");
+					
+					
+					
+					nameDiv.appendChild(document.createTextNode(nearbyStations[i].getName()));
+					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*Math.pow(10,0))/Math.pow(10,0) + " KM"));
+						
+					resultHolder.appendChild(nameDiv);
+					resultHolder.appendChild(distanceDiv);
+					
+					mainHolder.appendChild(resultHolder);
+					teller++;
+				}
+			}
+		}
+		
+		function stationObject (n, x, y) {
+			this.name = n;
+			this.x = x;
+			this.y = y;
+			this.distance = 0;
+			
+			this.getName = function() {
+				return this.name;
+			};
+			this.getX = function() {
+				return this.x;
+			};
+			this.getY = function() {
+				return this.y;
+			};
+			this.getDistance = function() {
+				return this.distance;
+			};
+		}
+				
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body>
+    <body onload="getLocation()"> 
         <div class="MainContainer">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient">
@@ -43,19 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div class="containerResults">
-                <div class="containerResultsBoxBlue">
-
-                </div>
-                <div class="containerResultsBoxWhite">
-
-                </div>
-                <div class="containerResultsBoxBlue">
-
-                </div>
-                <div class="containerResultsBoxWhite">
-
-                </div>
+            <div id="containerResults" class="containerResults">
             </div>
         </div>
     </body>
