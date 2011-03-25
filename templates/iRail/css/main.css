@@ -42,6 +42,29 @@ body {
 }
 .MainContainer{width: 100%}
 
+
+.infoRouteContainer{
+	width: 100%;
+	padding: 5px;
+	clear: both;
+}
+
+.infoRouteLeft{
+	float: left;
+	width: 75px;
+}
+.infoRouteRight{
+	float: right;
+	width: 40px;
+}
+.infoRouteMid{
+	width: 100%;
+	text-align: center;
+}
+
+
+
+
 /* BANNER */
 .bannerContainer{
     height: 44px;
@@ -175,7 +198,7 @@ body {
 
 .routeCubeLeft{
 	float: left;
-	width: 180px;
+	width: 240px;
 }
 
 .routeCubeRight{
@@ -694,10 +717,10 @@ input {
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
-
 .removePadding{
     padding 0;
 }
+
 
 
 /* 404 style */

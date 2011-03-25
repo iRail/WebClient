@@ -1,7 +1,7 @@
 //Public vars
 
 var MAXTOCOMP = 10; // limit size of autocompletion list
-
+var activeAuto = -1;
 //End Public vars
 function changeActive(btn){
     if(btn == "depart"){
@@ -35,7 +35,8 @@ function changeActiveFav(btn){
 
 function disableEnterKey(e)
 {
-	 var key;     
+	var key = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+   
 	 if(window.event)
 		  key = window.event.keyCode; //IE
 	 else
@@ -44,52 +45,95 @@ function disableEnterKey(e)
 	 return (key != 13);
 }
 
-
 //Auto complete, event: onkeyup
 function autoComplete(elmID, e){
     var input = document.getElementById(elmID).value;
     showUser(input, elmID, e);
 }
 
-function underlineXchars(txt, aantal){
-	
-}
-
 function showUser(str, elmID, e)
 {
 	var holdtext =  "autoCmplete"+elmID;
-    var holder = document.getElementById(holdtext);//the holder div
-    holder.setAttribute("class", holdtext);
+	var holder = document.getElementById(holdtext);//the holder div
+	var key = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+	if(key != 40 && key != 38 && key != 13){
+		activeAuto = -1;
 
-    var completionlist = autocompletestring(str);
+		holder.setAttribute("class", holdtext);
 
-    while(holder.hasChildNodes()){
-        holder.removeChild(holder.lastChild);
-    }
+		var completionlist = autocompletestring(str);
 
-		
-    if(completionlist.length < MAXTOCOMP && completionlist.length > 0){
-	holder.setAttribute("class", "autoCmpleteBorder"+elmID+"");
-	for(var i=0; i<completionlist.length;i++){
-            var newdiv = document.createElement('div');
-            newdiv.setAttribute("class", "autoBox");
-            newdiv.setAttribute("id", "autoBox");
-            newdiv.setAttribute("onclick", "set_"+elmID+"('"+completionlist[i]+"')");
-            newdiv.appendChild(document.createTextNode(completionlist[i]));
-            holder.appendChild(newdiv);
-	}
-    }
-	var key=e.keyCode || e.which;
-	if (key==13){
-		if(holder.hasChildNodes()){
-			var fromInput = document.getElementById(elmID);
-			fromInput.value = holder.firstChild.innerHTML;
+		while(holder.hasChildNodes()){
+			holder.removeChild(holder.lastChild);
 		}
 
+			
+		if(completionlist.length < MAXTOCOMP && completionlist.length > 0){
+		holder.setAttribute("class", "autoCmpleteBorder"+elmID+"");
+		for(var i=0; i<completionlist.length;i++){
+				var newdiv = document.createElement('div');
+				newdiv.setAttribute("class", "autoBox");
+				newdiv.setAttribute("id", "autoBox");
+				newdiv.setAttribute("onclick", "set_"+elmID+"('"+completionlist[i]+"')");
+				newdiv.appendChild(document.createTextNode(completionlist[i]));
+				holder.appendChild(newdiv);
+		}
+			//holder.firstChild.setAttribute("style","text-decoration: underline");
+		}
+
+	}
+	
+	if (key==13){ //13 = enter, 9=tab
+		var childs = holder.childNodes;
+		if(holder.hasChildNodes()){
+			var fromInput = document.getElementById(elmID);
+			if(activeAuto == -1){
+				fromInput.value = childs[0].innerHTML;
+			}else{
+				fromInput.value = childs[activeAuto].innerHTML;
+			}
+			
+			if(elmID == "from"){
+				var toInput = document.getElementById("to");
+				toInput.focus();
+			}else{
+				var submitBtn = document.getElementById("search");
+				submitBtn.focus();
+			}
+		}
 		clearHolder(elmID);
 	}
 	return false;
 }
+
+function changeActiveAutoCompletion(elmID, e){
+	var key = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+
+	var holdtext =  "autoCmplete"+elmID;
+    var holder = document.getElementById(holdtext);//the holder div
+
+	//up arrow 	38
+	//down arrow 	40
+	var childs = holder.childNodes;
+	
+	
+	if (key==40 && activeAuto < childs.length-1){
+		activeAuto++;
+		if(activeAuto > 0){
+			var tssStap = activeAuto-1
+			childs.item(tssStap).setAttribute("style", "");
+			//alert(activeAuto + " " + childs.length);
+		}
+		childs.item(activeAuto).setAttribute("style", "text-decoration: underline;");
+	}
+	if(key==38 && activeAuto > 0){ // not >= if last elem selected, we can't enter if
+		activeAuto--;
+		var tssStap = activeAuto+1
+		childs.item(tssStap).setAttribute("style", "");
+		childs.item(activeAuto).setAttribute("style", "text-decoration: underline;");
+	}
+}
+
 //str is the user given string so far
 //It will return an array of stations which contain the given string
 function autocompletestring(str){

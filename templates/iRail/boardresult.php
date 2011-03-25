@@ -14,9 +14,15 @@ function formatDuration($dur){
 
 function formatDelay($del){    
      if($del>0){
-	  return"+" . $del/60;
+		$min = $del/60;
+		if($min > 60){
+			$aantalH = floor($min / 60);
+			$min = $min % 60;
+			return"+" . $aantalH .":". $min;
+		}
+		return"+" . $min;
      }
-     return "/";
+	return "/";
 }
 
 function formatDate($time){
