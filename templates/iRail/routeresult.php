@@ -1,4 +1,4 @@
-<?
+﻿<?
 //let's first create some helpfunctions so we can output the json more easily
 function formatDuration($dur){
      $i = $dur/60%60;
@@ -64,7 +64,7 @@ function formatTime($time){
 			<div class="routeHeader">
 				<p>
 				<?=$content["connection"][0]["departure"]["station"]?><br>
-				<img src="/templates/iRail/images/arrow.gif" width="16" height="16" alt="arrowRight"/><?=$content["connection"][0]["arrival"]["station"]?>
+				→<?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
 				<div class="routeHeaderAddFavBtn"></div>
 			</div>
@@ -76,7 +76,7 @@ function formatTime($time){
 			<div class="routeCube" id="routeCube" onclick="fold(this)">
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
-						<?=formatTime($connection["departure"]["time"]); ?> -> -> ->
+						<?=formatTime($connection["departure"]["time"]); ?> icon → icon → icon
 						<?=formatTime($connection["arrival"]["time"]); ?>
 					</div>
 					<div class="routeCubeRight">
@@ -84,18 +84,65 @@ function formatTime($time){
 					</div>
 				</div>
 				<div class="routeCubeInfo" id="routeCubeInfo" style="visibility: hidden; position: absolute;">
-					<table>
-					<tr>
-						<td><?=formatTime($connection["departure"]["time"]); ?></td>
-						<td style="width:100%; text-align:center;"><?=$content["connection"][0]["departure"]["station"]?></td>
-						<td><div class="platformStyle"><? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div></td>
-					</tr>
-					<tr>
-						<td><?=formatTime($connection["arrival"]["time"]); ?></td>
-						<td style="text-align:center;"><?=$content["connection"][0]["arrival"]["station"]?></td>
-						<td><div class="platformStyle"><? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?></div></td>
-					</tr>
-					</table> 
+					<div class="infoRouteContainer">
+						<div class="infoRouteLeft">
+							<?=formatTime($connection["departure"]["time"]); ?>
+						</div>
+						<div class="infoRouteRight">
+							<div class="platformStyle"><? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
+						</div>
+						<div class="infoRouteMid">
+							<?=$content["connection"][0]["departure"]["station"]?>
+						</div>
+					</div>
+
+					<div class="infoRouteContainer">
+						<div class="infoRouteLeft">
+							↓
+						</div>
+						<div class="infoRouteMid">
+							<?=$content["connection"][0]["departure"]["vehicle"]?> <?=$content["connection"][0]["departure"]["direction"]["name"]?>
+						</div>
+					</div>
+					
+					<?
+					if(isset($connection["vias"])){
+					?>
+						<?
+						foreach($connection["vias"]["via"] as $via){
+						?>	
+						<!-- MID -->
+						<div class="infoRouteContainer">
+							<div class="infoRouteLeft">
+								<?=formatTime($via["arrival"]["time"]); ?>
+							</div>
+							<div class="infoRouteRight">
+								<div class="platformStyle"><? if(is_numeric($via["arrival"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
+							</div>
+							<div class="infoRouteMid">
+								<?=$via["stationinfo"]["name"]?>
+							</div>
+						</div>	
+						<?
+						}
+						?>
+					<?
+					}
+					?>
+					<!-- arrival -->
+					
+					<div class="infoRouteContainer">
+						<div class="infoRouteLeft">
+							<?=formatTime($connection["arrival"]["time"]); ?>
+						</div>
+						<div class="infoRouteRight">
+							<div class="platformStyle"><? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?></div>
+						</div>
+						<div class="infoRouteMid">
+							<?=$content["connection"][0]["arrival"]["station"]?>
+						</div>
+					</div>
+				</div>
 				</div>
 			</div>
 			<!-- END -->

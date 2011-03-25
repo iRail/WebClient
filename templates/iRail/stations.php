@@ -29,15 +29,7 @@
 					output.push(obj);
 				}
 			}
-			// for(var i = 1; i < output.length; i ++){
-				// var h = output[i];
-				// var j = i-1;
-				// while(j >= 0 & output[j].getDistance() < h.getDistance()){
-					// output[j+1] = output[j];
-					// j--;
-				// }
-				// $output[j+1] = h;
-			// }			
+			
 			return output.sort(compareDistance);
 		}
 
@@ -59,6 +51,9 @@
 		function showLocation(position) {
 			var latitude = position.coords.latitude;
 			var longitude = position.coords.longitude;
+			var heading = position.coords.heading;
+			
+			//heading handler here
 
 			if(latitude != ""){				
 				var nearbyStations = getClosestStations(longitude, latitude, 50);
@@ -82,7 +77,7 @@
 					
 					
 					nameDiv.appendChild(document.createTextNode(nearbyStations[i].getName()));
-					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*Math.pow(10,0))/Math.pow(10,0) + " KM"));
+					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*Math.pow(10,0))/Math.pow(10,0) + " km"));
 						
 					resultHolder.appendChild(nameDiv);
 					resultHolder.appendChild(distanceDiv);

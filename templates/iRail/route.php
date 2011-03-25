@@ -48,7 +48,7 @@
                     <div class="fromHeader"><?=$i18n["from"] ?></div>
                 </div>
                 <div class="inputFrom">
-                    <input autocomplete="off" value="" class="inputStyle" value="<?=$_GET["from"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event)" type="text" id="from" name="from"/>
+                    <input autocomplete="off" value="" class="inputStyle" value="<?=$_GET["from"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from"/>
                     <div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" value="" class="inputStyle" value="<?=$_GET["to"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event)" type="text" id="to" name="to"/>
+                    <input autocomplete="off" value="" class="inputStyle" value="<?=$_GET["to"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>
                 </div>
