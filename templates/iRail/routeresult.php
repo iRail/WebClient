@@ -26,6 +26,11 @@ function formatDate($time){
 function formatTime($time){
      return date("H:i",$time);
 }
+
+function formatVehicle($veh){
+	$arrVehicle = explode(".", $veh);
+	return $arrVehicle[2];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" manifest="appcache.mf">
@@ -73,11 +78,10 @@ function formatTime($time){
 			foreach($content["connection"] as $connection){
 			?>
 			<!-- START: Class routeCube will be multiplied by x quantity of steps passenger has to take to reach destination -->
-			<div class="routeCube" id="routeCube" onclick="fold(this)">
+			<div class="routeCube routeBlackStations" id="routeCube" onclick="fold(this)">
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
-						<?=formatTime($connection["departure"]["time"]); ?> icon → icon → icon
-						<?=formatTime($connection["arrival"]["time"]); ?>
+						<? print formatTime($connection["departure"]["time"]) . "  →  →  " . formatTime($connection["arrival"]["time"]); ?>
 					</div>
 					<div class="routeCubeRight">
 						| <?=formatDuration($connection["duration"])?> |
@@ -85,25 +89,18 @@ function formatTime($time){
 				</div>
 				<div class="routeCubeInfo" id="routeCubeInfo" style="visibility: hidden; position: absolute;">
 					<div class="infoRouteContainer">
-						<div class="infoRouteLeft">
+						<div class="infoRouteLeft routeBlueTime">
 							<?=formatTime($connection["departure"]["time"]); ?>
 						</div>
 						<div class="infoRouteRight">
 							<div class="platformStyle"><? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
 						</div>
-						<div class="infoRouteMid">
+						<div class="infoRouteMid routeRedStations">
 							<?=$content["connection"][0]["departure"]["station"]?>
 						</div>
 					</div>
 
-					<div class="infoRouteContainer">
-						<div class="infoRouteLeft">
-							↓
-						</div>
-						<div class="infoRouteMid">
-							<?=$content["connection"][0]["departure"]["vehicle"]?> <?=$content["connection"][0]["departure"]["direction"]["name"]?>
-						</div>
-					</div>
+
 					
 					<?
 					if(isset($connection["vias"])){
@@ -112,14 +109,24 @@ function formatTime($time){
 						foreach($connection["vias"]["via"] as $via){
 						?>	
 						<!-- MID -->
+						
 						<div class="infoRouteContainer">
 							<div class="infoRouteLeft">
-								<?=formatTime($via["arrival"]["time"]); ?>
-							</div>
-							<div class="infoRouteRight">
-								<div class="platformStyle"><? if(is_numeric($via["arrival"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
+								↓
 							</div>
 							<div class="infoRouteMid">
+								<?=formatVehicle($via["vehicle"])?> <span class="routeSmallerFont"><?=$via["direction"]["name"]?></span>
+							</div>
+						</div>
+						
+						<div class="infoRouteContainer">
+							<div class="infoRouteLeft">
+								<?=formatTime($via["departure"]["time"]); ?>
+							</div>
+							<div class="infoRouteRight">
+								<div class="platformStyle"><? if(is_numeric($via["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
+							</div>
+							<div class="infoRouteMid routeRedStations">
 								<?=$via["stationinfo"]["name"]?>
 							</div>
 						</div>	
@@ -130,15 +137,24 @@ function formatTime($time){
 					}
 					?>
 					<!-- arrival -->
-					
+
 					<div class="infoRouteContainer">
 						<div class="infoRouteLeft">
+							↓
+						</div>
+						<div class="infoRouteMid">
+							<?=formatVehicle($content["connection"][0]["arrival"]["vehicle"])?> <span class="routeSmallerFont"><?=$content["connection"][0]["arrival"]["direction"]["name"]?></span>
+						</div>
+					</div>
+					
+					<div class="infoRouteContainer">
+						<div class="infoRouteLeft routeBlueTime">
 							<?=formatTime($connection["arrival"]["time"]); ?>
 						</div>
 						<div class="infoRouteRight">
 							<div class="platformStyle"><? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?></div>
 						</div>
-						<div class="infoRouteMid">
+						<div class="infoRouteMid routeRedStations">
 							<?=$content["connection"][0]["arrival"]["station"]?>
 						</div>
 					</div>

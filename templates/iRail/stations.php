@@ -68,15 +68,18 @@
 						resultHolder.setAttribute("class", "containerResultsBoxBlue");
 					}
 					
+					var nameURL = document.createElement('a');
 					var nameDiv = document.createElement('div');
 					var distanceDiv = document.createElement('div');
 					
 					nameDiv.setAttribute("class", "resultsName");
 					distanceDiv.setAttribute("class", "resultsDistance");
+					nameURL.setAttribute("href", "/board/"+nearbyStations[i].getName()+"/");
+					nameURL.innerHTML = nearbyStations[i].getName();
 					
 					
 					
-					nameDiv.appendChild(document.createTextNode(nearbyStations[i].getName()));
+					nameDiv.appendChild(nameURL);
 					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*Math.pow(10,0))/Math.pow(10,0) + " km"));
 						
 					resultHolder.appendChild(nameDiv);
