@@ -16,6 +16,22 @@ include_once("datamodel/DataLayer.class.php");
 //This class will automatically include necessary stuff such like error handling
 
 class Controller extends Page{
+
+     /**
+      * Function is used for internal pages
+      */
+     protected function loadPage(){
+	  //Step 2: Get the get vars, change them to the right format & boom
+	  extract($_GET); //this will get all the GET vars and put them in normal PHP vars
+	  if($page == "stations"){
+	       $ret["favroutes"] = $this->user->getFavRoutes();
+	       $ret["favboards"] = $this->user->getFavBoards();
+	       $ret["usedboards"] = $this->user->getUsedBoards();
+	       $ret["usedroutes"] = $this->user->getUsedRoutes();
+	       return $ret;
+	  }
+     }
+     
    /**
     * Function is used for API Requests
     * @return array will return an associative array of page specific variables.

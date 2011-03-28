@@ -11,9 +11,9 @@
  * @author Pieter Colpaert
  * @license aGPL
  *
- * // TODO: Check for errors!
  */
 include_once("datamodel/APICall.class.php");
+include_once("datamodel/CookieUser.class.php");
 class DataLayer {
      private $lang;
      private $stations;
@@ -41,6 +41,37 @@ class DataLayer {
 	  }
 	  return $this->stations;
      }
+/**
+ * Vicinity is given in km. X and Y in degrees (double)
+ */
+     public function getClosestStations($x,$y, $vicinity=50){
+	  $stationslist = $this->getStations();
+	  $output = array();
+	  foreach($stationslist["station"] as $station){
+	       $distance = $this->distance($x,$station["locationX"],$y,$station["locationY"]);
+	       if($distance  < $vicinity){
+		    $station["distance"] = $distance;
+		    $output[sizeof($output)] = $station;
+	       }
+	  }
+	  //insertion sort with distance as key
+	  for($i = 1; $i < sizeof($output); $i ++){
+	       $h = $output[$i];
+	       $j = $i-1;
+	       while($j >= 0 & $output[$j]["distance"] < $h["distance"]){
+		    $output[$j+1] = $output[$j];
+		    $j--;
+	       }
+	       $output[$j+1] = $h;
+	  }
+	  return $output;
+     }
+
+     private function distance($x1,$x2,$y1,$y2){
+	  //this is a normal distance calculation * 111.325. Because 1 degree is 111.325km
+	  return (sqrt(($x2-$x1)*($x2-$x1) + ($y2-$y1)*($y2-$y1))) * 111.325;
+     }
+
 
      public function getConnections($from, $to, $direction, $time, $date){
 //preconditions: from is a stationname, to is a stationname, direction is arrive or depart, time is Hi, date is dmy.

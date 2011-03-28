@@ -25,6 +25,8 @@ abstract class Page {
      private $lang = "EN";
      private $pageName;
 
+     protected $user;
+
      /**
       * Function is used for API Requests
       * @return array will return an associative array of page specific variables.
@@ -36,8 +38,10 @@ abstract class Page {
 	       $this->detectLanguage();
 	  }
 	  try{
+	       $this->user= new CookieUser($this->lang);
 	       $content = $this->loadContent();
 	       $globals = $this->loadGlobals();
+	       $page = $this->loadPage();
 	       $i18n = $this->loadI18n();
 	       $file = "templates/" . $this->template . "/" . $pageName . ".php";
 	       //../ added because that's the iniset's includepath
@@ -69,6 +73,12 @@ abstract class Page {
 	       setcookie("language", $_GET["lang"], time() + 60 * 60 * 24 * 360);
 	  }
      }
+
+     protected function loadPage(){
+	  $page = $_COOKIE;
+	  return $page;
+     }
+     
 
      private function loadGlobals() {
 	  $globals =array();
