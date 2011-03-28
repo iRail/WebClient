@@ -32,15 +32,8 @@ function formatVehicle($veh){
 	return $arrVehicle[2];
 }
 
-function trainEarlier($time, $sign){
-	$hour = (int)substr($time, 0, 2);
-	$min = substr($time, -2);
-	if($sign == "+"){
-		$hour++;	
-	}else{
-		$hour--;	
-	}
-	return $hour.$min;
+function trainMoveFormat($time){
+     return date("Hi",$time);
 }
 ?>
 <!DOCTYPE html>
@@ -178,8 +171,8 @@ function trainEarlier($time, $sign){
 			?>
 			
 			<div class="routeBottomBtnContainer">	
-				<div class="routeBottomBtn"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainEarlier($_GET["time"], "-") . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>">< <?=$i18n["rideEarlier"] ?></a></p></div>
-				<div class="routeBottomBtn"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainEarlier($_GET["time"], "+") . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><?=$i18n["rideLater"] ?> ></a></p></div>
+				<div class="routeBottomBtn"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["departure"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>">< <?=$i18n["rideEarlier"] ?></a></p></div>
+				<div class="routeBottomBtn"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["arrival"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><?=$i18n["rideLater"] ?> ></a></p></div>
 			</div>
 		</div>
 	</div>
