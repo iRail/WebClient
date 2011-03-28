@@ -114,7 +114,7 @@
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body onload="getLocation()"> 
+    <body onload=""> 
         <div class="MainContainer">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient">
@@ -137,13 +137,14 @@
                 <div class="containerMenuRoutes">
                     <div class="containerButtonsFav">
                         <div onclick="changeActiveFav('favourite')" id="favourite" class="favButtonActive favButtonL"><?=$i18n["favourite"] ?></div>
-                        <div onclick="changeActiveFav('nearby')" id="nearby" class="favButtonR"><?=$i18n["nearby"] ?></div>
+                        <div onclick="changeActiveFav('nearby'); getLocation()" id="nearby" class="favButtonR"><?=$i18n["nearby"] ?></div>
                         <div onclick="changeActiveFav('mostUsed')" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
                     </div>
                 </div>
             </div>
             <div id="containerResults" class="containerResults">
-            </div>
+			<? var_dump($page); ?>
+            </div>		
         </div>
     </body>
 </html>

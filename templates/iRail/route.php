@@ -64,8 +64,8 @@
             <div class="subMenuContainer">
                 <div class="containerMenu">
                     <div class="containerButtons">
-                        <div id="arrAt" class="buttonL buttonActive"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="arrive" value="arrive" CHECKED /><label onclick="changeActive('arrive')" for="arrive"><?=$i18n["arrival_at"] ?></label></div></div>
-                        <div id="deprtAt" class="buttonR"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="depart" value="depart" /><label onclick="changeActive('depart')" for="depart"><?=$i18n["departure_at"] ?></label></div></div>
+						<div id="arrAt" class="buttonL"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="arrive" value="arrive" /><label onclick="changeActive('arrive')" for="arrive"><?=$i18n["arrival_at"] ?></label></div></div>
+						<div id="deprtAt" class="buttonR buttonActive"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="depart" value="depart" CHECKED /><label onclick="changeActive('depart')" for="depart"><?=$i18n["departure_at"] ?></label></div></div>
                     </div>
                 </div>
                 <div class="containerSubMenuDate">
