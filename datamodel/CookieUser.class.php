@@ -77,8 +77,6 @@ class CookieUser implements IUser{
      public function getFavRoutes(){
 	  $frf = $this->favroutesfrom;
 	  $frt = $this->favroutesto;
-	  var_dump($frf);
-	  
 	  return array("from" =>  $frf, "to" => $frt);
      }
      
