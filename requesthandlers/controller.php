@@ -37,7 +37,7 @@ class Controller extends Page{
     * @return array will return an associative array of page specific variables.
     */
      protected function loadContent(){
-	  $data = new DataLayer($this->getLang());
+	  $data = new DataLayer($this->getLang(), $this->user);
 	  //Step 2: Get the get vars, change them to the right format & boom
 	  extract($_GET); //this will get all the GET vars and put them in normal PHP vars
 	  if($page == "boardresult"){

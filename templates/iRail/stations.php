@@ -33,8 +33,14 @@
 			return output.sort(compareDistance);
 		}
 
-		function distance(x1, x2, y1, y2){
-			return (Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1))) * 111.325;
+		function distance(lat1, lat2, lon1, lon2){
+		     //haversine
+			var R = 6371; // km
+			var dLat = (lat2-lat1)*Math.PI/180;//radians
+			var dLon = (lon2-lon1)*Math.PI/180;
+			var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+			return R * c;
 		}		
 		
 		
@@ -56,7 +62,7 @@
 			//heading handler here
 
 			if(latitude != ""){				
-				var nearbyStations = getClosestStations(longitude, latitude, 50);
+			     var nearbyStations = getClosestStations(longitude, latitude, 20);
 				
 				var teller = 1;
 				for(i in nearbyStations){
@@ -80,7 +86,7 @@
 					
 					
 					nameDiv.appendChild(nameURL);
-					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*Math.pow(10,0))/Math.pow(10,0) + " km"));
+					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*100)/100 + " km"));
 						
 					resultHolder.appendChild(nameDiv);
 					resultHolder.appendChild(distanceDiv);

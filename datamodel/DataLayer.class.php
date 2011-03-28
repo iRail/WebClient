@@ -13,13 +13,15 @@
  *
  */
 include_once("datamodel/APICall.class.php");
-include_once("datamodel/CookieUser.class.php");
+
 class DataLayer {
      private $lang;
      private $stations;
+     private $user;
 
-     public function __construct($lang){
+     public function __construct($lang, & $user){
 	  $this->lang = $lang;
+	  $this->user= &$user;
      }
      
 /**
@@ -41,10 +43,11 @@ class DataLayer {
 	  }
 	  return $this->stations;
      }
+
 /**
- * Vicinity is given in km. X and Y in degrees (double)
+ * Vicinity is given in km. X and Y in degrees (double) - not used in current webclient
  */
-     public function getClosestStations($x,$y, $vicinity=50){
+     public function getClosestStations($x,$y, $vicinity=20){
 	  $stationslist = $this->getStations();
 	  $output = array();
 	  foreach($stationslist["station"] as $station){
@@ -68,13 +71,19 @@ class DataLayer {
      }
 
      private function distance($x1,$x2,$y1,$y2){
-	  //this is a normal distance calculation * 111.325. Because 1 degree is 111.325km
-	  return (sqrt(($x2-$x1)*($x2-$x1) + ($y2-$y1)*($y2-$y1))) * 111.325;
+	  $R = 6371; // km
+	  $dY = deg2rad($y2-$y1);
+	  $dX = deg2rad($x2-$x1);
+	  $a = sin($dY/2) * sin($dY/2) + cos(deg2rad($y1)) * cos(deg2rad($y2)) *sin($dX/2) * sin($dY/2);
+	  $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+	  return $R * $c;
      }
 
 
      public function getConnections($from, $to, $direction, $time, $date){
 //preconditions: from is a stationname, to is a stationname, direction is arrive or depart, time is Hi, date is dmy.
+	  //first let's tell the user class that we got an extra connection
+	  $this->user->addUsedRoute($from,$to);
 	  $args = array(
 	       "lang" => $this->lang,
 	       "from" => $from,
@@ -91,6 +100,7 @@ class DataLayer {
      }
 
      public function getLiveboard($station, $direction, $time, $destination = ""){
+	  $this->user->addUsedBoard($station,$destination);
 	  $args = array(
 	       "lang" => $this->lang,
 	       "station" => $station,

@@ -33,14 +33,16 @@ class CookieUser implements IUser{
 	       $this->$name= $_COOKIE[$name];
 	  }else{
 	       $this->$name = $default;
-	       setcookie($name,$default,$this->timetolive);
+	       $this->saveInCookie($name,$default);
 	  }
      }
 
      private function checkoutCookieArray($name,$numberof){
-	  if(isset($_COOKIE[$name])){
+	  $test = $name . "0";
+	  if(isset($_COOKIE[$test])){	       
 	       for($i=0;$i<$numberof;$i++){
-		    $this->$name[$i]= $_COOKIE[$name . $i];
+		    $ar = &$this->$name;
+		    $ar[$i] = $_COOKIE[$name . $i];
 	       }
 	  }  
      }
@@ -54,7 +56,7 @@ class CookieUser implements IUser{
 	  $this->checkoutCookieVar("numberofusedroutes", 0);
 	  $this->checkoutCookieVar("numberoffavboards", 0);
 	  $this->checkoutCookieVar("numberofusedboards", 0);
-	  $this->checkoutCookieVar("language", $lang);
+	  $this->lang = $this->setLang($lang);
 	  $this->checkoutCookieArray("favroutesfrom", $this->numberoffavroutes);
 	  $this->checkoutCookieArray("favroutesto", $this->numberoffavroutes);
 	  $this->checkoutCookieArray("favboardsof", $this->numberoffavboards);
@@ -63,15 +65,6 @@ class CookieUser implements IUser{
 	  $this->checkoutCookieArray("usedroutesto", $this->numberofusedroutes);
 	  $this->checkoutCookieArray("usedboardsof", $this->numberofusedboards);
 	  $this->checkoutCookieArray("usedboardsto", $this->numberofusedboards);
-//DUMMY DATA
-	  $this->addFavRoute("Gent sint pieters", "Diest");
-	  $this->addUsedBoard("Gent sint pieters");
-	  $this->addUsedBoard("Hasselt");
-	  $this->addUsedRoute("Gent sint pieters","Harelbeke");
-
-//	  var_dump($this->usedboardsof);
-	  
-	  
      }
 
      public function getFavRoutes(){
@@ -99,7 +92,7 @@ class CookieUser implements IUser{
      //circular buffer
      private function addVarToCookieArray($name,$value){
 	  $i = sizeof($this->$name) % $this->numberofvalues;
-	  setcookie($name . $i, $value, $this->timetolive);
+	  $this->saveInCookie($name . $i, $value);
 	  $ar = $this->$name;
 	  $ar[$i] = $value;
 	  $this->$name = $ar;
@@ -110,7 +103,7 @@ class CookieUser implements IUser{
 	  $this->addVarToCookieArray("favroutesto",$to);
 	  if($this->numberoffavroutes <= $this->numberofvalues)
 	  $this->numberoffavroutes++;
-	  setcookie("numberoffavroutes",$this->numberoffavroutes, $this->timetolive);
+	  $this->saveInCookie("numberoffavroutes",$this->numberoffavroutes);
      }
 
      public function addFavBoard($of,$to = ""){
@@ -118,7 +111,7 @@ class CookieUser implements IUser{
 	  $this->addVarToCookieArray("favboardsto",$to);
 	  if($this->numberoffavboards <= $this->numberofvalues)
 	  $this->numberoffavboards++;
-	  setcookie("numberoffavboards",$this->numberoffavboards, $this->timetolive);
+	  $this->saveInCookie("numberoffavboards",$this->numberoffavboards);
      }
      
      public function addUsedBoard($of,$to = ""){
@@ -127,7 +120,7 @@ class CookieUser implements IUser{
 	  if($this->numberofusedboards <= $this->numberofvalues){
 	       $this->numberofusedboards++;
 	  }
-	  setcookie("numberofusedboards",$this->numberofusedboards, $this->timetolive);
+	  $this->saveInCookie("numberofusedboards",$this->numberofusedboards);
      }
 
      public function addUsedRoute($from,$to){
@@ -135,13 +128,19 @@ class CookieUser implements IUser{
 	  $this->addVarToCookieArray("usedroutesto",$to);
 	  if($this->numberofusedroutes <= $this->numberofvalues)
 	  $this->numberofusedroutes++;
-	  setcookie("numberofusedroutes",$this->numberofusedroutes, $this->timetolive);
+	  $this->saveInCookie("numberofusedroutes",$this->numberofusedroutes);
      }
 
      public function setLang($lang){
 	  $this->language = $lang;
-	  setcookie("language", $this->language, $this->timetolive);
+	  $this->saveInCookie("language",$lang);
      }
+
+     private function saveInCookie($name,$var){
+	  setcookie($name, $var, $this->timetolive, "/");
+     }
+     
+
 
 }
 

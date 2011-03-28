@@ -12,6 +12,7 @@
    * @license aGPL
    */
 set_error_handler("errorhandler");
+include_once("datamodel/CookieUser.class.php");
 abstract class Page {
 
      //CONFIGURATION OF THIS CLASS
@@ -22,8 +23,8 @@ abstract class Page {
      private $doErrorhandling = true;
 
      //DON'T TOUCH
-     private $lang = "EN";
      private $pageName;
+     private $lang = "EN";
 
      protected $user;
 
@@ -46,7 +47,7 @@ abstract class Page {
 	       $file = "templates/" . $this->template . "/" . $pageName . ".php";
 	       //../ added because that's the iniset's includepath
 	       if(!file_exists("../" . $file)){
-	           throw new Exception("Wrong pagename given");
+		    throw new Exception("Wrong pagename given");
 	       }
 	       //we want to ensure that no new page will be generated when the page is being created - so we're only going to log the error.
 	       set_error_handler("logerror");
@@ -62,15 +63,30 @@ abstract class Page {
 
      private function detectLanguage() {
 	  if (isset($_COOKIE["language"])) {
-	       $this->setLanguage($_COOKIE["language"]);
+	       $lang = $_COOKIE["language"];
+	       if (in_array($lang, $this->AVAILABLE_LANGUAGES)) {
+		    $this->lang = $lang;
+	       }else{
+		    throw new Exception("language doesn't exist");
+	       }
 	  }else if(in_array(strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2)), $this->AVAILABLE_LANGUAGES)){
-	       $this->setLanguage(strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2)));
+	       $lang = strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2));
+	       if (in_array($lang, $this->AVAILABLE_LANGUAGES)) {
+		    $this->lang = $lang;
+	       }else{
+		    throw new Exception("language doesn't exist");
+	       }
+	   
 	  }else{
-	       $this->setLanguage("EN");
+	       $this->lang = "EN";
 	  }
 	  if (isset($_GET["lang"])) {
-	       $this->setLanguage($_GET["lang"]);
-	       setcookie("language", $_GET["lang"], time() + 60 * 60 * 24 * 360);
+	       $lang = $_GET["lang"];
+	       if (in_array($lang, $this->AVAILABLE_LANGUAGES)) {
+		    $this->lang = $lang;
+	       }else{
+		    throw new Exception("language doesn't exist");
+	       }
 	  }
      }
 
@@ -96,37 +112,37 @@ abstract class Page {
 	  }
      }
 
-     public function setLanguage($lang) {
+     private function setLanguage($lang) {
 	  if (in_array($lang, $this->AVAILABLE_LANGUAGES)) {
-	       $this->lang = $lang;
+	       $this->user->setLang($lang);
 	  }else{
 	       throw new Exception("language doesn't exist");
 	  }
      }
 
      private function loadI18n() {
-	  if(in_array($this->lang,$this->AVAILABLE_LANGUAGES)){
-	       include("i18n/". strtoupper($this->lang) . ".php");
+	  if(in_array($this->user->getLang(),$this->AVAILABLE_LANGUAGES)){
+	       include("i18n/". strtoupper($this->user->getLang()) . ".php");
 	  }
 	  return $i18n;
      }
 
      public function getLang() {
-	  return $this->lang;
+	  return $this->user->getLang();
      }
 
      public function buildError($lang, $pageName, $e){
 	  if($this->doErrorhandling)
 	       errorhandler(500,$e->getMessage());
      }
-  }
+}
 
 //error handling function
 function errorhandler($errno,$errstr){
      logerror($errno,$errstr);
      $content = array("message"=> $errstr);
 //temp fix
-include("i18n/EN.php");
+     include("i18n/EN.php");
      $file = "templates/iRail/error.php";
      include($file);
      exit(0);

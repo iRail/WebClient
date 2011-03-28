@@ -1,9 +1,9 @@
 <?
 if($_GET['from']){
 	if($_GET["to"] != ""){
-		header( 'Location: http://muhammet.irail.be/board/'.$_GET['from'].'/'.$_GET['to'].'/');			
+		header( 'Location: /board/'.$_GET['from'].'/'.$_GET['to'].'/');			
 	}else{
-		header( 'Location: http://muhammet.irail.be/board/'.$_GET['from'].'/');					
+		header( 'Location: /board/'.$_GET['from'].'/');					
 	}
 }
 ?>
