@@ -43,15 +43,30 @@ body {
 .MainContainer{width: 100%}
 
 
+.routeBlueTime{
+	color: #00527A;
+}
+.routeRedStations{
+	color: #E02904;
+}
+.routeBlackStations{
+	color: #ffffff;
+}
+.routeSmallerFont{
+	font-size: 0.7em;
+}
 .infoRouteContainer{
 	width: 100%;
-	padding: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 	clear: both;
 }
 
 .infoRouteLeft{
 	float: left;
-	width: 75px;
+	width: 50px;
+	padding-right: 10px;
+	text-align: right;
 }
 .infoRouteRight{
 	float: right;
@@ -59,7 +74,6 @@ body {
 }
 .infoRouteMid{
 	width: 100%;
-	text-align: center;
 }
 
 
@@ -138,7 +152,7 @@ body {
 	background-color: #f4f4f4;
 	padding-left: 5px;
 	padding-right: 5px;
-	padding-top: 3px;
+	padding-top: 5px;
 }
 
 .boardPlatform{
@@ -199,6 +213,7 @@ body {
 .routeCubeLeft{
 	float: left;
 	width: 240px;
+	padding-left: 8px;
 }
 
 .routeCubeRight{
@@ -506,11 +521,6 @@ a{
 .selectFont{
     font-size: 1.3em;
     padding: 3px;
-    /* When used u cannot change the arrow from the select element without using js, using js it wont work in IE and on some phones.(usability != good) */
-    /*    border: #ffffff solid 1px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;*/
 }
 
 .autoBox{
@@ -636,6 +646,23 @@ a{
 .resultsName{
 	float: left;
 	padding: 20px;
+}
+
+.resultsName a:link{
+	color: #00527A;
+	text-decoration: none;
+}
+.resultsName a:visited {
+	color: #00527A;
+	text-decoration: none;
+}
+.resultsName a:active {
+	color: #00527A;
+	text-decoration: none;
+}
+.resultsName a:hover {
+	color: #00527A;
+	text-decoration: none;
 }
 
 .resultsDistance{
