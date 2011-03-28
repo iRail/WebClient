@@ -27,6 +27,9 @@ $i18n=array(
 		"earliestRide" => "Vroegste Rit",
 		"rideEarlier" => "Rit vroeger",
 		"rideLater" => "Rit later",
-		"latestRide" => "Laatste rit"
+		"latestRide" => "Laatste rit",
+		"english" => "Engels",
+		"dutch" => "Nederlands",
+		"pickLanguage" => "Taal"
      );
 ?>

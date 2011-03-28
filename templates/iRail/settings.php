@@ -1,3 +1,8 @@
+<?
+	if($_GET["language"] != "" ){
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">    
     <head>
@@ -26,27 +31,24 @@
                 <a href="/settings/"><div class="bannerCubeContainerFixedSettings  bannerLinkActive"><?=$i18n["settings"] ?></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
-            <div class="searchContainer">
-                <div class="containerMenu">
-                    <div class="containerButtons noMargins">
-                        <div class="buttonActive settingsButtonL"><?=$i18n["log_in"] ?></div>
-                        <div class="settingsButtonR"><?=$i18n["register"] ?></div>
-                    </div>
-                </div>
-            </div>
-            <div class="headerText"><?=$i18n["username"] ?></div>
-            <div class="inputFieldLogin">
-                <input class="width100" type="text" name="username" id="username"/>
-            </div>
-            <div class="headerText"><?=$i18n["password"] ?></div>
-            <div class="inputFieldLogin">
-                <input class="width100" type="password" name="password" id="password"/>
-            </div>
-            <div class="containerSubMenuBtn">
-                <div class="centerDivBtn">
-                    <input class="gradientBtnLogin Btn" type="button" name="search" id="search" value="<?=$i18n["log_in"] ?>"/>
-                </div>
-            </div>
+			<div class="settingsNew">
+			<form action="" method="get" name="settings">
+				<div class="languageDiv">
+					<label style="color: #FFFFFF;" for="language"><?=$i18n["pickLanguage"] ?></label>
+					<select name="lang" size="1" onchange="settings.submit()">
+						<?
+						function checkSelected($taal){
+							if($_GET["lang"] == $taal){
+								print "selected=\"true\"";
+							}		
+						}
+						?>
+						<option <? checkSelected("NL"); ?> value="NL"><?=$i18n["dutch"] ?></option>
+						<option <? checkSelected("EN"); ?> value="EN"><?=$i18n["english"] ?></option>
+					</select>
+				</div>
+			</form>
+			</div>
         </div>
     </body>
 </html>
