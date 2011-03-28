@@ -109,9 +109,6 @@ class CookieUser implements IUser{
 
      public function addFavRoute($from,$to){
 	  $this->addVarToCookieArray("favroutesfrom",$from);
-	  echo "hier;";
-	  var_dump($this->favroutesfrom);
-	  
 	  $this->addVarToCookieArray("favroutesto",$to);
 	  if($this->numberoffavroutes <= $this->numberofvalues)
 	  $this->numberoffavroutes++;
