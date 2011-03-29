@@ -65,8 +65,11 @@
 			     var nearbyStations = getClosestStations(longitude, latitude, 20);
 				
 				var teller = 1;
+				var mainHolder = document.getElementById("containerNearby");
+//first thing to do is to clear the previous set of stations if there were any
+				mainHolder.innerHTML = "";
+				
 				for(i in nearbyStations){
-					var mainHolder = document.getElementById("containerResults");
 					var resultHolder = document.createElement('div');
 					if(teller % 2 == 0){
 						resultHolder.setAttribute("class", "containerResultsBoxWhite");
@@ -147,10 +150,47 @@
                         <div onclick="changeActiveFav('mostUsed')" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
                     </div>
                 </div>
+            </div><!-- 3 divs you can hide/show by clicking on one of the tabs-->
+            <div id="containerNearby" class="containerResults">
             </div>
-            <div id="containerResults" class="containerResults">
-			<? var_dump($page); ?>
-            </div>		
+            <div id="containerFav" class="containerResults">
+		     <? generateList("fav", $page); ?>
+            </div>
+            <div id="containerMostUsed" class="containerResults">
+					      <? generateList("used", $page); ?>
+            </div>	
         </div>
     </body>
 </html>
+<?
+	    function generateList($arrayname, $page){
+		 $count = 0;
+		     for ($i=0; $i < sizeof($page[$arrayname . "routes"]["from"]); $i++){
+			  
+			  if($count%2 ==0){
+			            echo "<div class=\"containerResultsBoxBlue\">";
+			       
+			       }else{
+				    echo "<div class=\"containerResultsBoxWhite\">";
+			       }
+			       echo "<div class=\"resultsName\">";
+			       echo "<div class=\"favFrom\">" . $page[$arrayname . "routes"]["from"][$i] . "</div>";
+			       echo "<div class=\"favTo\">". $page[$arrayname . "routes"]["to"][$i] ."</div>";
+			       echo "</div></div>";
+			       $count ++;
+		     }
+		     for ($i=0; $i < sizeof($page[$arrayname . "routes"]["from"]); $i++){
+			       if($count%2 ==0){
+			            echo "<div class=\"containerResultsBoxBlue\">";
+			       }else{
+				    echo "<div class=\"containerResultsBoxWhite\">";
+			       }
+			       echo "<div class=\"resultsName\">";
+			       echo "<div class=\"favFrom\">" . $page[$arrayname . "boards"]["of"][$i] . "</div>";
+			       echo "<div class=\"favTo\">". $page[$arrayname . "boards"]["to"][$i] ."</div>";
+			       echo "</div></div>";
+			       $count ++;
+		     }
+}
+
+?>
