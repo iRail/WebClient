@@ -73,7 +73,7 @@ function trainMoveFormat($time){
 			<div class="routeHeader">
 				<p>
 				<?=$content["connection"][0]["departure"]["station"]?><br>
-				→<?=$content["connection"][0]["arrival"]["station"]?>
+				<img src="../images/arrowRoute.jpg" alt="arrow"/><?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
 				<div class="routeHeaderAddFavBtn"></div>
 			</div>
@@ -85,7 +85,7 @@ function trainMoveFormat($time){
 			<div class="routeCube routeBlackStations" id="routeCube" onclick="fold(this)">
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
-						<? print formatTime($connection["departure"]["time"]) . "  →  →  " . formatTime($connection["arrival"]["time"]); ?>
+						<? print formatTime($connection["departure"]["time"]) . "<div class=\"routeResultsArrowSmall\"></div><div class=\"routeResultsArrowSmall\"></div>" . formatTime($connection["arrival"]["time"]); ?>
 					</div>
 					<div class="routeCubeRight">
 						| <?=formatDuration($connection["duration"])?> |
@@ -171,8 +171,8 @@ function trainMoveFormat($time){
 			?>
 			
 			<div class="routeBottomBtnContainer">	
-				<div class="routeBottomBtn"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["departure"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>">< <?=$i18n["rideEarlier"] ?></a></p></div>
-				<div class="routeBottomBtn"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["arrival"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><?=$i18n["rideLater"] ?> ></a></p></div>
+				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["departure"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>">< <?=$i18n["rideEarlier"] ?></a></p></div>
+				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["arrival"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><?=$i18n["rideLater"] ?> ></a></p></div>
 			</div>
 		</div>
 	</div>
