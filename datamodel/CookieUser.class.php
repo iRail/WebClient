@@ -38,11 +38,12 @@ class CookieUser implements IUser{
      }
 
      private function checkoutCookieArray($name,$numberof){
-	  $test = $name . "0";
-	  if(isset($_COOKIE[$test])){	       
-	       for($i=0;$i<$numberof;$i++){
+	  for($i=0;$i<$numberof;$i++){
+	       //killing in the
+	       $nameof = $name . $i;
+	       if(isset($_COOKIE[$nameof])){	       
 		    $ar = &$this->$name;
-		    $ar[$i] = $_COOKIE[$name . $i];
+		    $ar[$i] = $_COOKIE[$nameof];
 	       }
 	  }  
      }
