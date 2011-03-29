@@ -11,7 +11,7 @@
 <html lang="en" manifest="appcache.mf">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width:device-width; height:device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
@@ -67,8 +67,8 @@
             <div class="subMenuContainer">
                 <div class="containerMenu">
                     <div class="containerButtons">
-						<div id="arrAt" class="buttonL"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="arrive" value="arrive" /><label onclick="changeActive('arrive')" for="arrive"><?=$i18n["arrival_at"] ?></label></div></div>
-						<div id="deprtAt" class="buttonR buttonActive"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="depart" value="depart" CHECKED /><label onclick="changeActive('depart')" for="depart"><?=$i18n["departure_at"] ?></label></div></div>
+						<div id="arrAt" class="buttonL"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="arrive" value="arrive" /><label class="centerMenuRoute" onclick="changeActive('arrive')" for="arrive"><?=$i18n["arrival_at"] ?></label></div></div>
+						<div id="deprtAt" class="buttonR buttonActive"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="depart" value="depart" CHECKED /><label class="centerMenuRoute" onclick="changeActive('depart')" for="depart"><?=$i18n["departure_at"] ?></label></div></div>
                     </div>
                 </div>
                 <div class="containerSubMenuDate">
