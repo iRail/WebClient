@@ -32,7 +32,9 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
     font-weight: bold;
 }
-
+.infoRouteContainer .infoRouteMidBlack{
+	color: #000000;
+}
 .hideRadioBtn{
 	visibility: hidden;
 }
@@ -77,6 +79,10 @@ body {
 }
 .infoRouteMid{
 	width: 100%;
+}
+
+.infoRouteMidBlack{
+	color: #000000;
 }
 
 
@@ -135,8 +141,14 @@ body {
 .searchContainer{background-color: #cccccc;width: 100%;clear: both;padding-bottom: 5px;}
 .subMenuContainer{background-color: #cccccc;width: 100%;clear: both;}
 .routeContainer{width: 100%;}
-.boardContainer{width: 100%; border-top: #cccccc solid 10px;padding-top: 10px;}
+.boardContainer{width: 100%;}
 
+
+.boardHeaderBoard{
+	height: 25px;
+	border-top: #cccccc solid 10px;
+	width: 100%;
+}
 .change_opacity {
   opacity: 0;
   filter: alpha(opacity = 0);
@@ -197,7 +209,7 @@ body {
 .routeCube{
 	border-bottom: #FFFFFF solid 5px;
 	border-top: #FFFFFF solid 5px;
-	color: #594a00;
+	color: #000000;
 	clear: both;
 }
 .routeCubeHeader{
@@ -207,7 +219,6 @@ body {
 	height: 20px;
 }
 .routeCubeInfo{
-	color: #594a00;
 	padding: 5px;
 	clear: both;
 	position: absolute;
@@ -250,9 +261,9 @@ body {
 }
 .routeBottomBtnContainer{
     background-color: #CCCCCC;
-    border-bottom: 2px solid #545E63;
-    border-right: 2px solid #545E63;
-    border-top: 2px solid #545E63;
+    border-bottom: 1px solid #545E63;
+    border-right: 1px solid #545E63;
+    border-top: 1px solid #545E63;
     clear: both;
     font-size: 0.9em;
     height: 30px;
@@ -262,7 +273,7 @@ body {
 }
 
 .routeBottomBtn{
-    border-left: 2px solid #545E63;
+    border-left: 1px solid #545E63;
     float: left;
     height: 25px;
     padding-top: 5px;
@@ -406,7 +417,7 @@ body {
 }
 
 .containerButtons{
-    width: 260px;
+    width: 280px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 5px;
@@ -427,7 +438,7 @@ body {
 }
 
 .buttonL{
-    width: 120px;
+    width: 130px;
     background-color: #aaafb2;
     float: left;
     height: 25px;
@@ -441,7 +452,7 @@ body {
     border-top-right-radius: 10px;
 }
 .buttonR{
-    width: 120px;
+    width: 130px;
     height: 25px;
     color: #6c7980;
     font-weight: bold;
@@ -843,7 +854,8 @@ input {
     background-image: url('../images/trein.png');
     width: 172px;
     height: 170px;
-    float: left;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .err404text{

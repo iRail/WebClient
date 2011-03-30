@@ -70,6 +70,15 @@ if($_GET['from']){
                     <div class="centerDivBtn">
                         <input class="gradientBtnSearch Btn" type="submit" name="search" id="search" value="<?=$i18n["show_live_board"] ?>"/>
                     </div>
+						<?
+							if($_GET["search"]){
+								if($_GET["from"]){
+									
+								}else{
+									print "<p style=\"padding: 10px; color: #FFFFFF;\">". $i18n["errSubmitBoard"] . "</p>";
+								}
+							}
+						?>
                 </div>
             </div>
 		</form>

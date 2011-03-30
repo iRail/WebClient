@@ -30,6 +30,8 @@ $i18n=array(
 		"latestRide" => "Latest ride",
 		"english" => "English",
 		"dutch" => "Dutch",
-		"pickLanguage" => "Language"
+		"pickLanguage" => "Language",
+		"errSubmitBoard" => "You have to atleast fill in 1 field",
+		"geolocationErr" => "Couln't find the geo location!"
      );
 ?>

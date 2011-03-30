@@ -105,9 +105,16 @@
                             ?>
                         </select> / <select class="selectFont" name="y">
                             <?
+							$dummyPlus = date("Y") + 1;
+							$dummyMin= date("Y") - 1;
+							if(date("n") == 1){
+								 echo "<option value=\"". $dummyMin . "\"  >" . $dummyMin  . "</option>";
+							}
+							echo "<option value=\"". date("y") . "\" selected=\"selected\" >" . date("Y")  . "</option>";
+							if(date("n") != 1 ){
+								 echo "<option value=\"". $dummyPlus . "\">" . $dummyPlus  . "</option>";
+							}
                             $dummy = date("Y") + 1;
-                            echo "<option value=\"" . date("Y") . "\">" . date("Y") . "</option>";
-                            echo "<option value=\"" . $dummy . "\">" . $dummy . "</option>";
                             ?>
                         </select>
                     </div>

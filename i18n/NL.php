@@ -30,6 +30,8 @@ $i18n=array(
 		"latestRide" => "Laatste rit",
 		"english" => "Engels",
 		"dutch" => "Nederlands",
-		"pickLanguage" => "Taal"
+		"pickLanguage" => "Taal",
+		"errSubmitBoard" => "U dient tenminste 1 veld in te vullen.",
+		"geolocationErr" => "Kan uw geo lokatie niet vinden!"
      );
 ?>

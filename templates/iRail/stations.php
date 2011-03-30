@@ -13,6 +13,12 @@
 			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
 		<?} ?>];
 		
+		var stations = [<? foreach($content["station"] as $station){?>
+			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
+		<?} ?>];
+		
+		var errorGeo = <? echo "\"" . $i18n["geolocationErr"] . "\"" ?>
+		
 		function compareDistance(a, b) {
 			return a.distance - b.distance;
 		}
@@ -51,7 +57,7 @@
 		}
 
 		function showError(error) {
-			alert(error.code + ' ' + error.message);
+			alert(errorGeo);
 		}
 
 		function showLocation(position) {
@@ -65,7 +71,8 @@
 			     var nearbyStations = getClosestStations(longitude, latitude, 20);
 				
 				var teller = 1;
-				var mainHolder = document.getElementById("containerNearby");
+				var mainHolder = document.getElementById("containerNearby");S
+				
 //first thing to do is to clear the previous set of stations if there were any
 				mainHolder.innerHTML = "";
 				
@@ -96,6 +103,7 @@
 					
 					mainHolder.appendChild(resultHolder);
 					teller++;
+
 				}
 			}
 		}
@@ -145,19 +153,21 @@
                 </div>
                 <div class="containerMenuRoutes">
                     <div class="containerButtonsFav">
-                        <div onclick="changeActiveFav('favourite')" id="favourite" class="favButtonActive favButtonL"><?=$i18n["favourite"] ?></div>
+                        <div onclick="changeActiveFav('favourite');" id="favourite" class="favButtonActive favButtonL"><?=$i18n["favourite"] ?></div>
                         <div onclick="changeActiveFav('nearby'); getLocation()" id="nearby" class="favButtonR"><?=$i18n["nearby"] ?></div>
-                        <div onclick="changeActiveFav('mostUsed')" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
+                        <div onclick="changeActiveFav('mostUsed');" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
                     </div>
                 </div>
             </div><!-- 3 divs you can hide/show by clicking on one of the tabs-->
             <div id="containerNearby" class="containerResults">
+				
             </div>
             <div id="containerFav" class="containerResults">
-		     <? generateList("fav", $page); ?>
+				<? generateList("fav", $page); ?>
+				grgr
             </div>
             <div id="containerMostUsed" class="containerResults">
-					      <? generateList("used", $page); ?>
+				<? generateList("used", $page); ?>
             </div>	
         </div>
     </body>

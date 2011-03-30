@@ -66,6 +66,11 @@ function formatTime($time){
                 <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><?=$i18n["settings"] ?></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
 		</div>
+		<div class="boardHeaderBoard">
+			<p style="padding-left: 5px;">
+			<?=$content["station"]?><br>
+			</p>
+		</div>
 		<div class="boardContainer">
 			<?
 			$styleBoardInfo = "boardInfo";
