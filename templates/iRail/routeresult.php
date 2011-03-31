@@ -1,4 +1,19 @@
 ﻿<?
+function formatDateFav($time){
+     return date("dmy",$time);
+}
+
+function formatTimeFav($time){
+     return date("Hi",$time);
+}
+
+if(isset($_GET["hiddenDirection"])){ 
+		$this->user->addFavRoute($content["connection"][0]["departure"]["station"],$content["connection"][0]["arrival"]["station"]);
+		header( 'Location: /route/'.$content["connection"][0]["departure"]["station"].'/'.$content["connection"][0]["arrival"]["station"].'/?time='. formatTimeFav($content["connection"][0]["departure"]["time"]) . '&date=' .formatDateFav($content["connection"][0]["departure"]["time"]) .'&direction=' . $_GET["hiddenDirection"]);	
+}
+
+
+
 //let's first create some helpfunctions so we can output the json more easily
 function formatDuration($dur){
      $i = $dur/60%60;
@@ -55,6 +70,7 @@ function trainMoveFormat($time){
     </head>
     <body>
 	<div class="MainContainer">
+	<form action="" method="GET" name="formResults">
 		<div class="bannerContainer">
 			<div class="bannerCubeContainerFixedLogo gradient">
 				<div class="Top">iRail</div>
@@ -75,7 +91,8 @@ function trainMoveFormat($time){
 				<?=$content["connection"][0]["departure"]["station"]?><br>
 				<img src="/templates/iRail/images/arrowRoute.jpg" alt="arrow"/><?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
-				<div class="routeHeaderAddFavBtn"></div>
+				<input type="text" value="<?=$_GET["direction"] ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
+				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
 			</div>
 			
 			<?
@@ -120,6 +137,7 @@ function trainMoveFormat($time){
 							</div>
 							<div class="infoRouteMid">
 								<?=formatVehicle($via["vehicle"])?> <span class="routeSmallerFont"><?=$via["direction"]["name"]?></span>
+							</div>
 						</div>
 						
 						<div class="infoRouteContainer">
@@ -169,10 +187,12 @@ function trainMoveFormat($time){
 			}
 			?>
 			
-			<div class="routeBottomBtnContainer">	
+			<div class="routeBottomBtnContainer">
+				<!-- Ride later sets the new depart hour to the old arrival hour, and ride ealier is not working yet, need some help here-->
 				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["departure"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><strong><</strong> <?=$i18n["rideEarlier"] ?></a></p></div>
 				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["arrival"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><?=$i18n["rideLater"] ?> <strong>></strong></a></p></div>
 			</div>
+		</form>
 		</div>
 	</div>
 	</body>

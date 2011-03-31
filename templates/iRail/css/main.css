@@ -303,9 +303,9 @@ body {
 .fromHeader{
     background-color: #ffffff;
     padding-left: 10px;
-    -webkit-border-top-left-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    border-top-left-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    border-top-left-radius: 7px;
     margin-left: 5px;
     color: #cccccc;
     padding-top: 5px;
@@ -329,9 +329,9 @@ body {
     background-color: #cccccc;
     width: 100%;
     height: 25px;
-    -webkit-border-bottom-left-radius: 10px;
-    -moz-border-radius-bottomleft: 10px;
-    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 7px;
+    -moz-border-radius-bottomleft: 7px;
+    border-bottom-left-radius: 7px;
 }
 
 .gradientBanner{
@@ -354,12 +354,12 @@ body {
     margin-left: 5px;
     margin-right: 5px;
     height: 35px;
-    -webkit-border-bottom-left-radius: 10px;
-    -moz-border-radius-bottomleft: 10px;
-    border-bottom-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
-    -moz-border-radius-bottomright: 10px;
-    border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 7px;
+    -moz-border-radius-bottomleft: 7px;
+    border-bottom-left-radius: 7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-bottomright: 7px;
+    border-bottom-right-radius: 7px;
 }
 
 
@@ -444,12 +444,12 @@ body {
     height: 25px;
     font-weight: bold;
     color: #6c7980;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 .buttonR{
     width: 130px;
@@ -458,12 +458,12 @@ body {
     font-weight: bold;
     background-color: #aaafb2;
     float: right;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 .subMenuBtnText{
     padding-top: 2px;
@@ -525,14 +525,16 @@ body {
 .Btn{
     width: 100%;
     height: 45px;
-    border: #606c72 solid 1px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    border: #555E63 solid 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     font-weight: bold;
     color: #ffffff;
     margin-top: 5px;
     font-size: 1.2em;
+	text-shadow: 1px -1px 1px #732617;
+	filter: dropshadow(color=#732617, offx=1, offy=-1);
 }
 
 
@@ -616,12 +618,12 @@ a{
     color: #6c7980;
     font-weight: bold;
     background-color: #aaafb2;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     text-align: center;
     padding-top: 5px;
 }
@@ -632,12 +634,12 @@ a{
     font-weight: bold;
     background-color: #aaafb2;
     float: right;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     text-align: center;
     padding-top: 5px;
 }
@@ -649,12 +651,12 @@ a{
     font-weight: bold;
     background-color: #aaafb2;
     width: 100px;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     text-align: center;
     padding-top: 5px;
 }
@@ -683,6 +685,29 @@ a{
 	float: left;
 	margin-top: 20px;
 	margin-left: 20px;
+}
+
+.usedMost{
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+.usedMost a:link{
+	color: #00527A;
+	text-decoration: none;
+}
+.usedMost a:visited {
+	color: #00527A;
+	text-decoration: none;
+}
+.usedMost a:active {
+	color: #00527A;
+	text-decoration: none;
+}
+.usedMost a:hover {
+	color: #00527A;
+	text-decoration: none;
 }
 
 .resultsName a:link{
@@ -749,12 +774,12 @@ a{
     font-weight: bold;
     background-color: #919699;
     float: left;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     padding-top: 5px;
 }
 .settingsButtonR{
@@ -765,12 +790,12 @@ a{
     font-weight: bold;
     background-color: #919699;
     float: right;
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-top-right-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-topright: 7px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     padding-top: 5px;
 }
 
@@ -815,9 +840,9 @@ input[type="password"]{
 
 input {
     border:1px solid #666666;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
 }
 .removePadding{
     padding 0;

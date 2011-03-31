@@ -32,6 +32,10 @@ $i18n=array(
 		"dutch" => "Nederlands",
 		"pickLanguage" => "Taal",
 		"errSubmitBoard" => "U dient tenminste 1 veld in te vullen.",
-		"geolocationErr" => "Kan uw geo lokatie niet vinden!"
+		"geolocationErr" => "Kan uw geo lokatie niet vinden, herlaad uw pagina.",
+		"geoLocationSearch" => "Zoeken naar uw positie ...",
+		"noMostUsed" => "Geen laatst gebruikte routes beschikbaar.",
+		"noNearbyStations" => "Kan geen stations vinden die zich dichtbij bevinden.",
+		"noFav" => "U heeft nog geen favoriete route."
      );
 ?>

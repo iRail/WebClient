@@ -12,12 +12,15 @@
 		var stations = [<? foreach($content["station"] as $station){?>
 			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
 		<?} ?>];
-		
-		var stations = [<? foreach($content["station"] as $station){?>
-			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
+		var favRoute = [<? for ($i=0; $i < sizeof($page["favroutes"]["from"]); $i++){?>
+			new route(<? echo "\"" . $page["favroutes"]["from"][$i] . "\"," . "\"" . $page["favroutes"]["to"][$i] . "\""; ?>),
+		<?} ?>];
+		var usedRoute = [<? for ($i=0; $i < sizeof($page["usedroutes"]["from"]); $i++){?>
+			new route(<? echo "\"" . $page["usedroutes"]["from"][$i] . "\"," . "\"" . $page["usedroutes"]["to"][$i] . "\""; ?>),
 		<?} ?>];
 		
 		var errorGeo = <? echo "\"" . $i18n["geolocationErr"] . "\"" ?>
+		
 		
 		function compareDistance(a, b) {
 			return a.distance - b.distance;
@@ -53,11 +56,86 @@
 		
 		function getLocation() {
 			// Get location no more than 10 minutes old. 600000 ms = 10 minutes.
-			navigator.geolocation.getCurrentPosition(showLocation, showError, {enableHighAccuracy:true,maximumAge:0});
+			var mainHolder = document.getElementById("containerResults");
+			if(document.getElementById("nearby").getAttribute("class") == "favButtonActive favButtonR"){
+				mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["geoLocationSearch"] . "</p>\""; ?>;
+				navigator.geolocation.getCurrentPosition(showLocation, showError, {enableHighAccuracy:true,maximumAge:6000});
+				timeLocation = setTimeout("getLocation()",25000);			
+			}else{
+				clearTimeout(timeLocation);
+			}
+			
 		}
 
 		function showError(error) {
-			alert(errorGeo);
+			var mainHolder = document.getElementById("containerResults");
+			mainHolder.innerHTML = "<p style='padding-left: 10px'>"+errorGeo+"</p>";
+		}
+
+		function showFavRoutes(){
+			var mainHolder = document.getElementById("containerResults");
+			var teller = 1;
+			//clear mainContainer;
+			mainHolder.innerHTML = "";
+			
+			for(i in favRoute){
+					var resultHolder = document.createElement('div');
+					if(teller % 2 == 0){
+						resultHolder.setAttribute("class", "containerResultsBoxWhite");
+					}else{
+						resultHolder.setAttribute("class", "containerResultsBoxBlue");
+					}			
+
+					var nameURL = document.createElement('a');
+					var nameDiv = document.createElement('div');
+
+					
+					nameDiv.setAttribute("class", "usedMost");
+					nameURL.setAttribute("href", "/route/"+favRoute[i].getFrom()+"/"+favRoute[i].getTo()+"/");
+					nameURL.innerHTML = "<p>"+favRoute[i].getFrom()+"<br/>"+favRoute[i].getTo()+"</p>";					
+					nameDiv.appendChild(nameURL);					
+					resultHolder.appendChild(nameDiv);
+
+					
+					mainHolder.appendChild(resultHolder);
+					teller++;
+			}
+			if(teller == 1){
+				mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noFav"] . "</p>\""; ?>;
+			}
+		}
+		
+		function showMostUsedRoutes(){
+			var mainHolder = document.getElementById("containerResults");
+			var teller = 1;
+			//clear mainContainer;
+			mainHolder.innerHTML = "";
+			
+			for(i in usedRoute){
+					var resultHolder = document.createElement('div');
+					if(teller % 2 == 0){
+						resultHolder.setAttribute("class", "containerResultsBoxWhite");
+					}else{
+						resultHolder.setAttribute("class", "containerResultsBoxBlue");
+					}			
+
+					var nameURL = document.createElement('a');
+					var nameDiv = document.createElement('div');
+
+					
+					nameDiv.setAttribute("class", "usedMost");
+					nameURL.setAttribute("href", "/route/"+usedRoute[i].getFrom()+"/"+usedRoute[i].getTo()+"/");
+					nameURL.innerHTML = "<p>"+usedRoute[i].getFrom()+"<br/><strong>&rarr;</Strong>"+usedRoute[i].getTo()+"</p>";					
+					nameDiv.appendChild(nameURL);					
+					resultHolder.appendChild(nameDiv);
+
+					
+					mainHolder.appendChild(resultHolder);
+					teller++;
+			}
+			if(teller == 1){
+				mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noMostUsed"] . "</p>\""; ?>;
+			}
 		}
 
 		function showLocation(position) {
@@ -71,7 +149,7 @@
 			     var nearbyStations = getClosestStations(longitude, latitude, 20);
 				
 				var teller = 1;
-				var mainHolder = document.getElementById("containerNearby");S
+				var mainHolder = document.getElementById("containerResults");
 				
 //first thing to do is to clear the previous set of stations if there were any
 				mainHolder.innerHTML = "";
@@ -105,6 +183,9 @@
 					teller++;
 
 				}
+				if(teller == 1){
+					mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noNearbyStations"] . "</p>\""; ?>;
+				}
 			}
 		}
 		
@@ -127,11 +208,23 @@
 				return this.distance;
 			};
 		}
-				
+		
+		function route(f, t){
+			this.to = t;
+			this.from = f
+			
+			this.getTo = function (){
+				return this.to;
+			};
+			this.getFrom = function(){
+				return this.from;
+			};
+		}
+	
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body onload=""> 
+    <body onload="showFavRoutes()"> 
         <div class="MainContainer">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient">
@@ -153,22 +246,15 @@
                 </div>
                 <div class="containerMenuRoutes">
                     <div class="containerButtonsFav">
-                        <div onclick="changeActiveFav('favourite');" id="favourite" class="favButtonActive favButtonL"><?=$i18n["favourite"] ?></div>
+                        <div onclick="changeActiveFav('favourite'); showFavRoutes()" id="favourite" class="favButtonActive favButtonL"><?=$i18n["favourite"] ?></div>
                         <div onclick="changeActiveFav('nearby'); getLocation()" id="nearby" class="favButtonR"><?=$i18n["nearby"] ?></div>
-                        <div onclick="changeActiveFav('mostUsed');" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
+                        <div onclick="changeActiveFav('mostUsed'); showMostUsedRoutes()" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
                     </div>
                 </div>
             </div><!-- 3 divs you can hide/show by clicking on one of the tabs-->
-            <div id="containerNearby" class="containerResults">
+            <div id="containerResults" class="containerResults">
 				
             </div>
-            <div id="containerFav" class="containerResults">
-				<? generateList("fav", $page); ?>
-				grgr
-            </div>
-            <div id="containerMostUsed" class="containerResults">
-				<? generateList("used", $page); ?>
-            </div>	
         </div>
     </body>
 </html>

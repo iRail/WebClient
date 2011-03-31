@@ -1,6 +1,4 @@
 <?
-	if($_GET["language"] != "" ){
-	}
 
 ?>
 <!DOCTYPE html>
@@ -39,8 +37,8 @@
 						<?
 						function checkSelected($taal){
 							if($_GET["lang"] == $taal){
-								print "selected=\"true\"";
-							}		
+								print "selected=true";
+							}
 						}
 						?>
 						<option <? checkSelected("NL"); ?> value="NL"><?=$i18n["dutch"] ?></option>

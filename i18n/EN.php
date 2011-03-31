@@ -32,6 +32,10 @@ $i18n=array(
 		"dutch" => "Dutch",
 		"pickLanguage" => "Language",
 		"errSubmitBoard" => "You have to atleast fill in 1 field",
-		"geolocationErr" => "Couln't find the geo location!"
+		"geolocationErr" => "Couln't find the geo location, try to refresh.",
+		"geoLocationSearch" => "Searching user location",
+		"noMostUsed" => "Cannot find any last used routes",
+		"noNearbyStations" => "Couln't find any station nearby",
+		"noFav" => "You don't have a favorite yet."
      );
 ?>
