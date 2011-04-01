@@ -23,7 +23,7 @@
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings  bannerLinkActive"><?=$i18n["settings"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings bannerLinkActive"><div><div class="settingsBtn"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">

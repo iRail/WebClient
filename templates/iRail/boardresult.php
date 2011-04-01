@@ -63,13 +63,18 @@ function formatTime($time){
 			</div>
                 <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed bannerLinkActive removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><?=$i18n["settings"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
 		</div>
 		<div class="boardHeaderBoard">
-			<p style="padding-left: 5px;">
-			<?=$content["station"]?><br>
-			</p>
+				<p style="padding-left: 5px;">
+				<?=$content["station"]?><br>
+				<?
+					if($_GET["destination"]){
+						print "<img src=\"/templates/iRail/images/arrowRoute.png\" alt=\"arrow\"/>" . $_GET["destination"];
+					}
+				?>
+				</p>
 		</div>
 		<div class="boardContainer">
 			<?

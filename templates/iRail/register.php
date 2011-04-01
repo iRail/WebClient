@@ -23,7 +23,7 @@
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings  bannerLinkActive"><?=$i18n["settings"] ?></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings bannerLinkActive"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
