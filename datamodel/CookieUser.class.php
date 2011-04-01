@@ -122,7 +122,7 @@ class CookieUser implements IUser{
      }
      
      public function addUsedBoard($of,$to = ""){
-	  if(!in_array($from,$this->usedboardsof) && !in_array($to,$this->usedboardsto)){
+	  if(!in_array($of,$this->usedboardsof) && !in_array($to,$this->usedboardsto)){
 	       $this->addVarToCookieArray("usedboardsof",$of);
 	       $this->addVarToCookieArray("usedboardsto",$to);
 	       $this->numberofusedboards++;
@@ -146,6 +146,22 @@ class CookieUser implements IUser{
 
      private function saveInCookie($name,$var){
 	  setcookie($name, $var, $this->timetolive, "/");
+     }
+
+     public function getLastUsedRoute(){
+	  $frommm = $usedroutesfrom[ $this->numberofusedroutes % $this->numberofvalues];
+	  $tooo = $usedroutesto[ $this->numberofusedroutes % $this->numberofvalues];
+	  return array("from"=> $frommm, "to" => $tooo);
+     }
+     
+     public function getLastUsedBoard(){
+	  $of = $usedboardsof[ $this->numberofusedboards % $this->numberofvalues];
+	  if(isset($usedboardsto[ $this->numberofusedboards % $this->numberofvalues])){
+	       $to = $usedboardsto[ $this->numberofusedboards % $this->numberofvalues];
+	  }else{
+	       $to = "";
+	  }
+	  return array("of"=> $of, "to" => $to);
      }
 
 }
