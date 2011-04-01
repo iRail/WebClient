@@ -1,13 +1,13 @@
 <?php
-/* Copyright (C) 2011 by iRail vzw/asbl
- *
- * This is part of the DataLayer. Use this class to store and load information about your user from a cookie.
- *
- *
- * @author Pieter Colpaert
- * @license aGPL
- * @package datamodel
- */
+  /* Copyright (C) 2011 by iRail vzw/asbl
+   *
+   * This is part of the DataLayer. Use this class to store and load information about your user from a cookie.
+   *
+   *
+   * @author Pieter Colpaert
+   * @license aGPL
+   * @package datamodel
+   */
 include_once("datamodel/IUser.class.php");
 class CookieUser implements IUser{
 
@@ -38,6 +38,10 @@ class CookieUser implements IUser{
      }
 
      private function checkoutCookieArray($name,$numberof){
+	  if($this->numberofvalues < $numberof){ //circularbuffer
+	       $numberof = $numberof % $this->numberofvalues;
+	  }
+	  
 	  for($i=0;$i<$numberof;$i++){
 	       //killing in the
 	       $nameof = $name . $i;
@@ -45,7 +49,7 @@ class CookieUser implements IUser{
 		    $ar = &$this->$name;
 		    $ar[$i] = $_COOKIE[$nameof];
 	       }
-	  }  
+	  }
      }
      
 
@@ -100,36 +104,39 @@ class CookieUser implements IUser{
      }
 
      public function addFavRoute($from,$to){
-	  $this->addVarToCookieArray("favroutesfrom",$from);
-	  $this->addVarToCookieArray("favroutesto",$to);
-	  if($this->numberoffavroutes <= $this->numberofvalues)
-	  $this->numberoffavroutes++;
-	  $this->saveInCookie("numberoffavroutes",$this->numberoffavroutes);
+	  if(!in_array($from,$this->favroutesfrom) && !in_array($to,$this->favroutesto)){
+	       $this->addVarToCookieArray("favroutesfrom",$from);
+	       $this->addVarToCookieArray("favroutesto",$to);
+	       $this->numberoffavroutes++;
+	       $this->saveInCookie("numberoffavroutes",$this->numberoffavroutes);
+	  }
      }
 
      public function addFavBoard($of,$to = ""){
-	  $this->addVarToCookieArray("favboardsof",$of);
-	  $this->addVarToCookieArray("favboardsto",$to);
-	  if($this->numberoffavboards <= $this->numberofvalues)
-	  $this->numberoffavboards++;
-	  $this->saveInCookie("numberoffavboards",$this->numberoffavboards);
+	  if(!in_array($from,$this->favboardsof) && !in_array($to,$this->favboardsto)){
+	       $this->addVarToCookieArray("favboardsof",$of);
+	       $this->addVarToCookieArray("favboardsto",$to);
+	       $this->numberoffavboards++;
+	       $this->saveInCookie("numberoffavboards",$this->numberoffavboards);
+	  }
      }
      
      public function addUsedBoard($of,$to = ""){
-	  $this->addVarToCookieArray("usedboardsof",$of);
-	  $this->addVarToCookieArray("usedboardsto",$to);
-	  if($this->numberofusedboards <= $this->numberofvalues){
+	  if(!in_array($from,$this->usedboardsof) && !in_array($to,$this->usedboardsto)){
+	       $this->addVarToCookieArray("usedboardsof",$of);
+	       $this->addVarToCookieArray("usedboardsto",$to);
 	       $this->numberofusedboards++;
+	       $this->saveInCookie("numberofusedboards",$this->numberofusedboards);
 	  }
-	  $this->saveInCookie("numberofusedboards",$this->numberofusedboards);
      }
 
      public function addUsedRoute($from,$to){
-	  $this->addVarToCookieArray("usedroutesfrom",$from);
-	  $this->addVarToCookieArray("usedroutesto",$to);
-	  if($this->numberofusedroutes <= $this->numberofvalues)
-	  $this->numberofusedroutes++;
-	  $this->saveInCookie("numberofusedroutes",$this->numberofusedroutes);
+	  if(!in_array($from,$this->usedroutesfrom) && !in_array($to,$this->usedroutesto)){
+	       $this->addVarToCookieArray("usedroutesfrom",$from);
+	       $this->addVarToCookieArray("usedroutesto",$to);
+	       $this->numberofusedroutes++;
+	       $this->saveInCookie("numberofusedroutes",$this->numberofusedroutes);
+	  }
      }
 
      public function setLang($lang){
@@ -140,8 +147,6 @@ class CookieUser implements IUser{
      private function saveInCookie($name,$var){
 	  setcookie($name, $var, $this->timetolive, "/");
      }
-     
-
 
 }
 
