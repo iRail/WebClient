@@ -1,5 +1,6 @@
 <?
-
+global $test;
+$test = $this->user->getLang();
 ?>
 <!DOCTYPE html>
 <html lang="en">    
@@ -35,14 +36,19 @@
 					<label style="color: #FFFFFF;" for="language"><?=$i18n["pickLanguage"] ?></label>
 					<select name="lang" size="1" onchange="settings.submit()">
 						<?
-						function checkSelected($taal){
-							if($_GET["lang"] == $taal){
-								print "selected=true";
+						$arrayLang = $this->AVAILABLE_LANGUAGES;
+						for($i=0;$i<sizeof($arrayLang);$i++)
+						{
+							$option = "<option ";
+							if($this->user->getLang() == $arrayLang[$i]){
+								$option .= "selected=\"true\"";
 							}
+							$option .= " value=\"" . $arrayLang[$i] . "\">";
+							$option .= $i18n[$arrayLang[$i]] . "</option>";
+							echo $option;
 						}
 						?>
-						<option <? checkSelected("NL"); ?> value="NL"><?=$i18n["dutch"] ?></option>
-						<option <? checkSelected("EN"); ?> value="EN"><?=$i18n["english"] ?></option>
+
 					</select>
 				</div>
 			</form>

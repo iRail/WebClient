@@ -6,6 +6,11 @@ templates/iRail/images/change.png
 templates/iRail/images/fav.png
 templates/iRail/images/fil.png
 templates/iRail/images/trein.png
+templates/iRail/images/addfav.gif
+templates/iRail/images/arrow.gif
+templates/iRail/images/trein.png
+templates/iRail/images/arrowRoute.png
+templates/iRail/images/arrowRouteSmall.jpg
 board/
 route/
 stations/

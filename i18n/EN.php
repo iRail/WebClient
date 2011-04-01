@@ -36,6 +36,10 @@ $i18n=array(
 		"geoLocationSearch" => "Searching user location",
 		"noMostUsed" => "Cannot find any last used routes",
 		"noNearbyStations" => "Couln't find any station nearby",
-		"noFav" => "You don't have a favorite yet."
+		"noFav" => "You don't have a favorite yet.",
+		"EN" => "English",
+		"NL" => "Dutch",
+		"DE" => "German",
+		"FR" => "French"
      );
 ?>

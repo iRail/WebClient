@@ -36,6 +36,10 @@ $i18n=array(
 		"geoLocationSearch" => "Zoeken naar uw positie ...",
 		"noMostUsed" => "Geen laatst gebruikte routes beschikbaar.",
 		"noNearbyStations" => "Kan geen stations vinden die zich dichtbij bevinden.",
-		"noFav" => "U heeft nog geen favoriete route."
+		"noFav" => "U heeft nog geen favoriete route.",
+		"EN" => "Engels",
+		"NL" => "Nederlands",
+		"DE" => "Duits",
+		"FR" => "Frans"
      );
 ?>

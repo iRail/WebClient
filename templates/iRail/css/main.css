@@ -191,6 +191,7 @@ body {
 	width: 25px;
 	float: right;
 	height: 100%;
+	margin-right: 5px;
 }
 
 
@@ -675,10 +676,12 @@ a{
 .containerResultsBoxBlue{
     background-color: #dbdbdb;
     height: 60px;
+	cursor: pointer;
 }
 .containerResultsBoxWhite{
     background-color: #ffffff;
     height: 60px;
+	cursor: pointer;
 }
 
 .resultsName{

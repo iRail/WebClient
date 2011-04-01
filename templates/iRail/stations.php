@@ -13,10 +13,16 @@
 			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
 		<?} ?>];
 		var favRoute = [<? for ($i=0; $i < sizeof($page["favroutes"]["from"]); $i++){?>
-			new route(<? echo "\"" . $page["favroutes"]["from"][$i] . "\"," . "\"" . $page["favroutes"]["to"][$i] . "\""; ?>),
+			new route(<? echo "\"" . $page["favroutes"]["from"][$i] . "\"," . "\"" . $page["favroutes"]["to"][$i] . "\"," . "\"route\""; ?>),
 		<?} ?>];
 		var usedRoute = [<? for ($i=0; $i < sizeof($page["usedroutes"]["from"]); $i++){?>
-			new route(<? echo "\"" . $page["usedroutes"]["from"][$i] . "\"," . "\"" . $page["usedroutes"]["to"][$i] . "\""; ?>),
+			new route(<? echo "\"" . $page["usedroutes"]["from"][$i] . "\"," . "\"" . $page["usedroutes"]["to"][$i] . "\"," . "\"route\""; ?>),
+		<?} ?>];
+		var favBoard = [<? for ($i=0; $i < sizeof($page["favboards"]["of"]); $i++){?>
+			new route(<? echo "\"" . $page["favboards"]["of"][$i] . "\"," . "\"" . $page["favboards"]["to"][$i] . "\"," . "\"board\""; ?>),
+		<?} ?>];
+		var usedBoard = [<? for ($i=0; $i < sizeof($page["usedboards"]["of"]); $i++){?>
+			new route(<? echo "\"" . $page["usedboards"]["of"][$i] . "\"," . "\"" . $page["usedroutes"]["to"][$i] . "\"," . "\"board\""; ?>),
 		<?} ?>];
 		
 		var errorGeo = <? echo "\"" . $i18n["geolocationErr"] . "\"" ?>
@@ -78,7 +84,9 @@
 			//clear mainContainer;
 			mainHolder.innerHTML = "";
 			
-			for(i in favRoute){
+			var combinedFav = favRoute.concat(favBoard);
+			
+			for(i in combinedFav){
 					var resultHolder = document.createElement('div');
 					if(teller % 2 == 0){
 						resultHolder.setAttribute("class", "containerResultsBoxWhite");
@@ -88,11 +96,25 @@
 
 					var nameURL = document.createElement('a');
 					var nameDiv = document.createElement('div');
-
-					
 					nameDiv.setAttribute("class", "usedMost");
-					nameURL.setAttribute("href", "/route/"+favRoute[i].getFrom()+"/"+favRoute[i].getTo()+"/");
-					nameURL.innerHTML = "<p>"+favRoute[i].getFrom()+"<br/>"+favRoute[i].getTo()+"</p>";					
+					
+					if(combinedFav[i].getType() == "route"){
+						nameURL.setAttribute("href", "/route/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
+						resultHolder.setAttribute("onclick", "window.location='/route/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");
+						nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";					
+					}
+					
+					if(combinedFav[i].getType() == "board"){
+						if(combinedFav[i].getTo() == ""){
+							resultHolder.setAttribute("onclick", "window.location='/board/" + combinedFav[i].getFrom()+"/'");						
+							nameURL.setAttribute("href", "/board/"+combinedFav[i].getFrom()+"/");
+							nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"</p>";		
+						}else{
+							resultHolder.setAttribute("onclick", "window.location='/board/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");						
+							nameURL.setAttribute("href", "/board/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
+							nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";
+						}
+					}			
 					nameDiv.appendChild(nameURL);					
 					resultHolder.appendChild(nameDiv);
 
@@ -110,8 +132,9 @@
 			var teller = 1;
 			//clear mainContainer;
 			mainHolder.innerHTML = "";
+			var combinedFav = usedRoute.concat(usedBoard);
 			
-			for(i in usedRoute){
+			for(i in combinedFav){
 					var resultHolder = document.createElement('div');
 					if(teller % 2 == 0){
 						resultHolder.setAttribute("class", "containerResultsBoxWhite");
@@ -124,11 +147,26 @@
 
 					
 					nameDiv.setAttribute("class", "usedMost");
-					nameURL.setAttribute("href", "/route/"+usedRoute[i].getFrom()+"/"+usedRoute[i].getTo()+"/");
-					nameURL.innerHTML = "<p>"+usedRoute[i].getFrom()+"<br/><strong>&rarr;</Strong>"+usedRoute[i].getTo()+"</p>";					
+					
+					if(combinedFav[i].getType() == "route"){
+						nameURL.setAttribute("href", "/route/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
+						resultHolder.setAttribute("onclick", "window.location='/route/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");
+						nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";					
+					}
+					
+					if(combinedFav[i].getType() == "board"){
+						if(combinedFav[i].getTo() == ""){
+							resultHolder.setAttribute("onclick", "window.location='/board/" + combinedFav[i].getFrom()+"/'");						
+							nameURL.setAttribute("href", "/board/"+combinedFav[i].getFrom()+"/");
+							nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"</p>";		
+						}else{
+							resultHolder.setAttribute("onclick", "window.location='/board/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");						
+							nameURL.setAttribute("href", "/board/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
+							nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";
+						}
+					}					
 					nameDiv.appendChild(nameURL);					
 					resultHolder.appendChild(nameDiv);
-
 					
 					mainHolder.appendChild(resultHolder);
 					teller++;
@@ -167,9 +205,10 @@
 					var distanceDiv = document.createElement('div');
 					
 					nameDiv.setAttribute("class", "resultsName");
+					resultHolder.setAttribute("onclick", "window.location='/board/" + nearbyStations[i].getName() +"/'");
 					distanceDiv.setAttribute("class", "resultsDistance");
 					nameURL.setAttribute("href", "/board/"+nearbyStations[i].getName()+"/");
-					nameURL.innerHTML = nearbyStations[i].getName();
+					nameURL.innerHTML = "<p>"+nearbyStations[i].getName()+"</p>";
 					
 					
 					
@@ -209,9 +248,10 @@
 			};
 		}
 		
-		function route(f, t){
+		function route(f, t, type){
 			this.to = t;
 			this.from = f
+			this.type = type;
 			
 			this.getTo = function (){
 				return this.to;
@@ -219,6 +259,9 @@
 			this.getFrom = function(){
 				return this.from;
 			};
+			this.getType = function(){
+				return this.type;
+			}
 		}
 	
         </script>

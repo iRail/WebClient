@@ -8,7 +8,7 @@
 //page starts here:
 ?>
 <!DOCTYPE html>
-<html lang="en" manifest="appcache.mf">
+<html manifest="appcache.mf">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
@@ -17,7 +17,23 @@
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-        <script>
+		<script type="text/javascript">
+		window.addEventListener('load', function(e) {
+
+		  window.applicationCache.addEventListener('updateready', function(e) {
+			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+			  // Browser downloaded a new app cache.
+			  // Swap it in and reload the page to get the new hotness.
+			  window.applicationCache.swapCache();
+			  if (confirm('A new version of this site is available. Load it?')) {
+				window.location.reload();
+			  }
+			} else {
+			  // Manifest didn't changed. Nothing new to server.
+			}
+		  }, false);
+
+		}, false);
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
