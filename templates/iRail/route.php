@@ -50,8 +50,11 @@
                     </div>
                     <div class="fromHeader"><?=$i18n["from"] ?></div>
                 </div>
+<?
+$last = $this->user->getLastUsedRoute();
+?>
                 <div class="inputFrom">
-                    <input autocomplete="off" value="" class="inputStyle" value="<?=$_GET["from"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from"/>
+                    <input autocomplete="off" value="" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from" value="<?=$last["from"]?>" />
                     <div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
                 </div>
@@ -59,7 +62,7 @@
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" value="" class="inputStyle" value="<?=$_GET["to"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to"/>
+                    <input autocomplete="off" class="inputStyle" value="<?=$_GET["to"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>
                 </div>

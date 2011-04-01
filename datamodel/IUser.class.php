@@ -19,6 +19,9 @@ interface IUser{
      public function getUsedRoutes();
      public function getLang();
 
+     public function getLastUsedRoute();
+     public function getLastUsedBoard();
+
      public function addFavRoute($from,$to);
      public function addFavBoard($of,$to);
      public function addUsedBoard($of,$to);
