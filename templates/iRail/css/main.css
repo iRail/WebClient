@@ -27,6 +27,14 @@ time, mark, audio, video {
 }
 /* END RESET SCRIPT */
 
+
+/* let's hide title bar */
+@media only screen and (max-device-width: 480px) {
+  .navigation {
+    display: none;
+  }
+}
+
 root {display: block;}
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
