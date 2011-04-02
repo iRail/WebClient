@@ -38,14 +38,13 @@ class CookieUser implements IUser{
      }
 
      private function checkoutCookieArray($name,$numberof){
-	  if($this->numberofvalues < $numberof){ //circularbuffer
-	       $numberof = $numberof % $this->numberofvalues;
+	  if($numberof < $this->numberofvalues){ //circularbuffer: maximum size if the numberof is bigger
+	       $numberof = $this->numberofvalues;
 	  }
-	  
 	  for($i=0;$i<$numberof;$i++){
 	       //killing in the
 	       $nameof = $name . $i;
-	       if(isset($_COOKIE[$nameof])){	       
+	       if(isset($_COOKIE[$nameof])){
 		    $ar = &$this->$name;
 		    $ar[$i] = $_COOKIE[$nameof];
 	       }
@@ -70,6 +69,16 @@ class CookieUser implements IUser{
 	  $this->checkoutCookieArray("usedroutesto", $this->numberofusedroutes);
 	  $this->checkoutCookieArray("usedboardsof", $this->numberofusedboards);
 	  $this->checkoutCookieArray("usedboardsto", $this->numberofusedboards);
+	  /*DBG
+	    echo "<br/>usedboardto: <br/>\n";
+	  var_dump($this->usedboardsto);
+	  echo "<br/>usedboardsof: <br/>\n";
+	  var_dump($this->usedboardsof);
+	  echo "<br/>usedroutefrom: <br/>\n";
+	  var_dump($this->usedroutesfrom);
+	  echo "<br/>usedroutesto: <br/>\n";
+	  var_dump($this->usedroutesto);
+	  */
      }
 
      public function getFavRoutes(){
@@ -95,8 +104,7 @@ class CookieUser implements IUser{
      }
 
      //circular buffer
-     private function addVarToCookieArray($name,$value){
-	  $i = sizeof($this->$name) % $this->numberofvalues;
+     private function addVarToCookieArray($name,$value, $i){
 	  $this->saveInCookie($name . $i, $value);
 	  $ar = $this->$name;
 	  $ar[$i] = $value;
@@ -105,8 +113,9 @@ class CookieUser implements IUser{
 
      public function addFavRoute($from,$to){
 	  if(!$this->containsRoute($this->favroutesfrom, $this->favroutesto,$of,$to)){
-	       $this->addVarToCookieArray("favroutesfrom",$from);
-	       $this->addVarToCookieArray("favroutesto",$to);
+	       $index = $this->numberoffavroutes % $this->numberofvalues;
+	       $this->addVarToCookieArray("favroutesfrom",$from, $index);
+	       $this->addVarToCookieArray("favroutesto",$to, $index);
 	       $this->numberoffavroutes++;
 	       $this->saveInCookie("numberoffavroutes",$this->numberoffavroutes);
 	  }
@@ -114,8 +123,9 @@ class CookieUser implements IUser{
 
      public function addFavBoard($of,$to = ""){
 	  if(!$this->containsBoard($this->favboardsof, $this->favboardsto,$of,$to)){
-	       $this->addVarToCookieArray("favboardsof",$of);
-	       $this->addVarToCookieArray("favboardsto",$to);
+	       $index = $this->numberoffavboards % $this->numberofvalues;
+	       $this->addVarToCookieArray("favboardsof",$of, $index);
+	       $this->addVarToCookieArray("favboardsto",$to, $index);
 	       $this->numberoffavboards++;
 	       $this->saveInCookie("numberoffavboards",$this->numberoffavboards);
 	  }
@@ -123,8 +133,9 @@ class CookieUser implements IUser{
      
      public function addUsedBoard($of,$to = ""){
 	  if(!$this->containsBoard($this->usedboardsof, $this->usedboardsto,$of,$to)){
-	       $this->addVarToCookieArray("usedboardsof",$of);
-	       $this->addVarToCookieArray("usedboardsto",$to);
+	       $index = $this->numberofusedboards % $this->numberofvalues;
+	       $this->addVarToCookieArray("usedboardsof",$of, $index);
+	       $this->addVarToCookieArray("usedboardsto",$to, $index);
 	       $this->numberofusedboards++;
 	       $this->saveInCookie("numberofusedboards",$this->numberofusedboards);
 	  }
@@ -132,8 +143,9 @@ class CookieUser implements IUser{
 
      public function addUsedRoute($from,$to){
 	  if(!$this->containsRoute($this->usedroutesfrom, $this->usedroutesto,$from,$to)){
-	       $this->addVarToCookieArray("usedroutesfrom",$from);
-	       $this->addVarToCookieArray("usedroutesto",$to);
+	       $index = $this->numberofusedroutes % $this->numberofvalues;
+	       $this->addVarToCookieArray("usedroutesfrom",$from, $index);
+	       $this->addVarToCookieArray("usedroutesto",$to, $index);
 	       $this->numberofusedroutes++;
 	       $this->saveInCookie("numberofusedroutes",$this->numberofusedroutes);
 	  }
@@ -150,7 +162,7 @@ class CookieUser implements IUser{
      }
      
 
-     private function containsBoard($abo,$abt,$of, $to){
+     private function containsBoard($abo,$abt,$of, $to = ""){
 	  $indices = array_keys($abo, $of);
 	  foreach($indices as $index){
 	       if(isset($abt[$index]) && $abt[$index] == $to){
@@ -171,16 +183,25 @@ class CookieUser implements IUser{
 
      public function getLastUsedRoute(){
 	  $index = $this->numberofusedroutes % $this->numberofvalues;
-	  $frommm = $usedroutesfrom[$index];
-	  $tooo = $usedroutesto[$index];
-	  return array("from"=> $frommm, "to" => $tooo);
+	  if(isset($this->usedroutesfrom[$index]) && isset($this->usedroutesto[$index])){
+	       $frommm = $this->usedroutesfrom[$index];
+	       $tooo = $this->usedroutesto[$index];
+	       return array("from"=> $frommm, "to" => $tooo);
+	  }else{
+	       return array("from"=> "", "to" => "");
+	  }
+	  
      }
      
      public function getLastUsedBoard(){
 	  $index = $this->numberofusedboards % $this->numberofvalues;
-	  $of = $usedboardsof[$index];
-	  if(isset($usedboardsto[$index])){
-	       $to = $usedboardsto[$index];
+	  if(isset($this->usedboardsof[$index])){
+	       $of = $this->usedboardsof[$index];
+	  }else{
+	       $of = "";
+	  }
+	  if(isset($this->usedboardsto[$index])){
+	       $to = $this->usedboardsto[$index];
 	  }else{
 	       $to = "";
 	  }

@@ -29,6 +29,10 @@ class Controller extends Page{
 	       $ret["usedboards"] = $this->user->getUsedBoards();
 	       $ret["usedroutes"] = $this->user->getUsedRoutes();
 	       return $ret;
+	  }else if($page == "route"){
+	       return $this->user->getLastUsedRoute();
+	  }else if($page == "board"){
+	       return $this->user->getLastUsedBoard();
 	  }
      }
      
@@ -63,7 +67,7 @@ class Controller extends Page{
 	  }else if($page != "error"){
 	       //let's not do a request if there is an error page
 	       //in other cases, just output the stationslist - needed on most pages
-	       $stations=$data->getStations();
+	       $stations = $data->getStations();
 
 	       return $data->getStations();
 	  }else if($page == "error"){

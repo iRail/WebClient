@@ -22,7 +22,7 @@
 			new route(<? echo "\"" . $page["favboards"]["of"][$i] . "\"," . "\"" . $page["favboards"]["to"][$i] . "\"," . "\"board\""; ?>),
 		<?} ?>];
 		var usedBoard = [<? for ($i=0; $i < sizeof($page["usedboards"]["of"]); $i++){?>
-			new route(<? echo "\"" . $page["usedboards"]["of"][$i] . "\"," . "\"" . $page["usedroutes"]["to"][$i] . "\"," . "\"board\""; ?>),
+			new route(<? echo "\"" . $page["usedboards"]["of"][$i] . "\"," . "\"" . $page["usedboards"]["to"][$i] . "\"," . "\"board\""; ?>),
 		<?} ?>];
 		
 		var errorGeo = <? echo "\"" . $i18n["geolocationErr"] . "\"" ?>
@@ -294,7 +294,7 @@
                         <div onclick="changeActiveFav('mostUsed'); showMostUsedRoutes()" id="mostUsed" class="favButtonMid"><?=$i18n["most_used"] ?></div>
                     </div>
                 </div>
-            </div><!-- 3 divs you can hide/show by clicking on one of the tabs-->
+            </div>
             <div id="containerResults" class="containerResults">
 				
             </div>
