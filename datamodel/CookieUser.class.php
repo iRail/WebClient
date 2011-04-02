@@ -104,7 +104,7 @@ class CookieUser implements IUser{
      }
 
      public function addFavRoute($from,$to){
-	  if(!in_array($from,$this->favroutesfrom) && !in_array($to,$this->favroutesto)){
+	  if(!$this->containsRoute($this->favroutesfrom, $this->favroutesto,$of,$to)){
 	       $this->addVarToCookieArray("favroutesfrom",$from);
 	       $this->addVarToCookieArray("favroutesto",$to);
 	       $this->numberoffavroutes++;
@@ -113,7 +113,7 @@ class CookieUser implements IUser{
      }
 
      public function addFavBoard($of,$to = ""){
-	  if(!in_array($from,$this->favboardsof) && !in_array($to,$this->favboardsto)){
+	  if(!$this->containsBoard($this->favboardsof, $this->favboardsto,$of,$to)){
 	       $this->addVarToCookieArray("favboardsof",$of);
 	       $this->addVarToCookieArray("favboardsto",$to);
 	       $this->numberoffavboards++;
@@ -122,7 +122,7 @@ class CookieUser implements IUser{
      }
      
      public function addUsedBoard($of,$to = ""){
-	  if(!in_array($of,$this->usedboardsof) && !in_array($to,$this->usedboardsto)){
+	  if(!$this->containsBoard($this->usedboardsof, $this->usedboardsto,$of,$to)){
 	       $this->addVarToCookieArray("usedboardsof",$of);
 	       $this->addVarToCookieArray("usedboardsto",$to);
 	       $this->numberofusedboards++;
@@ -131,13 +131,27 @@ class CookieUser implements IUser{
      }
 
      public function addUsedRoute($from,$to){
-	  if(!in_array($from,$this->usedroutesfrom) && !in_array($to,$this->usedroutesto)){
+	  if(!$this->containsRoute($this->usedroutesfrom, $this->usedroutesto,$from,$to)){
 	       $this->addVarToCookieArray("usedroutesfrom",$from);
 	       $this->addVarToCookieArray("usedroutesto",$to);
 	       $this->numberofusedroutes++;
 	       $this->saveInCookie("numberofusedroutes",$this->numberofusedroutes);
 	  }
      }
+
+private function containsRoute($atf,$att,$from, $to){
+//NY implemented
+     return false;
+     
+}
+
+private function containsBoard($abo,$abt,$of, $to){
+//ny implemented
+     return false;
+     
+}
+
+
 
      public function setLang($lang){
 	  $this->language = $lang;
@@ -149,15 +163,17 @@ class CookieUser implements IUser{
      }
 
      public function getLastUsedRoute(){
-	  $frommm = $usedroutesfrom[ $this->numberofusedroutes % $this->numberofvalues];
-	  $tooo = $usedroutesto[ $this->numberofusedroutes % $this->numberofvalues];
+	  $index = $this->numberofusedroutes % $this->numberofvalues;
+	  $frommm = $usedroutesfrom[$index];
+	  $tooo = $usedroutesto[$index];
 	  return array("from"=> $frommm, "to" => $tooo);
      }
      
      public function getLastUsedBoard(){
-	  $of = $usedboardsof[ $this->numberofusedboards % $this->numberofvalues];
-	  if(isset($usedboardsto[ $this->numberofusedboards % $this->numberofvalues])){
-	       $to = $usedboardsto[ $this->numberofusedboards % $this->numberofvalues];
+	  $index = $this->numberofusedboards % $this->numberofvalues;
+	  $of = $usedboardsof[$index];
+	  if(isset($usedboardsto[$index])){
+	       $to = $usedboardsto[$index];
 	  }else{
 	       $to = "";
 	  }
