@@ -1,0 +1,12 @@
+# iRail.be 
+
+User-agent: *
+
+# Directories
+Disallow: README.md
+Disallow: *.php
+Disallow: appcache.mf
+Disallow: datamodel/
+Disallow: i18n/
+Disallow: requesthandlers/
+Disallow: templates/
