@@ -40,6 +40,16 @@ $i18n=array(
 		"EN" => "English",
 		"NL" => "Dutch",
 		"DE" => "German",
-		"FR" => "French"
+		"FR" => "French",		
+		"datausedfrom" => "Data used from",
+		"madeby" => "Made by",
+		"npo" => "NPO",
+		"authors" => "Authors",
+		"design" => "Design",
+		"frontendcoding" => "Front-end coding",
+		"backendcoding" => "Back-end coding",
+		"infrastructure" => "Infrastructure",
+		"andother" => "And many others",
+		"stealthiscode" => "Steal this code (AGPL)"
      );
 ?>

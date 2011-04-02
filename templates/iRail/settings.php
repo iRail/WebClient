@@ -53,6 +53,22 @@ $test = $this->user->getLang();
 				</div>
 			</form>
 			</div>
+			<div class="about">
+			  <ul class="aboutlist">
+			    <li><?=$i18n["datausedfrom"]?>: <a href="http://api.irail.be" target="_blank">iRail API</a>
+			    <li><?=$i18n["madeby"]?>: <a href="http://project.irail.be" target="_blank">iRail <?=$i18n["npo"] ?></a>
+			    <li><?=$i18n["authors"]?>:
+			      <ul>
+				<li><?=$i18n["design"]?>: Dennis Kestelle
+				<li><?=$i18n["frontendcoding"]?>: Muhammet Kilic
+				<li><?=$i18n["backendcoding"]?>: Pieter Colpaert
+				<li><?=$i18n["infrastructure"]?>: Yeri Tiete
+				<li><?=$i18n["andothers"]?>
+			      </ul>
+			    <li>&copy; 2011 iRail <?=$i18n["npo"];?>
+			    <li><a href="http://www.github.com/iRail/WebClient/" target="_blank"><?=$i18n["stealthiscode"];?></a>
+			  </lu>
+			</div>
         </div>
     </body>
 </html>
