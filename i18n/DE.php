@@ -1,33 +1,45 @@
 <?php
-$i18n = array(
-    "from" => "Von",
-    "to" => "Nach",
-    "date" => "Datum",
-    "time" => "Zeit",
-    "arrival" => "Ankunft",
-    "depart" => "Abreise",
-    "search" => "Suchen",
-    "switch" => "Switch",
-    "save" => "Bewahren",
-    "settings" => "Instellungen",
-    "savedinacookie" => "Bewahrt in ein cookie! Yum.",
-    "language" => "Sprache",
-    "about" => "&#220;ber",
-    "back" => "Zur&#252;ck",
-    "map" => "Karte",
-    "duration" => "Dauer",
-    "delay" => "Versp&#228;tung",
-    "platform" => "Plattform",
-    "transfers" => "Transfers",
-    "transportation" => "Transport",
-    "error" => "Error",
-    "errormessage" => "We could not provide you with an answer to your question. Most likely you requested too old information, or information that we can't provide yet. If you think this error is a bug in iRail, please let us know on project.iRail.be",
-    "strike"=> "On the requested day, the NMBS announces strikes. Don't rely on this information."
-    , "news" => "News"
-    , "feedback" => "Feedback"
-        ,"options" =>"Options"
-    , "setdatetime" => "Choose date and time"
-
-    );
-
+$i18n=array(
+		"search"=>"Search",
+		"departure_at" => "Departure",
+		"arrival_at" => "Arrival",
+		"to" => "To",
+		"from" => "From",
+		"favourite" => "Favourite",
+		"settings"=> "Settings",
+		"board"=>"Board",
+		"route" => "Route",
+		"your_routes" => "Your routes",
+		"nearby" => "Nearby",
+		"most_used" => "Most used",
+		"log_in" => "Log in",
+		"register" => "Register",
+		"username" => "Username",
+		"password" => "Password",
+		"err404_FirstParagraph" => "We're so sorry!",
+		"err404_SecondParagraph" => "Something went wrong on our servers",
+		"go_back" => "Go back",
+		"or_try_to" => "or try",
+		"refresh_page" => "to refresh this page",
+		"of" => "Of",
+		"to_optional" => "To (optional)",
+		"show_live_board" => "Show live board",
+		"earliestRide" => "Earliest ride",
+		"rideEarlier" => "Ride sooner",
+		"rideLater" => "Ride later",
+		"latestRide" => "Latest ride",
+		"english" => "English",
+		"dutch" => "Dutch",
+		"pickLanguage" => "Language",
+		"errSubmitBoard" => "You have to atleast fill in 1 field",
+		"geolocationErr" => "Couln't find the geo location, try to refresh.",
+		"geoLocationSearch" => "Searching user location",
+		"noMostUsed" => "Cannot find any last used routes",
+		"noNearbyStations" => "Couln't find any station nearby",
+		"noFav" => "You don't have a favorite yet.",
+		"EN" => "English",
+		"NL" => "Dutch",
+		"DE" => "German",
+		"FR" => "French"
+     );
 ?>

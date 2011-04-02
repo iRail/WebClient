@@ -1,32 +1,24 @@
-#
-# iRail.be .htaccess file
-#
-# by Yeri 'Tuinslak' Tiete	(yeri.be)
-#
-# move to the root folder 
-#
-
-Options -Indexes
-Options +FollowSymLinks
+AddType text/cache-manifest .mf
 
 AddDefaultCharset UTF-8
 
-# mod rewrite, I like sexy looking URLs
-
+# URL Rewrite fu
+Options +FollowSymLinks
+Options -Indexes
 <IfModule mod_rewrite.c>
-
 RewriteEngine On
 RewriteBase /
-RewriteRule ^index$			index.php			[NC,L]
-RewriteRule ^index.htm$			index.php			[NC,L]
-RewriteRule ^index.html$		index.php			[NC,L]
-RewriteRule ^national$                  index.php                       [NC,L]
-RewriteRule ^nat$                       index.php                       [NC,L]
-RewriteRule ^results$			results.php			[NC,L]
-RewriteRule ^noresults$                 noresults.php                   [NC,L]
-RewriteRule ^settings$     		settings.php        		[NC,L]
-RewriteRule ^save$			save.php			[NC,L]
-RewriteRule ^about$			about.php                       [NC,L]
+RewriteRule ^$ requesthandlers/controller.php?page=route [QSA,NC,L]
+RewriteRule ^route[/]?$ requesthandlers/controller.php?page=route [QSA,NC,L]
+RewriteRule ^board[/]?$ requesthandlers/controller.php?page=board [QSA,NC,L]
+RewriteRule ^settings[/]?$ requesthandlers/controller.php?page=settings [QSA,NC,L]
+RewriteRule ^stations[/]?$ requesthandlers/controller.php?page=stations [QSA,NC,L]
+RewriteRule ^route/(.*)/(.*)/$ requesthandlers/controller.php?page=routeresult&from=$1&to=$2 [QSA,NC,L]
+RewriteRule ^board/([^/]*)/$ requesthandlers/controller.php?page=boardresult&station=$1 [QSA,NC,L]
+RewriteRule ^board/([^/]*)/(.*)/$ requesthandlers/controller.php?page=boardresult&station=$1&destination=$2 [QSA,NC,L]
+#RewriteRule ^/$  [R]
 
 </IfModule>
 
+ErrorDocument 404 /requesthandlers/controller.php?page=error&message=Page%20not%20found
+ErrorDocument 500 /requesthandlers/controller.php?page=error&message=Internal%20server%20error
