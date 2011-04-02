@@ -139,19 +139,26 @@ class CookieUser implements IUser{
 	  }
      }
 
-private function containsRoute($atf,$att,$from, $to){
-//NY implemented
-     return false;
+     private function containsRoute($atf,$att,$from, $to){
+	  $indices = array_keys($atf, $from);
+	  foreach($indices as $index){
+	       if(isset($att[$index]) &&$att[$index] == $to){
+		    return true;
+	       }
+	  }
+	  return false;
+     }
      
-}
 
-private function containsBoard($abo,$abt,$of, $to){
-//ny implemented
-     return false;
-     
-}
-
-
+     private function containsBoard($abo,$abt,$of, $to){
+	  $indices = array_keys($abo, $of);
+	  foreach($indices as $index){
+	       if(isset($abt[$index]) && $abt[$index] == $to){
+		    return true;
+	       }
+	  }
+	  return false;
+     }
 
      public function setLang($lang){
 	  $this->language = $lang;
