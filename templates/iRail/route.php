@@ -8,7 +8,7 @@
 //page starts here:
 ?>
 <!DOCTYPE html>
-<html manifest="appcache.mf">
+<html manifest="/appcache.mf">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
