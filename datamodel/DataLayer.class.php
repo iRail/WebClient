@@ -20,6 +20,7 @@ class DataLayer {
      private $user;
 
      public function __construct($lang, & $user){
+	  date_default_timezone_set("Europe/Brussels");
 	  $this->lang = $lang;
 	  $this->user= &$user;
      }
@@ -111,7 +112,7 @@ class DataLayer {
 	       $liveboard= APICall::execute("liveboard", $args);
 	       if($destination != ""){
 		    //only get the destinations out of it
-		    $liveboard = $this->findInLiveboard($liveboard,$destination);
+		    $liveboard = $this->findInLiveboard($liveboard,$station,$destination,$time);
 	       }
 	       return $liveboard;
 	  }catch(Exception $e){
@@ -119,12 +120,22 @@ class DataLayer {
 	  }
      }
 
-     private function findInLiveboard($lb,$dest){
+/**
+ * Try to get current connections and destilate the directions. This is the most efficient method since it has to do only 1 API call.
+ */
+     private function findInLiveboard($lb,$from,$dest,$time){
 	  $newarray = array();
+	  $conn = $this->getConnections($from, $dest, "depart", $time, date("dmy"));
+	  $vehicearr=array();
+	  foreach($conn["connection"] as $con){
+	       //DBGecho $con["arrival"]["vehicle"];
+	       $vehicearr[sizeof($vehicearr)] = $con["arrival"]["vehicle"];
+	  }
 	  foreach($lb["departures"]["departure"] as $dep){
-	       if(strtolower($dep["station"]) == strtolower($dest)){
+	       if(strtolower($dep["station"]) == strtolower($dest) || in_array($dep["vehicle"],$vehicearr)){	    
 		    $newarray[sizeof($newarray)] = $dep;
 	       }
+//DBG echo $dep["vehicle"];
 	  }
 	  unset($lb["departures"]["departure"]);
 	  $lb["departures"]["departure"] = $newarray;
