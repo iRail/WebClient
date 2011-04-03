@@ -3,7 +3,7 @@
 if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['from'] != ""){
 		$dYEAR = substr($_GET['y'],-2);
 		header_remove();
-		header( 'Location: /route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR . '&direction=' . $_GET["direction"]);			
+		header('Location: /route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR . '&direction=' . $_GET["direction"]);			
 	}
 
 //page starts here:

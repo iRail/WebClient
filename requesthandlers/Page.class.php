@@ -150,7 +150,8 @@ function errorhandler($errno,$errstr){
 function logerror($errno,$errstr){
      include("config.php");
      $handle = fopen($configfile, "a");
-     $data = date("H:i:s d/m/y") . ";" . $errno . ";" . $errstr . "\n";
+     date_default_timezone_set("Europe/London");//For iso8601
+     $data = date("Y-m-d\TH:i:s\Z") . ";" . $errno . ";" . $errstr . "\n";
      fwrite($handle, $data);
      fclose($handle);
 }

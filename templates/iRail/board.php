@@ -2,9 +2,9 @@
 if(isset($_GET['from'])){
      header_remove();
      if(isset($_GET["to"]) && $_GET["to"] != ""){
-		header( 'Location: /board/'.$_GET['from'].'/'.$_GET['to'].'/');			
+		header('Location: /board/'.$_GET['from'].'/'.$_GET['to'].'/');			
 	}else{
-		header( 'Location: /board/'.$_GET['from'].'/');					
+		header('Location: /board/'.$_GET['from'].'/');					
 	}
 }
 ?>
