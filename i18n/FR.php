@@ -49,7 +49,7 @@ $i18n=array(
 		"frontendcoding" => "Front-end coding",//?
 		"backendcoding" => "Back-end coding", //?
 		"infrastructure" => "Infrastructure",
-		"andother" => "Et de nombreuses autres personnes",
+		"andothers" => "Et de nombreuses autres personnes",
 		"stealthiscode" => "Prenez le code (AGPL)"
      );
 ?>
