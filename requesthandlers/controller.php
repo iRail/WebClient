@@ -58,10 +58,11 @@ class Controller extends Page{
 	       if(!isset($direction)){
 		    $direction = "depart";
 	       }
+	       $date_ = date("dmy");
 	       if(!isset($time)){
 		    $time=date("Hi");
-	       }if(!isset($date_)){
-		    $date_ = date("dmy");
+	       }if(isset($_GET["date"])){
+		    $date_ = $_GET["date"];
 	       }
 	       return $data->getConnections($from, $to, $direction, $time, $date_);
 	  }else if($page != "error"){

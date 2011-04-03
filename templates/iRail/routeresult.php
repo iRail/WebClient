@@ -189,8 +189,8 @@ function trainMoveFormat($time){
 			
 			<div class="routeBottomBtnContainer">
 				<!-- Ride later sets the new depart hour to the old arrival hour, and ride ealier is not working yet, need some help here-->
-				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["departure"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><strong><</strong> <?=$i18n["rideEarlier"] ?></a></p></div>
-				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . trainMoveFormat($connection["arrival"]["time"]) . "&date=" . $_GET["date"] . "&direction=" . $_GET["direction"]; ?>"><?=$i18n["rideLater"] ?> <strong>></strong></a></p></div>
+				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><strong><</strong> <?=$i18n["rideEarlier"] ?></a></p></div>
+																																																	     <div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><?=$i18n["rideLater"] ?> <strong>></strong></a></p></div>
 			</div>
 		</form>
 		</div>
