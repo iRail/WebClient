@@ -110,7 +110,7 @@ class DataLayer {
 	       );
 	  try{
 	       $liveboard= APICall::execute("liveboard", $args);
-	       if($destination != ""){
+	       if(isset($liveboard["departures"]) && $destination != ""){
 		    //only get the destinations out of it
 		    $liveboard = $this->findInLiveboard($liveboard,$station,$destination,$time);
 	       }
