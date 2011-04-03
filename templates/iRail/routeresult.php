@@ -18,9 +18,6 @@ if(isset($_GET["hiddenDirection"])){
 function formatDuration($dur){
      $i = $dur/60%60;
      $h = floor($dur/3600);
-     //    if($h < 10){ // don't do this. too much zeros
-     //	  $h = "0" . $h;
-     //   }
      if($i<10){
 	  $i = "0" . $i;
      }
@@ -61,11 +58,6 @@ function trainMoveFormat($time){
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-        <script>
-      var stations= [<? foreach($content["station"] as $station){
-	   echo "\"" . $station["name"] . "\",";
-      } ?>];
-        </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body>
@@ -117,7 +109,7 @@ function trainMoveFormat($time){
 							<div class="platformStyle"><? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
 						</div>
 						<div class="infoRouteMid routeRedStations">
-							<?=$content["connection"][0]["departure"]["station"]?>
+							<?=$connection["departure"]["station"]?>
 						</div>
 					</div>
 
@@ -164,7 +156,7 @@ function trainMoveFormat($time){
 							↓
 						</div>
 						<div class="infoRouteMid">
-							<?=formatVehicle($content["connection"][0]["arrival"]["vehicle"])?> <span class="routeSmallerFont"><?=$content["connection"][0]["arrival"]["direction"]["name"]?></span>
+							<?=formatVehicle($connection["arrival"]["vehicle"])?> <span class="routeSmallerFont"><?=$connection["arrival"]["direction"]["name"]?></span>
 						</div>
 					</div>
 					
@@ -176,7 +168,7 @@ function trainMoveFormat($time){
 							<div class="platformStyle"><? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?></div>
 						</div>
 						<div class="infoRouteMid routeRedStations">
-							<?=$content["connection"][0]["arrival"]["station"]?>
+							<?=$connection["arrival"]["station"]?>
 						</div>
 					</div>
 				</div>

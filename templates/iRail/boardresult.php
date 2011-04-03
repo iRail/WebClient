@@ -40,11 +40,6 @@ function formatTime($time){
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-        <script>
-      var stations= [<? foreach($content["station"] as $station){
-	   echo "\"" . $station["name"] . "\",";
-      } ?>];
-        </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
     <body>
@@ -67,7 +62,7 @@ function formatTime($time){
 				<p style="padding-left: 5px;">
 				<?=$content["station"]?><br>
 				<?
-					if($_GET["destination"]){
+     if(isset($_GET["destination"])){
 						echo "<img src=\"/templates/iRail/images/arrowRoute.png\" alt=\"arrow\"/>&nbsp;" . $_GET["destination"];
 					}
 				?>

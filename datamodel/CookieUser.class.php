@@ -154,7 +154,7 @@ class CookieUser implements IUser{
      private function containsRoute($atf,$att,$from, $to){
 	  $indices = array_keys($atf, $from);
 	  foreach($indices as $index){
-	       if(isset($att[$index]) &&$att[$index] == $to){
+	       if(isset($att[$index]) && strtolower($att[$index]) == strtolower($to)){
 		    return true;
 	       }
 	  }
@@ -165,7 +165,7 @@ class CookieUser implements IUser{
      private function containsBoard($abo,$abt,$of, $to = ""){
 	  $indices = array_keys($abo, $of);
 	  foreach($indices as $index){
-	       if(isset($abt[$index]) && $abt[$index] == $to){
+	       if(isset($abt[$index]) && strtolower($abt[$index]) == strtolower($to)){
 		    return true;
 	       }
 	  }
@@ -182,7 +182,7 @@ class CookieUser implements IUser{
      }
 
      public function getLastUsedRoute(){
-	  $index = $this->numberofusedroutes % $this->numberofvalues;
+	  $index = ($this->numberofusedroutes % $this->numberofvalues)-1;
 	  if(isset($this->usedroutesfrom[$index]) && isset($this->usedroutesto[$index])){
 	       $from = $this->usedroutesfrom[$index];
 	       $to = $this->usedroutesto[$index];
@@ -192,7 +192,7 @@ class CookieUser implements IUser{
      }
      
      public function getLastUsedBoard(){
-	  $index = $this->numberofusedboards % $this->numberofvalues;
+	  $index =($this->numberofusedboards % $this->numberofvalues) -1;
 	  if(isset($this->usedboardsof[$index])){
 	       $of = $this->usedboardsof[$index];
 	  }else{

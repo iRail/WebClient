@@ -69,7 +69,7 @@ abstract class Page {
 	       }else{
 		    throw new Exception("language doesn't exist");
 	       }
-	  }else if(in_array(strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2)), $this->AVAILABLE_LANGUAGES)){
+	  }else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && in_array(strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2)), $this->AVAILABLE_LANGUAGES)){
 	       $lang = strtoupper(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2));
 	       if (in_array($lang, $this->AVAILABLE_LANGUAGES)) {
 		    $this->lang = $lang;
