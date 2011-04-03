@@ -2,6 +2,7 @@
 //this piece of code will format the url correctly and redirect us to the right URL
 if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['from'] != ""){
 		$dYEAR = substr($_GET['y'],-2);
+		header_remove();
 		header( 'Location: /route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR . '&direction=' . $_GET["direction"]);			
 	}
 
