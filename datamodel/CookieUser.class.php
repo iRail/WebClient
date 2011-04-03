@@ -44,9 +44,11 @@ class CookieUser implements IUser{
 	  for($i=0;$i<$numberof;$i++){
 	       //killing in the
 	       $nameof = $name . $i;
+	       $ar = &$this->$name;
 	       if(isset($_COOKIE[$nameof])){
-		    $ar = &$this->$name;
 		    $ar[$i] = $_COOKIE[$nameof];
+	       }else{
+		    $ar[$i] = "";
 	       }
 	  }
      }
