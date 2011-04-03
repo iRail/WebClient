@@ -102,7 +102,7 @@ function trainMoveFormat($time){
 			<div class="routeCube routeBlackStations" id="routeCube" onclick="fold(this)">
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
-						<? print formatTime($connection["departure"]["time"]) . "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/><img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-right:10px;\"/>" . formatTime($connection["arrival"]["time"]); ?>
+						<? print formatTime($connection["departure"]["time"]) . "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>" . formatTime($connection["arrival"]["time"]); //todo: add icons ?>
 					</div>
 					<div class="routeCubeRight">
 						| <?=formatDuration($connection["duration"])?> |
