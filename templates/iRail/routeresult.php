@@ -109,7 +109,7 @@ function trainMoveFormat($time){
 							<div class="platformStyle"><? if(is_numeric($connection["departure"]["platform"])){ echo $connection["departure"]["platform"];}else{ echo "-";} ?></div>
 						</div>
 						<div class="infoRouteMid routeRedStations">
-							<?=$content["connection"][0]["departure"]["station"]?>
+							<?=$connection["departure"]["station"]?>
 						</div>
 					</div>
 
@@ -156,7 +156,7 @@ function trainMoveFormat($time){
 							↓
 						</div>
 						<div class="infoRouteMid">
-							<?=formatVehicle($content["connection"][0]["arrival"]["vehicle"])?> <span class="routeSmallerFont"><?=$content["connection"][0]["arrival"]["direction"]["name"]?></span>
+							<?=formatVehicle($connection["arrival"]["vehicle"])?> <span class="routeSmallerFont"><?=$connection["arrival"]["direction"]["name"]?></span>
 						</div>
 					</div>
 					
@@ -168,7 +168,7 @@ function trainMoveFormat($time){
 							<div class="platformStyle"><? if(is_numeric($connection["arrival"]["platform"])){ echo $connection["arrival"]["platform"];}else{ echo "-";} ?></div>
 						</div>
 						<div class="infoRouteMid routeRedStations">
-							<?=$content["connection"][0]["arrival"]["station"]?>
+							<?=$connection["arrival"]["station"]?>
 						</div>
 					</div>
 				</div>
