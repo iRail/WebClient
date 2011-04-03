@@ -150,7 +150,7 @@ function errorhandler($errno,$errstr){
 function logerror($errno,$errstr){
      include("config.php");
      $handle = fopen($configfile, "a");
-     $data = date("H:i:s d/m/y") . ";" . $errstr . ";" . $errstr . "\n";
+     $data = date("H:i:s d/m/y") . ";" . $errno . ";" . $errstr . "\n";
      fwrite($handle, $data);
      fclose($handle); 
 }
