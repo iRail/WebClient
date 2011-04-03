@@ -33,6 +33,8 @@ class Controller extends Page{
 	       return $this->user->getLastUsedRoute();
 	  }else if($page == "board"){
 	       return $this->user->getLastUsedBoard();
+	  }else if($page == "settings"){
+	       //TODO
 	  }
      }
      

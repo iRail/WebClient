@@ -154,7 +154,7 @@ class CookieUser implements IUser{
      private function containsRoute($atf,$att,$from, $to){
 	  $indices = array_keys($atf, $from);
 	  foreach($indices as $index){
-	       if(isset($att[$index]) &&$att[$index] == $to){
+	       if(isset($att[$index]) && strtolower($att[$index]) == strtolower($to)){
 		    return true;
 	       }
 	  }
@@ -165,7 +165,7 @@ class CookieUser implements IUser{
      private function containsBoard($abo,$abt,$of, $to = ""){
 	  $indices = array_keys($abo, $of);
 	  foreach($indices as $index){
-	       if(isset($abt[$index]) && $abt[$index] == $to){
+	       if(isset($abt[$index]) && strtolower($abt[$index]) == strtolower($to)){
 		    return true;
 	       }
 	  }

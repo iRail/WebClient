@@ -1,8 +1,8 @@
 <?php
 $i18n=array(
 		"search"=>"Chercher",
-		"departure_at" => "Depart de",
-		"arrival_at" => "Arrivée à",
+		"departure_at" => "Départ",
+		"arrival_at" => "Arrivée",
 		"to" => "Vers",
 		"from" => "De",
 		"favourite" => "Favori",
