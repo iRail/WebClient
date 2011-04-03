@@ -184,13 +184,11 @@ class CookieUser implements IUser{
      public function getLastUsedRoute(){
 	  $index = $this->numberofusedroutes % $this->numberofvalues;
 	  if(isset($this->usedroutesfrom[$index]) && isset($this->usedroutesto[$index])){
-	       $frommm = $this->usedroutesfrom[$index];
-	       $tooo = $this->usedroutesto[$index];
-	       return array("from"=> $frommm, "to" => $tooo);
-	  }else{
-	       return array("from"=> "", "to" => "");
+	       $from = $this->usedroutesfrom[$index];
+	       $to = $this->usedroutesto[$index];
+	       return array("from"=> $from, "to" => $to);
 	  }
-	  
+	  return array("from"=> "", "to" => "");
      }
      
      public function getLastUsedBoard(){

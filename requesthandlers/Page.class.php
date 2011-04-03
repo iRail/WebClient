@@ -152,7 +152,7 @@ function logerror($errno,$errstr){
      $handle = fopen($configfile, "a");
      $data = date("H:i:s d/m/y") . ";" . $errno . ";" . $errstr . "\n";
      fwrite($handle, $data);
-     fclose($handle); 
+     fclose($handle);
 }
 
 ?>

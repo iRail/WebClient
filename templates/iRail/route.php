@@ -1,6 +1,6 @@
 ﻿<?
 //this piece of code will format the url correctly and redirect us to the right URL
-	if($_GET['to'] != "" && $_GET['from'] != ""){
+if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['from'] != ""){
 		$dYEAR = substr($_GET['y'],-2);
 		header( 'Location: /route/'.$_GET['from'].'/'.$_GET['to'].'/?time='. $_GET['h'] .''. $_GET['m'] . '&date=' . $_GET['d'] .''. $_GET['mo'] .''. $dYEAR . '&direction=' . $_GET["direction"]);			
 	}
@@ -70,7 +70,7 @@
 $last = $this->user->getLastUsedRoute();
 ?>
                 <div class="inputFrom">
-                    <input autocomplete="off" value="" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from" value="<?=$last["from"]?>" />
+                    <input autocomplete="off" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from" value="<?=$last["from"]?>" />
                     <div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
                 </div>
@@ -78,7 +78,7 @@ $last = $this->user->getLastUsedRoute();
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" class="inputStyle" value="<?=$_GET["to"] ?>" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
+                    <input autocomplete="off" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>
                 </div>

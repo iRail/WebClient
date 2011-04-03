@@ -1,6 +1,6 @@
 <?
-if($_GET['from']){
-	if($_GET["to"] != ""){
+if(isset($_GET['from'])){
+     if(isset($_GET["to"]) && $_GET["to"] != ""){
 		header( 'Location: /board/'.$_GET['from'].'/'.$_GET['to'].'/');			
 	}else{
 		header( 'Location: /board/'.$_GET['from'].'/');					
@@ -50,8 +50,13 @@ if($_GET['from']){
                     </div>
                     <div class="fromHeader"><?=$i18n["of"] ?></div>
                 </div>
+<?
+$last = $this->user->getLastUsedBoard();
+$lastof = $last["of"];
+$lastto = $last["to"];
+?>
                 <div class="inputFrom">
-                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" class="inputStyle" type="text" id="from" name="from"/>
+                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" class="inputStyle" type="text" id="from" name="from" value="<?=$last["of"]?>"/>
 					<div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
 				</div>
@@ -59,7 +64,7 @@ if($_GET['from']){
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to_optional"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" class="inputStyle" type="text" id="to" name="to"/>
+                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" class="inputStyle" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>               
 			   </div>
@@ -70,15 +75,11 @@ if($_GET['from']){
                     <div class="centerDivBtn">
                         <input class="gradientBtnSearch Btn" type="submit" name="search" id="search" value="<?=$i18n["show_live_board"] ?>"/>
                     </div>
-						<?
-							if($_GET["search"]){
-								if($_GET["from"]){
-									
-								}else{
-									print "<p style=\"padding: 10px; color: #FFFFFF;\">". $i18n["errSubmitBoard"] . "</p>";
-								}
-							}
-						?>
+<?
+     if(isset($_GET["search"]) && !$_GET["from"]){
+	  print "<p style=\"padding: 10px; color: #FFFFFF;\">". $i18n["errSubmitBoard"] . "</p>";
+     }
+?>
                 </div>
             </div>
 		</form>
