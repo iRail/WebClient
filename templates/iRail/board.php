@@ -15,6 +15,15 @@ if(isset($_GET['from'])){
         <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
+	<!-- as not every OS supports HTML-less icon detection, provide this in details, and link to imgage dir instead of root -->
+	<!-- 1. iPhone 4/retina --> 
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="./templates/iRail/images/apple-touch-icon-114x114-precomposed.png">
+	<!-- iPad G1 -->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./templates/iRail/images/apple-touch-icon-72x72-precomposed.png">
+	<!-- non-retina iPhone, iPod Touch, Android 2.1+ -->
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="./templates/iRail/images/apple-touch-57x57-icon-precomposed.png">
+	<!-- everything else, provider higher resolution img -->
+	<link rel="apple-touch-icon-precomposed" href="./templates/iRail/images/apple-touch-icon-precomposed.png">
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
