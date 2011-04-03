@@ -3,9 +3,6 @@
 function formatDuration($dur){
      $i = $dur/60%60;
      $h = floor($dur/3600);
-     //    if($h < 10){ // don't do this. too much zeros
-     //	  $h = "0" . $h;
-     //   }
      if($i<10){
 	  $i = "0" . $i;
      }
@@ -71,7 +68,7 @@ function formatTime($time){
 				<?=$content["station"]?><br>
 				<?
 					if($_GET["destination"]){
-						print "<img src=\"/templates/iRail/images/arrowRoute.png\" alt=\"arrow\"/>" . $_GET["destination"];
+						echo "<img src=\"/templates/iRail/images/arrowRoute.png\" alt=\"arrow\"/>&nbsp;" . $_GET["destination"];
 					}
 				?>
 				</p>

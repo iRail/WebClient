@@ -89,7 +89,7 @@ function trainMoveFormat($time){
 			<div class="routeHeader">
 				<p>
 				<?=$content["connection"][0]["departure"]["station"]?><br>
-				<img src="/templates/iRail/images/arrowRoute.png" alt="arrow"/><?=$content["connection"][0]["arrival"]["station"]?>
+				<img src="/templates/iRail/images/arrowRoute.png" alt="arrow"/>&nbsp;<?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
 				<input type="text" value="<?=$_GET["direction"] ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
 				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>

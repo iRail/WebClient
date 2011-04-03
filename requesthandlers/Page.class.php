@@ -148,7 +148,11 @@ function errorhandler($errno,$errstr){
      exit(0);
 }
 function logerror($errno,$errstr){
-     //TODO
+     include("config.php");
+     $handle = fopen($configfile, 'a');
+     $data = date("H:i d/m/y") . ";" . $errstr . ";" . $errstr . "\n";
+     fwrite($handle, $data);
+     fclose($handle); 
 }
 
 ?>
