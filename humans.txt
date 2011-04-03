@@ -1,0 +1,53 @@
+/*
+ *     _ _____       _ _   _          
+ *    (_)  __ \     (_) | | |         
+ *     _| |__) |__ _ _| | | |__   ___ 
+ *    | |  _  // _` | | | | '_ \ / _ \
+ *    | | | \ \ (_| | | |_| |_) |  __/
+ *    |_|_|  \_\__,_|_|_(_)_.__/ \___|
+ * 
+ */
+
+
+/* humanstxt */
+
+/* TEAM */
+
+	Project leader: Yeri Tiete
+	Site: http://yeri.be
+	Twitter: @Tuinslak
+	Location: Belgium
+
+	Project leader: Pieter Colpaert
+	Site: http://bonsansnom.wordpress.com/
+	Twitter: @PieterColpaert
+	Location: Belgium
+
+	Project leader: Christophe Versieux
+	Twitter: @Waza_be
+	Location: Belgium
+
+	Coder: Muhammet
+	Site: ...
+	Location: Belgium
+
+ 	Various roles: http://project.irail.be/wiki/Contributors
+
+/* THANKS */ 
+
+	Everyone who helped out in the iRail project, one way or another. You know who you are!
+
+	Our data providers. You too, you know who you are. ;)
+
+/* INFO */
+
+	This website is part of the iRail Project. 
+	An attempt to liberate data.
+	iRail.be provides a webinterface to the iRail API, optimised for mobile devices. 
+
+	Additional information can be found on:
+		(o) http://project.irail.be
+		(o) http://npo.irail.be
+		(o) http://api.irail.be
+
+/* EOF */
