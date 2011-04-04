@@ -943,3 +943,14 @@ input {
     color: #ffffff;
 }
 /* end 404 style */
+
+/*For config page*/
+ul{
+    list-style-type: square;
+}
+ul li{
+    padding-left:25px;
+}
+ul li li{
+    padding-left:30px;
+}

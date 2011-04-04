@@ -86,11 +86,11 @@ function trainMoveFormat($time){
 				<?=$content["connection"][0]["departure"]["station"]?><br>
 				<img src="/templates/iRail/images/arrowRoute.png" alt="arrow"/>&nbsp;<?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
-				<input type="text" value="<?=$_GET["direction"] ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
+				<input type="text" value="<? if(isset($_GET["direction"])) echo $_GET["direction"]; ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
 				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
 				<div style="width: 100%; padding: 5px 0px 0px 0pt;">
 					<?
-						print date('d F Y', mktime(0, 0, 0, $date[1], $date[0], $date[2])) . "<br/>" . $time[0] . ":" . $time[1];
+						print date('d F Y', $content["connection"][0]["departure"]["time"]) . "<br/>" . $time[0] . ":" . $time[1];
 					?>
 				</div>
 			</div>
@@ -98,7 +98,7 @@ function trainMoveFormat($time){
 			<?
 			if(sizeof($content["connection"]) == 0){
 				print $i18n["ErrNoResults"];
-			}
+			}else{
 			foreach($content["connection"] as $connection){
 			?>
 			<!-- START: Class routeCube will be multiplied by x quantity of steps passenger has to take to reach destination -->
@@ -187,6 +187,7 @@ function trainMoveFormat($time){
 			</div>
 			<!-- END -->
 			<?
+			}
 			}
 			?>
 			
