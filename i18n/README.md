@@ -1,0 +1,1 @@
+This is the directory to take care of the internationalisation. Whenever you will output a piece of text, it has to go through this system. You can use it in your templates directory by doing: $this->i18n['standardstringname']
