@@ -4,7 +4,7 @@ templates/iRail/css/main.css
 templates/iRail/js/main.js
 templates/iRail/images/change.png
 templates/iRail/images/fav.png
-templates/iRail/images/fil.png
+templates/iRail/images/fill.png
 templates/iRail/images/trein.png
 templates/iRail/images/addfav.gif
 templates/iRail/images/arrow.gif

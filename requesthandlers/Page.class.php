@@ -147,6 +147,7 @@ function errorhandler($errno,$errstr){
      include($file);
      exit(0);
 }
+
 function logerror($errno,$errstr){
      include("config.php");
      $handle = fopen($configfile, "a");

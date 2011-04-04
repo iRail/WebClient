@@ -27,7 +27,7 @@ $test = $this->user->getLang();
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings bannerLinkActive"><img style="margin-top: 15px; margin-bottom: 10px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings bannerLinkActive"><img style="margin-top: 15px; margin-bottom: 10px;" src="/templates/iRail/images/settingsActive.png" alt="set" height="18" width="14"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
 			<div class="settingsContent">
