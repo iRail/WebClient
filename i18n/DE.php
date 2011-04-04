@@ -46,12 +46,12 @@ $i18n=array(
 		"npo" => "NPO",
 		"authors" => "Autoren",
 		"design" => "Entwurf",
-		"frontendcoding" => "Front-end Entwicklung",
-		"backendcoding" => "Back-end Entwicklung",
+		"frontendcoding" => "Front-end coding",
+		"backendcoding" => "Back-end coding",
 		"infrastructure" => "Infrastruktur",
-		"andothers" => "Und viele andere",
+		"andothers" => "Und viele anderen",
 		"stealthiscode" => "Steal this code (AGPL)",
-		"ErrNoResults" => "Leider haben wir nichts gefunden.",
+		"ErrNoResults" => "Leider, keine Resultate gefunden.",
 		"aboutUs" => "Über uns"
      );
 ?>
