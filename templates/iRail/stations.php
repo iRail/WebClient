@@ -343,7 +343,7 @@
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img style="margin-top: 15px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
@@ -364,35 +364,3 @@
         </div>
     </body>
 </html>
-<?
-	    function generateList($arrayname, $page){
-		 $count = 0;
-		     for ($i=0; $i < sizeof($page[$arrayname . "routes"]["from"]); $i++){
-			  
-			  if($count%2 ==0){
-			            echo "<div class=\"containerResultsBoxBlue\">";
-			       
-			       }else{
-				    echo "<div class=\"containerResultsBoxWhite\">";
-			       }
-			       echo "<div class=\"resultsName\">";
-			       echo "<div class=\"favFrom\">" . $page[$arrayname . "routes"]["from"][$i] . "</div>";
-			       echo "<div class=\"favTo\">". $page[$arrayname . "routes"]["to"][$i] ."</div>";
-			       echo "</div></div>";
-			       $count ++;
-		     }
-		     for ($i=0; $i < sizeof($page[$arrayname . "routes"]["from"]); $i++){
-			       if($count%2 ==0){
-			            echo "<div class=\"containerResultsBoxBlue\">";
-			       }else{
-				    echo "<div class=\"containerResultsBoxWhite\">";
-			       }
-			       echo "<div class=\"resultsName\">";
-			       echo "<div class=\"favFrom\">" . $page[$arrayname . "boards"]["of"][$i] . "</div>";
-			       echo "<div class=\"favTo\">". $page[$arrayname . "boards"]["to"][$i] ."</div>";
-			       echo "</div></div>";
-			       $count ++;
-		     }
-}
-
-?>

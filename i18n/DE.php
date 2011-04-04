@@ -51,6 +51,7 @@ $i18n=array(
 		"infrastructure" => "Infrastructure",
 		"andothers" => "And many others",
 		"stealthiscode" => "Steal this code (AGPL)",
-		"ErrNoResults" => "Sorry, couldn't find any results"
+		"ErrNoResults" => "Sorry, couldn't find any results",
+		"aboutUs" => "About us"
      );
 ?>

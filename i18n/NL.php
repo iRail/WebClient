@@ -51,6 +51,7 @@ $i18n=array(
 		"infrastructure" => "Infrastructuur",
 		"andothers" => "And vele anderen",
 		"stealthiscode" => "Steel deze code (AGPL)",
-		"ErrNoResults" => "Sorry, er werden geen resultaten gevonden"
+		"ErrNoResults" => "Sorry, er werden geen resultaten gevonden",
+		"aboutUs" => "Over ons"
      );
 ?>

@@ -76,7 +76,7 @@ function trainMoveFormat($time){
 			</div>
 			<a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
 			<a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-            <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
+            <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img style="margin-top: 15px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
 			<div class="bannerCubeContainerScaleFill gradientBanner"></div>
 		</div>
 		<div class="routeContainer">
@@ -88,7 +88,7 @@ function trainMoveFormat($time){
 				</p>
 				<input type="text" value="<?=$_GET["direction"] ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
 				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
-				<div style="width:100%; padding: 5px; padding-left: 150px;">
+				<div style="width: 100%; padding: 5px 0px 0px 0pt;">
 					<?
 						print date('d F Y', mktime(0, 0, 0, $date[1], $date[0], $date[2])) . "<br/>" . $time[0] . ":" . $time[1];
 					?>

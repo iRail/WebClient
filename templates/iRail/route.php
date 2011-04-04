@@ -35,9 +35,8 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 			  // Browser downloaded a new app cache.
 			  // Swap it in and reload the page to get the new hotness.
 			  window.applicationCache.swapCache();
-			  if (confirm('A new version of this site is available. Load it?')) {
-				window.location.reload();
-			  }
+			window.location.reload();
+			  
 			} else {
 			  // Manifest didn't changed. Nothing new to server.
 			}
@@ -64,7 +63,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img style="margin-top: 15px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">

@@ -51,6 +51,7 @@ $i18n=array(
 		"infrastructure" => "Infrastructure",
 		"andothers" => "Et de nombreuses autres personnes",
 		"stealthiscode" => "Prenez le code (AGPL)",
-		"ErrNoResults" => "Désole, il n'y a pas des résultats"
+		"ErrNoResults" => "Désole, il n'y a pas des résultats",
+		"aboutUs" => "About us"
      );
 ?>
