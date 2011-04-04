@@ -50,6 +50,7 @@ $i18n=array(
 		"backendcoding" => "Back-end coding", //?
 		"infrastructure" => "Infrastructure",
 		"andothers" => "Et de nombreuses autres personnes",
-		"stealthiscode" => "Prenez le code (AGPL)"
+		"stealthiscode" => "Prenez le code (AGPL)",
+		"ErrNoResults" => "Désole, il n'y a pas des résultats"
      );
 ?>

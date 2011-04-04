@@ -1,0 +1,12 @@
+CACHE MANIFEST
+
+CACHE:
+templates/iRail/css/main.css
+templates/iRail/js/main.js
+templates/iRail/images/change.png
+templates/iRail/images/fav.png
+templates/iRail/images/fil.png
+templates/iRail/images/trein.png
+board/
+route/
+stations/

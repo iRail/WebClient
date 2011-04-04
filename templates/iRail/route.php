@@ -12,7 +12,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 <html manifest="/appcache.mf">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
 	<!-- as not every OS supports HTML-less icon detection, provide this in details, and link to imgage dir instead of root -->
@@ -54,7 +54,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
-                <div class="bannerCubeContainerFixedLogo gradient">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
                     <div class="Top">iRail</div>
                     <div class="Bot">
                         <div class="blackFlagColor"></div>
@@ -140,7 +140,7 @@ $last = $this->user->getLastUsedRoute();
 								 echo "<option value=\"". $dummyMin . "\"  >" . $dummyMin  . "</option>";
 							}
 							echo "<option value=\"". date("y") . "\" selected=\"selected\" >" . date("Y")  . "</option>";
-							if(date("n") != 1 ){
+							if(date("n") == 12){
 								 echo "<option value=\"". $dummyPlus . "\">" . $dummyPlus  . "</option>";
 							}
                             $dummy = date("Y") + 1;

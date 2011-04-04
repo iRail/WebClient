@@ -34,7 +34,7 @@ function formatTime($time){
 <html lang="en" manifest="appcache.mf">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
@@ -45,7 +45,7 @@ function formatTime($time){
     <body>
 	<div class="MainContainer">
 		<div class="bannerContainer">
-			<div class="bannerCubeContainerFixedLogo gradient">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
 				<div class="Top">iRail</div>
 				<div class="Bot">
 					<div class="blackFlagColor"></div>
@@ -71,6 +71,13 @@ function formatTime($time){
 		<div class="boardContainer">
 			<?
 			$styleBoardInfo = "boardInfo";
+			if($content["departures"]["number"] == 0){
+				?>
+				<div class="<? echo $styleBoardInfo; ?>">
+					<?=$i18n["ErrNoResults"] ?>
+				</div>
+				<?
+			}
 			for($i = 0; $i < $content["departures"]["number"]; $i++){
 				$departures = $content["departures"];
 				$departure = $departures["departure"][$i];
