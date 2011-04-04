@@ -13,7 +13,7 @@
     <body class="bckgroundDarkGrey">
         <div class="MainContainer">
             <div class="bannerContainer">
-                <div class="bannerCubeContainerFixedLogo gradient">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
                     <div class="Top">iRail</div>
                     <div class="Bot">
                         <div class="blackFlagColor"></div>
@@ -23,7 +23,7 @@
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings bannerLinkActive"><div><div class="settingsBtn"/></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img style="margin-top: 15px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">

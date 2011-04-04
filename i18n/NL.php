@@ -50,6 +50,8 @@ $i18n=array(
 		"backendcoding" => "Back-end coding",
 		"infrastructure" => "Infrastructuur",
 		"andothers" => "And vele anderen",
-		"stealthiscode" => "Steel deze code (AGPL)"
+		"stealthiscode" => "Steel deze code (AGPL)",
+		"ErrNoResults" => "Sorry, er werden geen resultaten gevonden",
+		"aboutUs" => "Over ons"
      );
 ?>

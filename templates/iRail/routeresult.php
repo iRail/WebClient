@@ -1,4 +1,6 @@
 ﻿<?
+$date = str_split($_GET["date"], 2);
+$time = str_split($_GET["time"], 2);
 function formatDateFav($time){
      return date("dmy",$time);
 }
@@ -52,7 +54,7 @@ function trainMoveFormat($time){
 <html lang="en" manifest="/appcache.mf">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
@@ -64,7 +66,7 @@ function trainMoveFormat($time){
 	<div class="MainContainer">
 	<form action="" method="GET" name="formResults">
 		<div class="bannerContainer">
-			<div class="bannerCubeContainerFixedLogo gradient">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
 				<div class="Top">iRail</div>
 				<div class="Bot">
 					<div class="blackFlagColor"></div>
@@ -74,20 +76,29 @@ function trainMoveFormat($time){
 			</div>
 			<a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
 			<a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-            <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
+            <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img style="margin-top: 15px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
 			<div class="bannerCubeContainerScaleFill gradientBanner"></div>
 		</div>
 		<div class="routeContainer">
 			<div class="routeHeader">
 				<p>
+				
 				<?=$content["connection"][0]["departure"]["station"]?><br>
 				<img src="/templates/iRail/images/arrowRoute.png" alt="arrow"/>&nbsp;<?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
 				<input type="text" value="<?=$_GET["direction"] ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
 				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
+				<div style="width: 100%; padding: 5px 0px 0px 0pt;">
+					<?
+						print date('d F Y', mktime(0, 0, 0, $date[1], $date[0], $date[2])) . "<br/>" . $time[0] . ":" . $time[1];
+					?>
+				</div>
 			</div>
 			
 			<?
+			if(sizeof($content["connection"]) == 0){
+				print $i18n["ErrNoResults"];
+			}
 			foreach($content["connection"] as $connection){
 			?>
 			<!-- START: Class routeCube will be multiplied by x quantity of steps passenger has to take to reach destination -->

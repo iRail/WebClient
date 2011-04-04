@@ -2,7 +2,7 @@
 <html lang="en" appcache="/appcache.mf">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
@@ -84,9 +84,39 @@
 			//clear mainContainer;
 			mainHolder.innerHTML = "";
 			
-			var combinedFav = favRoute.concat(favBoard);
 			
-			for(i in combinedFav){
+			for(i in favRoute){
+				if(favRoute[i].getFrom() != ""){
+					var resultHolder = document.createElement('div');
+					if(teller % 2 == 0){
+						resultHolder.setAttribute("class", "containerResultsBoxWhite");
+					}else{
+						resultHolder.setAttribute("class", "containerResultsBoxBlue");
+					}			
+					var nameURL = document.createElement('a');
+					var nameDiv = document.createElement('div');
+					nameDiv.setAttribute("class", "usedMost");
+					
+					if(favRoute[i].getType() == "route"){
+						nameURL.setAttribute("href", "/route/"+favRoute[i].getFrom()+"/"+favRoute[i].getTo()+"/");
+						resultHolder.setAttribute("onclick", "window.location='/route/" + favRoute[i].getFrom()+"/"+favRoute[i].getTo() +"/'");
+						nameURL.innerHTML = "<p>"+favRoute[i].getFrom()+"<br/><strong>&rarr;</Strong>"+favRoute[i].getTo()+"</p>";					
+					}	
+					nameDiv.appendChild(nameURL);					
+					resultHolder.appendChild(nameDiv);
+					mainHolder.appendChild(resultHolder);
+					teller++;
+				}
+			}
+			
+			if(favBoard[0].getFrom() != ""){
+				var header = document.createElement('div');
+				header.setAttribute("style","width:100%; padding: 10px; padding-left: 5px;");
+				header.innerHTML = "<tr>";
+			}
+			
+			for(i in favBoard){
+				if(favBoard[i].getFrom() != ""){
 					var resultHolder = document.createElement('div');
 					if(teller % 2 == 0){
 						resultHolder.setAttribute("class", "containerResultsBoxWhite");
@@ -97,30 +127,22 @@
 					var nameURL = document.createElement('a');
 					var nameDiv = document.createElement('div');
 					nameDiv.setAttribute("class", "usedMost");
-					
-					if(combinedFav[i].getType() == "route"){
-						nameURL.setAttribute("href", "/route/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
-						resultHolder.setAttribute("onclick", "window.location='/route/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");
-						nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";					
-					}
-					
-					if(combinedFav[i].getType() == "board"){
-						if(combinedFav[i].getTo() == ""){
-							resultHolder.setAttribute("onclick", "window.location='/board/" + combinedFav[i].getFrom()+"/'");						
-							nameURL.setAttribute("href", "/board/"+combinedFav[i].getFrom()+"/");
-							nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"</p>";		
+					if(favBoard[i].getType() == "board"){
+						if(favBoard[i].getTo() == ""){
+							resultHolder.setAttribute("onclick", "window.location='/board/" + favBoard[i].getFrom()+"/'");						
+							nameURL.setAttribute("href", "/board/"+favBoard[i].getFrom()+"/");
+							nameURL.innerHTML = "<p>"+favBoard[i].getFrom()+"</p>";		
 						}else{
-							resultHolder.setAttribute("onclick", "window.location='/board/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");						
-							nameURL.setAttribute("href", "/board/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
-							nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";
+							resultHolder.setAttribute("onclick", "window.location='/board/" + favBoard[i].getFrom()+"/"+favBoard[i].getTo() +"/'");						
+							nameURL.setAttribute("href", "/board/"+favBoard[i].getFrom()+"/"+favBoard[i].getTo()+"/");
+							nameURL.innerHTML = "<p>"+favBoard[i].getFrom()+"<br/><strong>&rarr;</Strong>"+favBoard[i].getTo()+"</p>";
 						}
 					}			
 					nameDiv.appendChild(nameURL);					
 					resultHolder.appendChild(nameDiv);
-
-					
 					mainHolder.appendChild(resultHolder);
 					teller++;
+				}
 			}
 			if(teller == 1){
 				mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noFav"] . "</p>\""; ?>;
@@ -134,7 +156,8 @@
 			mainHolder.innerHTML = "";
 			var combinedFav = usedRoute.concat(usedBoard);
 			
-			for(i in combinedFav){
+			for(i in usedRoute){
+				if(usedRoute[i].getFrom() != ""){
 					var resultHolder = document.createElement('div');
 					if(teller % 2 == 0){
 						resultHolder.setAttribute("class", "containerResultsBoxWhite");
@@ -148,10 +171,10 @@
 					
 					nameDiv.setAttribute("class", "usedMost");
 					
-					if(combinedFav[i].getType() == "route"){
-						nameURL.setAttribute("href", "/route/"+combinedFav[i].getFrom()+"/"+combinedFav[i].getTo()+"/");
-						resultHolder.setAttribute("onclick", "window.location='/route/" + combinedFav[i].getFrom()+"/"+combinedFav[i].getTo() +"/'");
-						nameURL.innerHTML = "<p>"+combinedFav[i].getFrom()+"<br/><strong>&rarr;</Strong>"+combinedFav[i].getTo()+"</p>";					
+					if(usedRoute[i].getType() == "route"){
+						nameURL.setAttribute("href", "/route/"+usedRoute[i].getFrom()+"/"+usedRoute[i].getTo()+"/");
+						resultHolder.setAttribute("onclick", "window.location='/route/" + usedRoute[i].getFrom()+"/"+usedRoute[i].getTo() +"/'");
+						nameURL.innerHTML = "<p>"+usedRoute[i].getFrom()+"<br/><strong>&rarr;</Strong>"+usedRoute[i].getTo()+"</p>";					
 					}
 					
 					if(combinedFav[i].getType() == "board"){
@@ -170,7 +193,47 @@
 					
 					mainHolder.appendChild(resultHolder);
 					teller++;
+				}
 			}
+
+			if(usedBoard[0].getFrom() != ""){
+				var header = document.createElement('div');
+				header.setAttribute("style","width:100%; padding: 10px; padding-left: 5px;");
+				header.innerHTML = "<tr>";
+			}
+			
+			for(i in usedBoard){
+				if(usedBoard[i].getFrom() != ""){
+					var resultHolder = document.createElement('div');
+					if(teller % 2 == 0){
+						resultHolder.setAttribute("class", "containerResultsBoxWhite");
+					}else{
+						resultHolder.setAttribute("class", "containerResultsBoxBlue");
+					}			
+
+					var nameURL = document.createElement('a');
+					var nameDiv = document.createElement('div');
+
+					
+					nameDiv.setAttribute("class", "usedMost");
+					if(usedBoard[i].getType() == "board"){
+						if(usedBoard[i].getTo() == ""){
+							resultHolder.setAttribute("onclick", "window.location='/board/" + usedBoard[i].getFrom()+"/'");						
+							nameURL.setAttribute("href", "/board/"+usedBoard[i].getFrom()+"/");
+							nameURL.innerHTML = "<p>"+usedBoard[i].getFrom()+"</p>";		
+						}else{
+							resultHolder.setAttribute("onclick", "window.location='/board/" + usedBoard[i].getFrom()+"/"+usedBoard[i].getTo() +"/'");						
+							nameURL.setAttribute("href", "/board/"+usedBoard[i].getFrom()+"/"+usedBoard[i].getTo()+"/");
+							nameURL.innerHTML = "<p>"+usedBoard[i].getFrom()+"<br/><strong>&rarr;</Strong>"+usedBoard[i].getTo()+"</p>";
+						}
+					}					
+					nameDiv.appendChild(nameURL);					
+					resultHolder.appendChild(nameDiv);
+					
+					mainHolder.appendChild(resultHolder);
+					teller++;
+				}
+			}			
 			if(teller == 1){
 				mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noMostUsed"] . "</p>\""; ?>;
 			}
@@ -270,7 +333,7 @@
     <body onload="showFavRoutes()"> 
         <div class="MainContainer">
             <div class="bannerContainer">
-                <div class="bannerCubeContainerFixedLogo gradient">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
                     <div class="Top">iRail</div>
                     <div class="Bot">
                         <div class="blackFlagColor"></div>
@@ -280,7 +343,7 @@
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed bannerLinkActive"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
-                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img src="/templates/iRail/images/settings.png" alt="set" height="39" width="38"/></div></a>
+                <a href="/settings/"><div class="bannerCubeContainerFixedSettings gradientBanner"><img style="margin-top: 15px;" src="/templates/iRail/images/settings.png" alt="set" height="18" width="14"/></div></a>
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
             <div class="searchContainer">
@@ -301,35 +364,3 @@
         </div>
     </body>
 </html>
-<?
-	    function generateList($arrayname, $page){
-		 $count = 0;
-		     for ($i=0; $i < sizeof($page[$arrayname . "routes"]["from"]); $i++){
-			  
-			  if($count%2 ==0){
-			            echo "<div class=\"containerResultsBoxBlue\">";
-			       
-			       }else{
-				    echo "<div class=\"containerResultsBoxWhite\">";
-			       }
-			       echo "<div class=\"resultsName\">";
-			       echo "<div class=\"favFrom\">" . $page[$arrayname . "routes"]["from"][$i] . "</div>";
-			       echo "<div class=\"favTo\">". $page[$arrayname . "routes"]["to"][$i] ."</div>";
-			       echo "</div></div>";
-			       $count ++;
-		     }
-		     for ($i=0; $i < sizeof($page[$arrayname . "routes"]["from"]); $i++){
-			       if($count%2 ==0){
-			            echo "<div class=\"containerResultsBoxBlue\">";
-			       }else{
-				    echo "<div class=\"containerResultsBoxWhite\">";
-			       }
-			       echo "<div class=\"resultsName\">";
-			       echo "<div class=\"favFrom\">" . $page[$arrayname . "boards"]["of"][$i] . "</div>";
-			       echo "<div class=\"favTo\">". $page[$arrayname . "boards"]["to"][$i] ."</div>";
-			       echo "</div></div>";
-			       $count ++;
-		     }
-}
-
-?>
