@@ -94,6 +94,6 @@ $lastto = $last["to"];
             </div>
 		</form>
         </div>
-		<? inlude_once("templates/iRail/footer.php"); ?>
+		<? include_once("templates/iRail/footer.php"); ?>
     </body>
 </html>

@@ -25,6 +25,6 @@
                 <p class="err404underline removePadding"><a href="javascript:history.back()"><?=$i18n["go_back"] ?></a> <?=$i18n["or_try_to"] ?><a href="javascript:location.reload(true)"> <?=$i18n["refresh_page"] ?></a>.</p>
             </div>
         </div>
-<? inlude_once("templates/iRail/footer.php"); ?>
+<? include_once("templates/iRail/footer.php"); ?>
     </body>
 </html>
