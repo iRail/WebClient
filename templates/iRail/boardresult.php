@@ -15,11 +15,11 @@ function formatDelay($del){
 		if($min > 60){
 			$aantalH = floor($min / 60);
 			$min = $min % 60;
-			return"+" . $aantalH .":". $min;
+			return "+" . $aantalH .":". $min;
 		}
 		return"+" . $min;
      }
-	return "/";
+     return "/";
 }
 
 function formatDate($time){
