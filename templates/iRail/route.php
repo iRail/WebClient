@@ -190,6 +190,7 @@ $last = $this->user->getLastUsedRoute();
             </div>
 		</form>
         </div>
+<? inlude_once("templates/iRail/footer.php"); ?>
     </body>
 </html>
 

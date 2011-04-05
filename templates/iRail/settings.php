@@ -71,5 +71,6 @@ $test = $this->user->getLang();
 			</form>
 			</div>
         </div>
+<? inlude_once("templates/iRail/footer.php"); ?>
     </body>
 </html>

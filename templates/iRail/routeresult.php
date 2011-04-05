@@ -199,5 +199,6 @@ function trainMoveFormat($time){
 		</form>
 		</div>
 	</div>
+<? inlude_once("templates/iRail/footer.php"); ?>
 	</body>
 </html>
