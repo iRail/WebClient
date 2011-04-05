@@ -61,7 +61,7 @@ $test = $this->user->getLang();
 								<li><?=$i18n["design"]?>: Dennis Kestelle
 								<li><?=$i18n["frontendcoding"]?>: Muhammet Kilic
 								<li><?=$i18n["backendcoding"]?>: Pieter Colpaert
-								<li><?=$i18n["infrastructure"]?>: Yeri Tiete
+								<li><?=$i18n["infrastructure"]?>: <a href="http://yeri.be" target="_blank">Yeri Tiete</a>
 								<li><?=$i18n["andothers"]?>
 							</ul>
 						<li>&copy; 2011 iRail <?=$i18n["npo"];?>
