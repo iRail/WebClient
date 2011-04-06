@@ -11,6 +11,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 <!DOCTYPE html>
 <html manifest="/appcache.mf">
     <head>
+	<meta name="apple-mobile-web-app-capable"  content="yes" />
         <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
