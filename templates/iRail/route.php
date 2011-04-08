@@ -74,23 +74,25 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 			comboValueHour = hour.options[selIndexHour].value;
 			comboValueMin = min.options[selIndexMin].value;
 			
+			hour.value = curr_hour;
+			min.value = curr_min;
 			
-			for(var i = 0; i < hourL; i++){
-				if(hourChilds.item(i).value == comboValueHour){
-					hourChilds.item(i).removeAttribute("selected");
-				}
-				if(hourChilds.item(i).value == curr_hour){
-					hourChilds.item(i).setAttribute("selected","selected");
-				}
-			}
-			for(var i = 0; i < minL; i++){
-				if(minChilds.item(i).value == comboValueHour){
-					minChilds.item(i).removeAttribute("selected");
-				}
-				if(minChilds.item(i).value == curr_hour){
-					minChilds.item(i).addAttribute("selected","selected");
-				}
-			}
+			// for(var i = 0; i < hourL; i++){
+				// if(hourChilds.item(i).value == comboValueHour){
+					// hourChilds.item(i).removeAttribute("selected");
+				// }
+				// if(hourChilds.item(i).value == curr_hour){
+					// hourChilds.item(i).setAttribute("selected","selected");
+				// }
+			// }
+			// for(var i = 0; i < minL; i++){
+				// if(minChilds.item(i).value == comboValueHour){
+					// minChilds.item(i).removeAttribute("selected");
+				// }
+				// if(minChilds.item(i).value == curr_hour){
+					// minChilds.item(i).addAttribute("selected","selected");
+				// }
+			// }
 		}
 
         </script>
