@@ -47,10 +47,56 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
+	  
+	  
+	  
+
+		
+		function setTime(h, m){
+			var d = new Date();
+			var curr_hour = d.getHours();
+			var curr_min = d.getMinutes();
+		
+			var hour = document.getElementById(h);
+			var min = document.getElementById(m);
+		
+			var hourChilds = hour.childNodes;
+			var minChilds = min.childNodes;
+			
+			var hourL = hourChilds.length;
+			var minL = minChilds.length;
+			
+			
+			var selIndexHour = hour.selectedIndex;
+			var selIndexMin = min.selectedIndex;
+			
+			
+			comboValueHour = hour.options[selIndexHour].value;
+			comboValueMin = min.options[selIndexMin].value;
+			
+			
+			for(var i = 0; i < hourL; i++){
+				if(hourChilds.item(i).value == comboValueHour){
+					hourChilds.item(i).removeAttribute("selected");
+				}
+				if(hourChilds.item(i).value == curr_hour){
+					hourChilds.item(i).addAttribute("selected","selected");
+				}
+			}
+			for(var i = 0; i < minL; i++){
+				if(minChilds.item(i).value == comboValueHour){
+					minChilds.item(i).removeAttribute("selected");
+				}
+				if(minChilds.item(i).value == curr_hour){
+					minChilds.item(i).addAttribute("selected","selected");
+				}
+			}
+		}
+
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
+    <body onclick="removeAllHolders()" onload="setTime('timeselecth', 'timeselectm');" class="bckgroundDarkGrey">
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
