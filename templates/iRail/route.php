@@ -80,7 +80,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 					hourChilds.item(i).removeAttribute("selected");
 				}
 				if(hourChilds.item(i).value == curr_hour){
-					hourChilds.item(i).addAttribute("selected","selected");
+					hourChilds.item(i).setAttribute("selected","selected");
 				}
 			}
 			for(var i = 0; i < minL; i++){
