@@ -77,13 +77,13 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 				}
 			}
 			for(var i = 0; i < minL; i++){
+				//Set to 10, 20, 30, ...
 				curr_min = curr_min / 10.0;
 				curr_min = Math.round(curr_min);
 				curr_min = curr_min * 10;
-				alert(curr_min);
-				if(curr_min > minChilds.item(i).value && curr_min < minChilds.item(i+1).value){
+
+				if(minChilds.item(i).value == curr_min){
 					minChilds.item(i).setAttribute("selected","selected");
-					
 				}
 			}
 		}
