@@ -8,6 +8,7 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteRule ^national$ requesthandlers/controller.php?page=route [QSA,NC,L]
 RewriteRule ^$ requesthandlers/controller.php?page=route [QSA,NC,L]
 RewriteRule ^route[/]?$ requesthandlers/controller.php?page=route [QSA,NC,L]
 RewriteRule ^board[/]?$ requesthandlers/controller.php?page=board [QSA,NC,L]

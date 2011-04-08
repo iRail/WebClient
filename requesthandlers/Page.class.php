@@ -147,13 +147,24 @@ function errorhandler($errno,$errstr){
      include($file);
      exit(0);
 }
+
 function logerror($errno,$errstr){
      include("config.php");
      $handle = fopen($configfile, "a");
      date_default_timezone_set("Europe/London");//For iso8601
-     $data = date("Y-m-d\TH:i:s\Z") . ";" . $errno . ";" . $errstr . "\n";
+     $data = date("Y-m-d\TH:i:s\Z") . ";" . $errno . ";" . $errstr . ";" . selfURL() . "\n";
      fwrite($handle, $data);
      fclose($handle);
 }
+//help function for logging purposes
+function selfURL() { 
+     $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+     $protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
+     $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+     return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI']; 
+} 
 
+function strleft($s1, $s2) { 
+     return substr($s1, 0, strpos($s1, $s2)); 
+}
 ?>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" appcache="/appcache.mf">
     <head>
+	<meta name="apple-mobile-web-app-capable"  content="yes" />
         <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
-        <title>iRail.be - <?=$content["message"] ?></title>
+      <title>iRail.be - Error :(</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
         <script src="/templates/iRail/js/main.js"></script>
@@ -25,5 +26,6 @@
                 <p class="err404underline removePadding"><a href="javascript:history.back()"><?=$i18n["go_back"] ?></a> <?=$i18n["or_try_to"] ?><a href="javascript:location.reload(true)"> <?=$i18n["refresh_page"] ?></a>.</p>
             </div>
         </div>
+<? include_once("templates/iRail/footer.php"); ?>
     </body>
 </html>

@@ -5,7 +5,8 @@ $test = $this->user->getLang();
 <!DOCTYPE html>
 <html lang="en">    
     <head>
-        <meta charset="UTF-8">
+        <meta name="apple-mobile-web-app-capable"  content="yes" />
+	<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
@@ -61,7 +62,7 @@ $test = $this->user->getLang();
 								<li><?=$i18n["design"]?>: Dennis Kestelle
 								<li><?=$i18n["frontendcoding"]?>: Muhammet Kilic
 								<li><?=$i18n["backendcoding"]?>: Pieter Colpaert
-								<li><?=$i18n["infrastructure"]?>: Yeri Tiete
+								<li><?=$i18n["infrastructure"]?>: <a href="http://yeri.be" target="_blank">Yeri Tiete</a>
 								<li><?=$i18n["andothers"]?>
 							</ul>
 						<li>&copy; 2011 iRail <?=$i18n["npo"];?>
@@ -71,5 +72,6 @@ $test = $this->user->getLang();
 			</form>
 			</div>
         </div>
+<? include_once("templates/iRail/footer.php"); ?>
     </body>
 </html>

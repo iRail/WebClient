@@ -15,11 +15,11 @@ function formatDelay($del){
 		if($min > 60){
 			$aantalH = floor($min / 60);
 			$min = $min % 60;
-			return"+" . $aantalH .":". $min;
+			return "+" . $aantalH .":". $min;
 		}
 		return"+" . $min;
      }
-	return "/";
+     return "/";
 }
 
 function formatDate($time){
@@ -33,7 +33,8 @@ function formatTime($time){
 <!DOCTYPE html>
 <html lang="en" manifest="appcache.mf">
     <head>
-        <meta charset="UTF-8">
+        <meta name="apple-mobile-web-app-capable"  content="yes" />
+	<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
@@ -98,5 +99,6 @@ function formatTime($time){
 			?>
 		</div>
 	</div>
+		<? include_once("templates/iRail/footer.php"); ?>
 	</body>
 </html>

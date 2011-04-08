@@ -2,9 +2,11 @@ CACHE MANIFEST
 
 templates/iRail/css/main.css
 templates/iRail/js/main.js
+templates/iRail/images/settings.png
+templates/iRail/images/settingsActive.png
 templates/iRail/images/change.png
 templates/iRail/images/fav.png
-templates/iRail/images/fil.png
+templates/iRail/images/fill.png
 templates/iRail/images/trein.png
 templates/iRail/images/addfav.gif
 templates/iRail/images/arrow.gif
@@ -14,3 +16,4 @@ templates/iRail/images/arrowRouteSmall.jpg
 board/
 route/
 stations/
+settings/  
