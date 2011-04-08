@@ -78,7 +78,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 			}
 			for(var i = 0; i < minL; i++){
 				if(curr_hour > minChilds.item(i).value && curr_hour < minChilds.item(i+1).value){
-					minChilds.item(i).addAttribute("selected","selected");
+					minChilds.item(i).setAttribute("selected","selected");
 				}
 			}
 		}
