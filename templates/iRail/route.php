@@ -42,10 +42,6 @@ appCache.update();
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
-	  
-	  
-	  
-
 		
 		function setTime(h, m){
 			var d = new Date();
