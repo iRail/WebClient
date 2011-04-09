@@ -17,8 +17,6 @@ stations/
 stations
 settings/
 settings
-board
-route
 
 NETWORK:
 board/
