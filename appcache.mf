@@ -1,5 +1,6 @@
 CACHE MANIFEST
 
+CACHE:
 templates/iRail/css/main.css
 templates/iRail/js/main.js
 templates/iRail/images/settings.png
@@ -13,7 +14,14 @@ templates/iRail/images/arrow.gif
 templates/iRail/images/trein.png
 templates/iRail/images/arrowRoute.png
 templates/iRail/images/arrowRouteSmall.jpg
+stations/
+settings/
+
+NETWORK:
 board/
 route/
-stations/
-settings/  
+
+FALLBACK:
+/ stations/
+route/ stations/
+board/ stations/ 
