@@ -3,7 +3,7 @@ global $test;
 $test = $this->user->getLang();
 ?>
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="en" manifest="/appcache.mf">
     <head>
         <meta name="apple-mobile-web-app-capable"  content="yes" />
 	<meta charset="UTF-8">
@@ -12,8 +12,20 @@ $test = $this->user->getLang();
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <link rel="stylesheet" href="/templates/iRail/css/main.css" />
         <script src="/templates/iRail/js/main.js"></script>
+	<script>
+		window.addEventListener('load', function(e) {
+		window.applicationCache.update();
+		  window.applicationCache.addEventListener('updateready', function(e) {
+			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+			  window.applicationCache.swapCache();
+			window.location.reload();	  
+			}
+		  }, false);
+
+		}, false);
+	</script>
     </head>
     <body class="bckgroundDarkGrey">
         <div class="MainContainer">

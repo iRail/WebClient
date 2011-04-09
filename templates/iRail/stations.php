@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/templates/iRail/css/main.css" />
         <script>
 		window.addEventListener('load', function(e) {
-appCache.update();
+			  window.applicationCache.update();
 		  window.applicationCache.addEventListener('updateready', function(e) {
 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
 			  window.applicationCache.swapCache();

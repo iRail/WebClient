@@ -31,7 +31,7 @@ function formatTime($time){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en" manifest="appcache.mf">
+<html lang="en">
     <head>
         <meta name="apple-mobile-web-app-capable"  content="yes" />
 	<meta charset="UTF-8">

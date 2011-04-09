@@ -30,7 +30,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
         <link rel="shortcut icon" href="/favicon.ico"/>
 		<script>
 		window.addEventListener('load', function(e) {
-appCache.update();
+			  window.applicationCache.update();
 		  window.applicationCache.addEventListener('updateready', function(e) {
 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
 			  window.applicationCache.swapCache();
