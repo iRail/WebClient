@@ -16,6 +16,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.6, user-scalable=no" />
         <meta name="keywords" content="nmbs, sncb, iphone, mobile, irail, irail.be, route planner"/>
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
+        <link rel="stylesheet" href="/templates/iRail/css/main.css" />
 	<!-- as not every OS supports HTML-less icon detection, provide this in details, and link to imgage dir instead of root -->
 	<!-- 1. iPhone 4/retina --> 
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/templates/iRail/images/apple-touch-icon-114x114-precomposed.png">
@@ -27,19 +28,13 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 	<link rel="apple-touch-icon-precomposed" href="/templates/iRail/images/apple-touch-icon-precomposed.png">
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-		<script type="text/javascript">
+		<script>
 		window.addEventListener('load', function(e) {
-
+appCache.update();
 		  window.applicationCache.addEventListener('updateready', function(e) {
 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-			  // Browser downloaded a new app cache.
-			  // Swap it in and reload the page to get the new hotness.
 			  window.applicationCache.swapCache();
-			window.location.reload();
-			  
-			} else {
-			  // Manifest didn't changed. Nothing new to server.
+			window.location.reload();	  
 			}
 		  }, false);
 

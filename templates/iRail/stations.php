@@ -8,8 +8,18 @@
         <meta name="description" content="NMBS/SNCB mobile iPhone train route planner."/>
         <title>iRail.be</title>
         <link rel="shortcut icon" href="favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
+        <link rel="stylesheet" href="/templates/iRail/css/main.css" />
         <script>
+		window.addEventListener('load', function(e) {
+appCache.update();
+		  window.applicationCache.addEventListener('updateready', function(e) {
+			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+			  window.applicationCache.swapCache();
+			window.location.reload();	  
+			}
+		  }, false);
+		}, false);
+
 		var stations = [<? foreach($content["station"] as $station){?>
 			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
 		<?} ?>];

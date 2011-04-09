@@ -24,4 +24,4 @@ route/
 FALLBACK:
 / stations/
 route/ stations/
-board/ stations/ 
+board/ stations/
