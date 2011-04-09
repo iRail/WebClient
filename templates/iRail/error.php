@@ -19,7 +19,7 @@
 			window.location.reload();	  
 			}
 		  }, false);
-
+		}, false);
 </script>
     </head>
     <body class="bckgroundDarkBlue">

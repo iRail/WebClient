@@ -33,8 +33,6 @@ class Controller extends Page{
 	       return $this->user->getLastUsedRoute();
 	  }else if($page == "board"){
 	       return $this->user->getLastUsedBoard();
-	  }else if($page == "settings"){
-	       //TODO
 	  }
      }
      
@@ -67,12 +65,17 @@ class Controller extends Page{
 		    $date_ = $_GET["date"];
 	       }
 	       return $data->getConnections($from, $to, $direction, $time, $date_);
+	  }else if($page == "board" || $page == "route" || $page == "stations"){
+	       $stations = $data->getStations();
+	       return $data->getStations();
 	  }else if($page != "error"){
 	       //let's not do a request if there is an error page
 	       //in other cases, just output the stationslist - needed on most pages
-	       $stations = $data->getStations();
+	       /*    $stations = $data->getStations();
 
-	       return $data->getStations();
+		     return $data->getStations();*/
+	       //let's return an empty array
+	       return array();	       
 	  }else if($page == "error"){
 //this will only be apache errors
 	       if(isset($message)){
