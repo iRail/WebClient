@@ -42,10 +42,51 @@ appCache.update();
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
+	  
+	  
+	  
+
+		
+		function setTime(h, m){
+			var d = new Date();
+			var curr_hour = d.getHours();
+			var curr_min = d.getMinutes();
+		
+			var hour = document.getElementById(h);
+			var min = document.getElementById(m);
+		
+			var hourChilds = hour.childNodes;
+			var minChilds = min.childNodes;
+			
+			var hourL = hourChilds.length;
+			var minL = minChilds.length;
+			
+			
+			var selIndexHour = hour.selectedIndex;
+			var selIndexMin = min.selectedIndex;
+			
+			
+			for(var i = 0; i < hourL; i++){
+				if(hourChilds.item(i).value == curr_hour){
+					hourChilds.item(i).setAttribute("selected","selected");
+				}
+			}
+			for(var i = 0; i < minL; i++){
+				//Set to 10, 20, 30, ...
+				curr_min = curr_min / 10.0;
+				curr_min = Math.round(curr_min);
+				curr_min = curr_min * 10;
+
+				if(minChilds.item(i).value == curr_min){
+					minChilds.item(i).setAttribute("selected","selected");
+				}
+			}
+		}
+
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
+    <body onclick="removeAllHolders()" onload="setTime('timeselecth', 'timeselectm');" class="bckgroundDarkGrey">
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
