@@ -21,8 +21,6 @@ settings
 NETWORK:
 board/
 route/
-board
-route
   
 FALLBACK:
 / stations/

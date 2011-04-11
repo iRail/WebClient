@@ -34,7 +34,7 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 		  window.applicationCache.addEventListener('updateready', function(e) {
 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
 			  window.applicationCache.swapCache();
-			window.location.reload();	  
+			window.location.reload();
 			}
 		  }, false);
 
@@ -49,8 +49,8 @@ function setDate(){
     var curr_month = ttt.getMonth(); //from 0-11
     var dayelement = document.getElementById('timeselectd');
     var monthelement = document.getElementById('timeselectmo');
-    dayelement.item(dayelement.selectIndex).selected = false;
-    monthelement.item(monthelement.selectIndex).selected = false;
+    dayelement.childNodes.item(dayelement.selectIndex).selected = false;
+    monthelement.childNodes.item(monthelement.selectIndex).selected = false;
     dayelement.item(curr_day).selected = true;
     monthelement.item(curr_month).selected = true;
 }
@@ -59,24 +59,19 @@ function setDate(){
 			var d = new Date();
 			var curr_hour = d.getHours();
 			var curr_min = d.getMinutes();
-		
 			var hour = document.getElementById(h);
 			var min = document.getElementById(m);
-		
 			var hourChilds = hour.childNodes;
 			var minChilds = min.childNodes;
-			
 			var hourL = hourChilds.length;
 			var minL = minChilds.length;
-			
-			
 			var selIndexHour = hour.selectedIndex;
 			var selIndexMin = min.selectedIndex;
-			
-			
+			hourChilds.item(selIndexHour).selected = false;
+			minChilds.item(selIndexMin).selected = false;
 			for(var i = 0; i < hourL; i++){
 				if(hourChilds.item(i).value == curr_hour){
-					hourChilds.item(i).setAttribute("selected","selected");
+				     hourChilds.item(i).selected = true;
 				}
 			}
 			for(var i = 0; i < minL; i++){
@@ -84,9 +79,8 @@ function setDate(){
 				curr_min = curr_min / 10.0;
 				curr_min = Math.round(curr_min);
 				curr_min = curr_min * 10;
-
 				if(minChilds.item(i).value == curr_min){
-					minChilds.item(i).setAttribute("selected","selected");
+					minChilds.item(i).selected = true;
 				}
 			}
 		}
