@@ -42,7 +42,19 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
-		
+
+function setDate(){
+    var ttt = new Date();
+    var curr_day = ttt.getDate() -1; //from 0-30
+    var curr_month = ttt.getMonth(); //from 0-11
+    var dayelement = document.getElementById('timeselectd');
+    var monthelement = document.getElementById('timeselectmo');
+    dayelement.item(dayelement.selectIndex).selected = false;
+    monthelement.item(monthelement.selectIndex).selected = false;
+    dayelement.item(curr_day).selected = true;
+    monthelement.item(curr_month).selected = true;
+}
+
 		function setTime(h, m){
 			var d = new Date();
 			var curr_hour = d.getHours();
