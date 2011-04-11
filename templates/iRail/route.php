@@ -94,7 +94,7 @@ function setDate(){
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body onclick="removeAllHolders()" onload="setTime('timeselecth', 'timeselectm');" class="bckgroundDarkGrey">
+    <body onclick="removeAllHolders()" onload="setTime('timeselecth', 'timeselectm');setDate();" class="bckgroundDarkGrey">
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
