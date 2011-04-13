@@ -30,16 +30,13 @@ $test = $this->user->getLang();
     <body class="bckgroundDarkGrey">
         <div class="MainContainer">
             <div class="bannerContainer">
-        
                 <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='..'">
                     <div class="Top">iRail</div>
                     <div class="Bot">
                         <div class="blackFlagColor"></div>
                         <div class="yelFlagColor"></div>
-                        <div class="redFlagColor"></div>
+                        <div class="redFlagColor"></div>     
                     </div>
-                </div>
-		</div>
                 </div>
                 <a href="/route/"><div class="bannerCubeContainerFixed gradientBanner"><?=$i18n["route"] ?></div></a>
                 <a href="/board/"><div class="bannerCubeContainerFixed gradientBanner removeBorderLeft"><?=$i18n["board"] ?></div></a>
