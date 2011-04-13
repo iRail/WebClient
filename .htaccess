@@ -1,15 +1,17 @@
 AddType text/cache-manifest .mf
-
 AddDefaultCharset UTF-8
 
 # URL Rewrite fu
 Options +FollowSymLinks
 Options -Indexes
+
 <IfModule mod_rewrite.c>
+
 RewriteEngine On
 RewriteBase /
-RewriteRule ^national$ requesthandlers/controller.php?page=route [QSA,NC,L]
-RewriteRule ^$ requesthandlers/controller.php?page=route [QSA,NC,L]
+RewriteRule ^national[/]?$ route/ [QSA,NC,L,R]
+RewriteRule ^international[/]?$ route/ [QSA,NC,L,R]
+RewriteRule ^$ route/ [QSA,NC,L,R]
 RewriteRule ^route[/]?$ requesthandlers/controller.php?page=route [QSA,NC,L]
 RewriteRule ^board[/]?$ requesthandlers/controller.php?page=board [QSA,NC,L]
 RewriteRule ^settings[/]?$ requesthandlers/controller.php?page=settings [QSA,NC,L]
@@ -17,7 +19,6 @@ RewriteRule ^stations[/]?$ requesthandlers/controller.php?page=stations [QSA,NC,
 RewriteRule ^route/(.*)/(.*)/$ requesthandlers/controller.php?page=routeresult&from=$1&to=$2 [QSA,NC,L]
 RewriteRule ^board/([^/]*)/$ requesthandlers/controller.php?page=boardresult&station=$1 [QSA,NC,L]
 RewriteRule ^board/([^/]*)/(.*)/$ requesthandlers/controller.php?page=boardresult&station=$1&destination=$2 [QSA,NC,L]
-#RewriteRule ^/$  [R]
 
 </IfModule>
 
