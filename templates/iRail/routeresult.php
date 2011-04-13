@@ -67,7 +67,7 @@ function trainMoveFormat($time){
 	<div class="MainContainer">
 	<form action="" method="GET" name="formResults">
 		<div class="bannerContainer">
-                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='..'">
 				<div class="Top">iRail</div>
 				<div class="Bot">
 					<div class="blackFlagColor"></div>
