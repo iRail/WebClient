@@ -344,7 +344,7 @@
     <body onload="showFavRoutes()"> 
         <div class="MainContainer">
             <div class="bannerContainer">
-                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='..'">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
                     <div class="Top">iRail</div>
                     <div class="Bot">
                         <div class="blackFlagColor"></div>

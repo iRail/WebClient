@@ -50,7 +50,7 @@ if(isset($_GET['from'])){
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
-                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='..'">
+                <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
                     <div class="Top">iRail</div>
                     <div class="Bot">
                         <div class="blackFlagColor"></div>
