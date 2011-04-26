@@ -43,6 +43,13 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
 
+function ScrollToTarget()
+{
+     document.getElementById("to").scrollIntoView(true);
+}
+	  
+	  
+	  
 function setDate(){
     var ttt = new Date();
     var curr_day = ttt.getDate() -1; //from 0-30
@@ -126,7 +133,7 @@ $last = $this->user->getLastUsedRoute();
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
+                    <input autocomplete="off" class="inputStyle" onblur="ScrollToTarget();" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>
                 </div>

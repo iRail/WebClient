@@ -45,10 +45,9 @@ $test = $this->user->getLang();
             </div>
 			<div class="settingsContent">
 			<form action="" method="get" name="settings">
-				<div style="font-size:1.1em;padding-bottom: 5px;padding-left:5px;"><?=$i18n["settings"] ?></div>
 				<div class="languageDiv">
-					<label style="" for="language"><?=$i18n["pickLanguage"] ?></label>
-					<select name="lang" size="1" onchange="settings.submit()">
+					<label for="language" style="font-weight: bold; font-size: 1.2em;padding-top:10px;"><?=$i18n["pickLanguage"] ?></label><br/>
+					<select name="lang" size="1" onchange="settings.submit()" style="margin-top: 10px;padding:5px;">
 						<?
 						$arrayLang = $this->AVAILABLE_LANGUAGES;
 						for($i=0;$i<sizeof($arrayLang);$i++)
@@ -64,21 +63,19 @@ $test = $this->user->getLang();
 						?>
 					</select>
 				</div>
-				<div style="font-size:1.1em;padding-bottom: 5px;padding-left:5px;"><?=$i18n["aboutUs"] ?></div>
+				<div style="padding-bottom: 5px; padding-left: 5px; font-size: 1.2em; font-weight: bold;"><?=$i18n["aboutUs"] ?></div>
 				<div class="about">
 					<ul class="aboutlist">
 						<li><?=$i18n["datausedfrom"]?>: <a href="http://api.irail.be" target="_blank">iRail API</a>
 						<li><?=$i18n["madeby"]?>: <a href="http://project.irail.be" target="_blank">iRail <?=$i18n["npo"] ?></a>
-						<li><?=$i18n["authors"]?>:
-							<ul>
-								<li><?=$i18n["design"]?>: Dennis Kestelle
-								<li><?=$i18n["frontendcoding"]?>: Muhammet Kilic
-								<li><?=$i18n["backendcoding"]?>: Pieter Colpaert
-								<li><?=$i18n["infrastructure"]?>: <a href="http://yeri.be" target="_blank">Yeri Tiete</a>
-								<li><?=$i18n["andothers"]?>
-							</ul>
+						<li style="color: #FFFFFF;padding-top:15px;"><?=$i18n["authors"]?>:
+						<li><?=$i18n["design"]?>: Dennis Kestelle
+						<li><?=$i18n["frontendcoding"]?>: Muhammet Kilic
+						<li><?=$i18n["backendcoding"]?>: Pieter Colpaert
+						<li><?=$i18n["infrastructure"]?>: <a style="text-decoration: none;" href="http://yeri.be" target="_blank">Yeri Tiete</a>
+						<li><?=$i18n["andothers"]?>
 						<li>&copy; 2011 iRail <?=$i18n["npo"];?>
-						<li><a href="http://www.github.com/iRail/WebClient/" target="_blank"><?=$i18n["stealthiscode"];?></a>
+						<li style="padding-top:15px;"><a href="http://www.github.com/iRail/WebClient/" target="_blank"><?=$i18n["stealthiscode"];?></a>
 					</ul>
 				</div>
 			</form>

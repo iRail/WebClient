@@ -30,7 +30,7 @@ function formatDelay($del){
      if($del>0){
 	  return"+" . $del/60;
      }
-     return "/";
+     return "";
 }
 
 function formatDate($time){
@@ -89,9 +89,9 @@ function trainMoveFormat($time){
 				</p>
 				<input type="text" value="<? if(isset($_GET["direction"])) echo $_GET["direction"]; ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
 				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
-				<div style="width: 100%; padding: 5px 0px 0px 0pt;">
+				<div style="margin: 5px 0px 0px 125px; font-weight: normal;">
 					<?
-						print date('d F Y', $content["connection"][0]["departure"]["time"]) . "<br/>" . $time[0] . ":" . $time[1];
+						print date('d F Y', $content["connection"][0]["departure"]["time"]);
 					?>
 				</div>
 			</div>
@@ -110,6 +110,9 @@ function trainMoveFormat($time){
 					</div>
 					<div class="routeCubeRight">
 						| <?=formatDuration($connection["duration"])?> |
+					</div>
+					<div class="infoRouteRightDelay">
+						<?=formatDelay($connection["departure"]["delay"])?>
 					</div>
 				</div>
 				<div class="routeCubeInfo" id="routeCubeInfo" style="visibility: hidden; position: absolute;">
@@ -194,8 +197,8 @@ function trainMoveFormat($time){
 			
 			<div class="routeBottomBtnContainer">
 				<!-- Ride later sets the new depart hour to the old arrival hour, and ride ealier is not working yet, need some help here-->
-				<div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><strong><</strong> <?=$i18n["rideEarlier"] ?></a></p></div>
-																																																	     <div class="routeBottomBtn textShadow"><p><a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><?=$i18n["rideLater"] ?> <strong>></strong></a></p></div>
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtn textShadow"><p><strong><</strong> <?=$i18n["rideEarlier"] ?></p></div></a>
+																																																	     <a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <strong>></strong></p></div>
 			</div>
 		</form>
 		</div>

@@ -85,6 +85,12 @@ body {
 	float: right;
 	width: 40px;
 }
+.infoRouteRightDelay{
+	float: right;
+	width: 25px;
+	color: #FF0000;
+	text-align: center;
+}
 .infoRouteMid{
 	width: 100%;
 }
@@ -242,14 +248,13 @@ html { overflow-y: scroll; }
 
 .routeCubeLeft{
 	float: left;
-	width: 240px;
 	padding-left: 8px;
 }
 
 .routeCubeRight{
 	float: right;
 	width: 70px;
-	text-align: left;
+	text-align: center;
 }
 .textShadow{
 	text-shadow: 1px 1px 1px #fffcff;
@@ -550,6 +555,7 @@ html { overflow-y: scroll; }
 	text-shadow: 1px -1px 1px #732617;
 	filter: dropshadow(color=#732617, offx=1, offy=-1);
 	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
 
@@ -862,6 +868,9 @@ a{
 .about{
 	font-size: 0.8em;
 	padding: 5px;
+}
+.aboutlist li{
+	padding: 0px;
 }
 
 .languageDiv{
