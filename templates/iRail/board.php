@@ -28,7 +28,9 @@ if(isset($_GET['from'])){
         <title>iRail.be</title>
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="/templates/iRail/css/main.css" />
-        <script>
+        
+		        <script src="/templates/iRail/js/main.js"></script>
+		<script>
 		window.addEventListener('load', function(e) {
 			  window.applicationCache.update();
 		  window.applicationCache.addEventListener('updateready', function(e) {
@@ -43,12 +45,50 @@ if(isset($_GET['from'])){
       var stations= [<? foreach($content["station"] as $station){
 	   echo "\"" . $station["name"] . "\",";
       } ?>];
-        </script>
-        <script src="/templates/iRail/js/main.js"></script>
+	  
+		var _arrElements = [ "from", "to", "search" ];
+
+		document.onkeyup = KeyCheck;       
+		function KeyCheck(evt) {
+			if (typeof evt == "undefined" || !evt)
+				evt = window.event; //IE...
+		   
+			var KeyID = evt.which || evt.keyCode;
+			var flag = 0;
+			switch(KeyID) {
+				 case 13:
+					 flag = 1; //Forward
+					 break;
+			}
+			if (flag == 0)
+				return; //key is not relevant
+			
+			var sender = evt.target || evt.srcElement;
+			if (!sender)
+				return; //key up did not come from valid element
+			
+			var nIndex = -1;
+			for (var i = 0; i < _arrElements.length; i++) {
+				if (sender.id == _arrElements[i]) {
+					nIndex = i;
+					break;
+				}
+			}
+			if (nIndex < 0)
+				return; //key up did not come from valid textbox
+			
+			var newIndex = nIndex + flag;
+			if (newIndex >= _arrElements.length)
+				newIndex = 0;
+			if (newIndex < 0)
+				newIndex = _arrElements.length - 1;
+			document.getElementById(_arrElements[newIndex]).focus();
+		}
+      </script>
     </head>
     <body onclick="removeAllHolders()" class="bckgroundDarkGrey">
         <div class="MainContainer">
-		<form method="get" action="">
+		<form method="get" action="" id="board" name="board">
             <div class="bannerContainer">
                 <div class="bannerCubeContainerFixedLogo gradient" style="cursor: pointer;" onclick="window.location='/'">
                     <div class="Top">iRail</div>
@@ -78,7 +118,7 @@ $lastof = $last["of"];
 $lastto = $last["to"];
 ?>
                 <div class="inputFrom">
-                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" class="inputStyle" type="text" id="from" name="from" value="<?=$last["of"]?>"/>
+                    <input autocomplete="off" onKeyPress="return disableEnterKey(event);" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" class="inputStyle" type="text" id="from" name="from" value="<?=$last["of"]?>"/>
 					<div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
 				</div>
@@ -86,7 +126,7 @@ $lastto = $last["to"];
                 <div class="inputMid"></div>
                 <div class="toHeader"><?=$i18n["to_optional"] ?></div>
                 <div class="inputTo">
-                    <input autocomplete="off" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" class="inputStyle" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
+                    <input autocomplete="off" onKeyPress="return disableEnterKey(event);" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" class="inputStyle" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>               
 			   </div>

@@ -196,9 +196,8 @@ function trainMoveFormat($time){
 			?>
 			
 			<div class="routeBottomBtnContainer">
-				<!-- Ride later sets the new depart hour to the old arrival hour, and ride ealier is not working yet, need some help here-->
-				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtn textShadow"><p><strong><</strong> <?=$i18n["rideEarlier"] ?></p></div></a>
-																																																	     <a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <strong>></strong></p></div>
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtn textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
 			</div>
 		</form>
 		</div>

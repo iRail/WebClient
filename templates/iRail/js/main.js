@@ -103,7 +103,6 @@ function showUser(str, elmID, e)
 		}
 		clearHolder(elmID);
 	}
-	return false;
 }
 
 function changeActiveAutoCompletion(elmID, e){

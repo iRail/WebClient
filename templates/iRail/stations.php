@@ -251,53 +251,55 @@
 		}
 
 		function showLocation(position) {
-			var latitude = position.coords.latitude;
-			var longitude = position.coords.longitude;
-			var heading = position.coords.heading;
-			
-			//heading handler here
+			if(document.getElementById("nearby").getAttribute("class") == "favButtonActive favButtonR"){
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+				var heading = position.coords.heading;
+				
+				//heading handler here
 
-			if(latitude != ""){				
-			     var nearbyStations = getClosestStations(longitude, latitude, 20);
-				
-				var teller = 1;
-				var mainHolder = document.getElementById("containerResults");
-				
-//first thing to do is to clear the previous set of stations if there were any
-				mainHolder.innerHTML = "";
-				
-				for(i in nearbyStations){
-					var resultHolder = document.createElement('div');
-					if(teller % 2 == 0){
-						resultHolder.setAttribute("class", "containerResultsBoxWhite");
-					}else{
-						resultHolder.setAttribute("class", "containerResultsBoxBlue");
-					}
+				if(latitude != ""){				
+					 var nearbyStations = getClosestStations(longitude, latitude, 20);
 					
-					var nameURL = document.createElement('a');
-					var nameDiv = document.createElement('div');
-					var distanceDiv = document.createElement('div');
+					var teller = 1;
+					var mainHolder = document.getElementById("containerResults");
 					
-					nameDiv.setAttribute("class", "resultsName");
-					resultHolder.setAttribute("onclick", "window.location='/board/" + nearbyStations[i].getName() +"/'");
-					distanceDiv.setAttribute("class", "resultsDistance");
-					nameURL.setAttribute("href", "/board/"+nearbyStations[i].getName()+"/");
-					nameURL.innerHTML = "<p>"+nearbyStations[i].getName()+"</p>";
+	//first thing to do is to clear the previous set of stations if there were any
+					mainHolder.innerHTML = "";
 					
-					
-					
-					nameDiv.appendChild(nameURL);
-					distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*100)/100 + " km"));
+					for(i in nearbyStations){
+						var resultHolder = document.createElement('div');
+						if(teller % 2 == 0){
+							resultHolder.setAttribute("class", "containerResultsBoxWhite");
+						}else{
+							resultHolder.setAttribute("class", "containerResultsBoxBlue");
+						}
 						
-					resultHolder.appendChild(nameDiv);
-					resultHolder.appendChild(distanceDiv);
-					
-					mainHolder.appendChild(resultHolder);
-					teller++;
+						var nameURL = document.createElement('a');
+						var nameDiv = document.createElement('div');
+						var distanceDiv = document.createElement('div');
+						
+						nameDiv.setAttribute("class", "resultsName");
+						resultHolder.setAttribute("onclick", "window.location='/board/" + nearbyStations[i].getName() +"/'");
+						distanceDiv.setAttribute("class", "resultsDistance");
+						nameURL.setAttribute("href", "/board/"+nearbyStations[i].getName()+"/");
+						nameURL.innerHTML = "<p>"+nearbyStations[i].getName()+"</p>";
+						
+						
+						
+						nameDiv.appendChild(nameURL);
+						distanceDiv.appendChild(document.createTextNode(Math.round(nearbyStations[i].getDistance()*100)/100 + " km"));
+							
+						resultHolder.appendChild(nameDiv);
+						resultHolder.appendChild(distanceDiv);
+						
+						mainHolder.appendChild(resultHolder);
+						teller++;
 
-				}
-				if(teller == 1){
-					mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noNearbyStations"] . "</p>\""; ?>;
+					}
+					if(teller == 1){
+						mainHolder.innerHTML = <? echo "\"<p style='padding-left: 10px'>" . $i18n["noNearbyStations"] . "</p>\""; ?>;
+					}
 				}
 			}
 		}
