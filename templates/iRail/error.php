@@ -29,6 +29,8 @@
             </div>
             <div class="err404container">
                 <div class="err404train"></div>
+				<div class="err404Fgwave"></div>
+				<div class="err404Bgwave"></div>
             </div>
             <div class="err404text">
                 <h1 class="err404h1 removePadding"><?=$i18n["err404_FirstParagraph"] ?></h1>

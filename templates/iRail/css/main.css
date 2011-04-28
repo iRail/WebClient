@@ -919,17 +919,36 @@ input {
 }
 
 .err404container{
-    background-image: url('../images/fill.png');
-    height: 170px;
-    background-repeat: repeat-x;
-     width: 100%;
+    background-color: #c1e8fb;
+    height: 268px;
+    width: 100%;
 }
 .err404train{
-    background-image: url('../images/trein.png');
-    width: 172px;
-    height: 170px;
-    margin-left: auto;
-    margin-right: auto;
+    background-image: url('../images/failtrain.png');
+    width: 263px;
+    height: 268px;
+	position: absolute;
+	z-index:1;
+	left: 50%;
+	margin-left: -131.5px;
+}
+.err404Bgwave{
+    background-image: url('../images/bgwave.png');
+	background-repeat: repeat-x;
+    width: 100%;
+    height: 25px;
+	position: absolute;
+	z-index:0;
+	top: 283px;
+}
+.err404Fgwave{
+    background-image: url('../images/fgwave.png');
+	background-repeat: repeat-x;    
+	width: 100%;
+    height: 25px;
+	position: absolute;
+	z-index:2;
+	top: 283px;
 }
 
 .err404text{

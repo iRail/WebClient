@@ -1,5 +1,12 @@
-﻿<?
+<?
 //this piece of code will format the url correctly and redirect us to the right URL
+if(isset($_GET['inputTo'])){
+	$inputTo = $_GET['inputTo'];
+	if(isset($_GET['date']) && isset($_GET['time'])){
+		$dateS = $_GET['date'];
+		$timeS = $_GET['time'];
+	}
+}
 if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['from'] != ""){
 		$dYEAR = substr($_GET['y'],-2);
 		header_remove();
@@ -39,9 +46,99 @@ if(isset($_GET['to']) && isset($_GET['from']) && $_GET['to'] != "" && $_GET['fro
 		  }, false);
 
 		}, false);
-      var stations= [<? foreach($content["station"] as $station){
-	   echo "\"" . $station["name"] . "\",";
-      } ?>];
+		var station = [<? foreach($content["station"] as $station){?>
+			new stationObject(<? echo "\"" . $station["name"] . "\"," . "\"" . $station["locationX"] . "\"," ."\"" . $station["locationY"] . "\""; ?>),
+		<?} ?>];
+
+                    var stations= [<?
+                foreach ($content["station"] as $station) {
+                    echo "\"" . $station["name"] . "\",";
+                }
+                ?>];
+
+	  	var inpTo = <? echo "\"" . $inputTo . "\""; ?>;
+		var dateS = <? echo "\"" . $dateS . "\""; ?>;
+		var timeS = <? echo "\"" . $timeS . "\""; ?>;
+		var timeLocation;
+
+		function afterLoad(){
+			if(inpTo != ""){
+				getLocation();
+			}
+		}
+		
+		function getLocation() {
+			if (navigator.geolocation) {
+			  navigator.geolocation.getCurrentPosition(function(position) {
+					getIRailRoute(position.coords.latitude, position.coords.longitude);
+			  });
+			}else{
+				document.getElementById("to").value = inpTo;
+			}
+		}
+		function getIRailRoute(mylat, mylong) {
+				var latitude = mylat;
+				var longitude = mylong;
+				if(latitude != ""){				
+					var nearbyStations = getClosestStations(longitude, latitude, 20);
+					var urlString = "/route/"+nearbyStations[0].getName()+"/"+inpTo+"/";
+					if(dateS != ""){
+						urlString = urlString+"/?time="+timeS+"&date="+dateS;
+					}
+					try{
+						if(inpTo != nearbyStations[0].getName()){
+							window.location=urlString;
+						}
+					}catch(err){
+
+					}	
+				}
+		}
+		function compareDistance(a, b) {
+			return a.distance - b.distance;
+		}
+		function getClosestStations(x, y, vicinity){
+			var output = new Array();
+			for (i in station)
+			{
+				var dist = distance(x,station[i].getX(),y,station[i].getY());
+				if(dist < vicinity){
+					var obj = new stationObject(station[i].getName(), station[i].getX(),station[i].getY());
+					obj.distance = dist;
+					output.push(obj);
+				}
+			}
+			return output.sort(compareDistance);
+		}		
+		function distance(lat1, lat2, lon1, lon2){
+		     //haversine
+			var R = 6371; // km
+			var dLat = (lat2-lat1)*Math.PI/180;//radians
+			var dLon = (lon2-lon1)*Math.PI/180;
+			var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+			return R * c;
+		}				
+		
+	  	function stationObject (n, x, y) {
+			this.name = n;
+			this.x = x;
+			this.y = y;
+			this.distance = 0;
+			
+			this.getName = function() {
+				return this.name;
+			};
+			this.getX = function() {
+				return this.x;
+			};
+			this.getY = function() {
+				return this.y;
+			};
+			this.getDistance = function() {
+				return this.distance;
+			};
+		}
 
 	  
 	  
@@ -90,7 +187,7 @@ function setDate(){
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
-    <body onclick="removeAllHolders()" onload="setTime('timeselecth', 'timeselectm');setDate();" class="bckgroundDarkGrey">
+    <body onclick="removeAllHolders()" onload="setTime('timeselecth', 'timeselectm');setDate();afterLoad()" class="bckgroundDarkGrey">
         <div class="MainContainer">
 		<form method="get" action="">
             <div class="bannerContainer">
@@ -232,6 +329,5 @@ $last = $this->user->getLastUsedRoute();
 		</form>
         </div>
 <? include_once("templates/iRail/footer.php"); ?>
-    </body>
+   </body>
 </html>
-

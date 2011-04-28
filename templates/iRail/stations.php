@@ -81,7 +81,6 @@
 			}else{
 				clearTimeout(timeLocation);
 			}
-			
 		}
 
 		function showError(error) {
