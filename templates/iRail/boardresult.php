@@ -96,7 +96,40 @@ function formatTime($time){
 					$styleBoardInfo = "boardInfo";
 				}
 			}
+			
+			$timestampPlus = date("Hi", mktime(date("H")+1 ,date("i"), 0, 0 ,0 , 0));
+			$timestampMin = date("Hi", mktime(date("H")-1 ,date("i"), 0, 0 ,0 , 0));
+			
+			function curPageURL() {
+			 $pageURL = 'http';
+			 if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+			 $pageURL .= "://";
+			 if ($_SERVER["SERVER_PORT"] != "80") {
+			  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
+			 } else {
+			  $pageURL .= $_SERVER["SERVER_NAME"];
+			 }
+			 return $pageURL;
+			}	
+			
+			if($_GET["station"] != ""){
+				$req = $_GET["station"];
+				if($_GET["destination"] != ""){
+					$req .= "/" . $_GET["destination"];
+				}
+			}
+			
+			if($_GET["time"] != ""){
+				$timestampMin = date("H", strtotime($_GET["time"])) - 1;
+				$timestampMin .= date("i", $_GET["time"]);
+				$timestampPlus = date("H", strtotime($_GET["time"])) + 1;
+				$timestampPlus .= date("i", $_GET["time"]);
+			}
 			?>
+			<div class="routeBottomBtnContainer">
+				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampMin; ?>"><div class="routeBottomBtn textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
+				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampPlus; ?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
+			</div>
 		</div>
 	</div>
 		<? include_once("templates/iRail/footer.php"); ?>
