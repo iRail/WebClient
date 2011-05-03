@@ -266,7 +266,8 @@ html { overflow-y: scroll; }
 	background-image: url("../images/addfav.gif");
 	width: 47px;
 	height: 45px;
-	margin-top: 6px;;
+	margin-top: 6px;
+	cursor: pointer;
 }
 
 .routeResultsArrow{

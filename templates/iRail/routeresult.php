@@ -109,16 +109,18 @@ function trainMoveFormat($time){
 						<?
 						$lengte = sizeof($connection["vias"]);
 						print formatTime($connection["departure"]["time"]);
-						print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"padding-left:10px;vertical-align:text-bottom;\"/>";						
 						print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
 						
-						if($lengte != 1){
-							for($i = 1; $i <= $lengte;$i++){
+						if($lengte > 0){
+							for($i = 0; $i < $lengte;$i++){
 								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
 								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
 							}						
+						}else{
+								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
+								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";												
 						}
-						print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;padding-right:10px;\"/>" . formatTime($connection["arrival"]["time"]);						
+						print formatTime($connection["arrival"]["time"]);
 						?>
 					</div>
 					<div class="routeCubeRight">
