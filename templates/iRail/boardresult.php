@@ -119,16 +119,30 @@ function formatTime($time){
 				}
 			}
 			
-			if($_GET["time"] != ""){
-				$timestampMin = date("H", strtotime($_GET["time"])) - 1;
-				$timestampMin .= date("i", $_GET["time"]);
-				$timestampPlus = date("H", strtotime($_GET["time"])) + 1;
-				$timestampPlus .= date("i", $_GET["time"]);
+			if(isset($_GET["time"])){
+				$datum = date("H", strtotime($_GET["time"]));
+				if($_GET["d"] == "min"){
+					if($datum == "00") { $datum = 24; };
+				}
+				$timestampMin = $datum - 1;
+				$timestampMin .= "00";
+				$timestampPlus = $datum + 1;
+				$timestampPlus .= "00";
+				$timestampMin = sprintf("%04d", $timestampMin);
+				$timestampPlus = sprintf("%04d", $timestampPlus);
+				if((int)$timestampMin == 2400){
+					$timestampMin = 0;
+					$timestampMin = sprintf("%04d", (int)$timestampMin);
+				}
+				if((int)$timestampPlus == 2400){
+					$timestampPlus = 0;
+					$timestampPlus = sprintf("%04d", (int)$timestampPlus);
+				}
 			}
 			?>
 			<div class="routeBottomBtnContainer">
-				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampMin; ?>"><div class="routeBottomBtn textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
-				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampPlus; ?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
+				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampMin . "&d=min"; ?>"><div class="routeBottomBtn textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
+				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampPlus . "&d=plus"; ?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,5 @@
 <?
-global $test;
-$test = $this->user->getLang();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" manifest="/appcache.mf">
@@ -63,6 +62,14 @@ $test = $this->user->getLang();
 						?>
 					</select>
 				</div>
+				<?
+				$agent = $_SERVER['HTTP_USER_AGENT']
+				$listAgent = array("iPhone", "iPod");
+				if(strstr($agent, "iPhone") || strstr($agent, "iPod"))
+				{
+					//Link naar apple market
+				}
+				?>				
 				<div style="padding-bottom: 5px; padding-left: 5px; font-size: 1.2em; font-weight: bold;"><?=$i18n["aboutUs"] ?></div>
 				<div class="about">
 					<ul class="aboutlist">

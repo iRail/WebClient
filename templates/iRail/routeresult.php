@@ -91,7 +91,8 @@ function trainMoveFormat($time){
 				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
 				<div style="margin: 5px 0px 0px 125px; font-weight: normal;">
 					<?
-						print date('d F Y', $content["connection"][0]["departure"]["time"]);
+						setlocale(LC_TIME, "nl_NL");
+						print strftime("%A %d %B %Y", $content["connection"][0]["departure"]["time"]);
 					?>
 				</div>
 			</div>
@@ -107,12 +108,12 @@ function trainMoveFormat($time){
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
 						<?
-						$lengte = sizeof($connection["vias"]);
+						$lengte = $connection["vias"]["number"];
 						print formatTime($connection["departure"]["time"]);
 						print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
 						
 						if($lengte > 0){
-							for($i = 0; $i < $lengte;$i++){
+							for($i = 0; $i <= $lengte;$i++){
 								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
 								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
 							}						
