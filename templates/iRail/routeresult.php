@@ -1,4 +1,5 @@
 ﻿<?
+$verify = "f";
 $date = str_split($_GET["date"], 2);
 $time = str_split($_GET["time"], 2);
 function formatDateFav($time){
@@ -9,11 +10,11 @@ function formatTimeFav($time){
      return date("Hi",$time);
 }
 
-if(isset($_GET["hiddenDirection"])){ 
+if(isset($_GET["hiddenDirection"])){
+		$verify = "t";
 		$this->user->addFavRoute($content["connection"][0]["departure"]["station"],$content["connection"][0]["arrival"]["station"]);
-		header( 'Location: /route/'.$content["connection"][0]["departure"]["station"].'/'.$content["connection"][0]["arrival"]["station"].'/?time='. formatTimeFav($content["connection"][0]["departure"]["time"]) . '&date=' .formatDateFav($content["connection"][0]["departure"]["time"]) .'&direction=' . $_GET["hiddenDirection"]);	
+		header( 'Location: /route/'.$content["connection"][0]["departure"]["station"].'/'.$content["connection"][0]["arrival"]["station"].'/?time='. formatTimeFav($content["connection"][0]["departure"]["time"]) . '&date=' .formatDateFav($content["connection"][0]["departure"]["time"]) .'&direction=' . $_GET["hiddenDirection"].'&v='.$verify);	
 }
-
 
 
 //let's first create some helpfunctions so we can output the json more easily
@@ -62,6 +63,10 @@ function trainMoveFormat($time){
         <link rel="shortcut icon" href="/favicon.ico"/>
         <link rel="stylesheet" href="/templates/iRail/css/main.css" />
         <script src="/templates/iRail/js/main.js"></script>
+		<? if(isset($_GET["v"])){$verify = $_GET["v"];} ?>
+		<script>
+			var verify = <? echo "\"" . $verify . "\"" ?>;
+		</script>
     </head>
     <body>
 	<div class="MainContainer">
@@ -88,7 +93,7 @@ function trainMoveFormat($time){
 				<img src="/templates/iRail/images/arrowRoute.png" alt="arrow"/>&nbsp;<?=$content["connection"][0]["arrival"]["station"]?>
 				</p>
 				<input type="text" value="<? if(isset($_GET["direction"])) echo $_GET["direction"]; ?>" style="display: none; position: relative;" name="hiddenDirection" id="hiddenDirection"/>
-				<div onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
+				<div id="favbtn" onclick="formResults.submit()" class="routeHeaderAddFavBtn"></div>
 				<div style="margin: 5px 0px 0px 125px; font-weight: normal;">
 					<?
 						setlocale(LC_TIME, "nl_NL");
@@ -212,12 +217,24 @@ function trainMoveFormat($time){
 			?>
 			
 			<div class="routeBottomBtnContainer">
-				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtn textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
-				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . "" . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtnL textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["earliestRide"] ?></p></div></a>
+			
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtnL textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtnR textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
+
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . "0300" . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtnR textShadow"><p><?=$i18n["latestRide"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
 			</div>
 		</form>
 		</div>
 	</div>
 <? include_once("templates/iRail/footer.php"); ?>
 	</body>
+<script>
+		if(verify == "t"){
+			document.getElementById('favbtn').setAttribute("class","routeHeaderAddFavBtnVerify");
+		}else{
+			document.getElementById('favbtn').setAttribute("class","routeHeaderAddFavBtn");				
+		}
+</script>
 </html>
+

@@ -270,6 +270,15 @@ html { overflow-y: scroll; }
 	cursor: pointer;
 }
 
+.routeHeaderAddFavBtnVerify{
+	float: right;
+	background-image: url("../images/addfavVerify.gif");
+	width: 47px;
+	height: 45px;
+	margin-top: 6px;
+	cursor: pointer;
+}
+
 .routeResultsArrow{
 	background-image: url("../images/arrowRoute.jpg");
 	height: 11px;
@@ -293,13 +302,21 @@ html { overflow-y: scroll; }
 	margin-top: 5px;
 }
 
-.routeBottomBtn{
+.routeBottomBtnL{
     border-left: 1px solid #545E63;
     float: left;
     height: 25px;
     padding-top: 5px;
     text-align: center;
-    width: 49%;
+    width: 24%;
+}
+.routeBottomBtnR{
+    border-left: 1px solid #545E63;
+    float: right;
+    height: 25px;
+    padding-top: 5px;
+    text-align: center;
+    width: 24%;
 }
 
 .containerFrom{

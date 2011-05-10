@@ -1,6 +1,3 @@
-<?
-
-?>
 <!DOCTYPE html>
 <html lang="en" manifest="/appcache.mf">
     <head>
@@ -63,7 +60,7 @@
 					</select>
 				</div>
 				<?
-				$agent = $_SERVER['HTTP_USER_AGENT']
+				$agent = $_SERVER['HTTP_USER_AGENT'];
 				$listAgent = array("iPhone", "iPod");
 				if(strstr($agent, "iPhone") || strstr($agent, "iPod"))
 				{
