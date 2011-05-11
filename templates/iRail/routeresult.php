@@ -216,10 +216,14 @@ function trainMoveFormat($time){
 			}
 			?>
 			
-			<div class="routeBottomBtnContainer">
+			<div class="routeBottomBtnContainer">	
+			<?
+				$todayDate = date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]);
+				$dateOneDayAdded = strtotime(date("dmy", strtotime($todayDate)) . "+1 day");
+			?>
 				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . "0400" . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=depart" ?>"><div class="routeBottomBtnL textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["earliestRide"] ?></p></div></a>
 				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][0]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][0]["departure"]["time"]) . "&direction=arrive" ?>"><div class="routeBottomBtnL textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
-				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . "0300" . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=arrive"?>"><div class="routeBottomBtnR textShadow"><p><?=$i18n["latestRide"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>				
+				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . "0300" . "&date=" . date("dmy", $dateOneDayAdded) . "&direction=arrive"?>"><div class="routeBottomBtnR textShadow"><p><?=$i18n["latestRide"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>				
 				<a href="<? echo "/route/" . $content["connection"][0]["departure"]["station"] . "/" . $content["connection"][0]["arrival"]["station"] ."/?time=" . date("Hi",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&date=" . date("dmy",$content["connection"][sizeof($content["connection"])-1]["departure"]["time"]) . "&direction=depart"?>"><div class="routeBottomBtnR textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
 			</div>
 		</form>

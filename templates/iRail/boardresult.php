@@ -141,8 +141,8 @@ function formatTime($time){
 			}
 			?>
 			<div class="routeBottomBtnContainer">
-				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampMin . "&d=min"; ?>"><div class="routeBottomBtn textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
-				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampPlus . "&d=plus"; ?>"><div class="routeBottomBtn textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
+				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampMin . "&d=min"; ?>"><div class="routeBottomBtnBoard textShadow"><p><img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/left.png"> <?=$i18n["rideEarlier"] ?></p></div></a>
+				<a href="<? $adr = curPageURL(); echo $adr . "/board/" . $req ."/?time=" . $timestampPlus . "&d=plus"; ?>"><div class="routeBottomBtnBoard textShadow"><p><?=$i18n["rideLater"] ?> <img style="vertical-align: middle;" height="16" width="9" alt="left" src="/templates/iRail/images/right.png"></p></div>
 			</div>
 		</div>
 	</div>

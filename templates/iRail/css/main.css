@@ -319,6 +319,15 @@ html { overflow-y: scroll; }
     width: 24%;
 }
 
+.routeBottomBtnBoard{
+    border-left: 1px solid #545E63;
+    float: left;
+    height: 25px;
+    padding-top: 5px;
+    text-align: center;
+    width: 49%;
+}
+
 .containerFrom{
     width: 100%;
     border-top-color: #cccccc;
