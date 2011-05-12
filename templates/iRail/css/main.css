@@ -302,6 +302,19 @@ html { overflow-y: scroll; }
 	margin-top: 5px;
 }
 
+.routeBottomBtnContainerBoard{
+    background-color: #CCCCCC;
+    border-bottom: 1px solid #545E63;
+    border-right: 1px solid #545E63;
+    border-top: 1px solid #545E63;
+    clear: both;
+    font-size: 0.9em;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+	margin-top: 5px;
+}
+
 .routeBottomBtnL{
     border-left: 1px solid #545E63;
     float: left;
@@ -783,7 +796,22 @@ a{
 	margin-top: 20px;
 	margin-left: 20px;
 }
-
+.routeBottomBtnContainerBoard a:link{
+	color: #000000;
+	text-decoration: none;
+}
+.routeBottomBtnContainerBoard a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+.routeBottomBtnContainerBoard a:active {
+	color: #000000;
+	text-decoration: none;
+}
+.routeBottomBtnContainerBoard a:hover {
+	color: #000000;
+	text-decoration: none;
+}
 .routeBottomBtnContainer a:link{
 	color: #000000;
 	text-decoration: none;
