@@ -305,7 +305,7 @@ html { overflow-y: scroll; }
 .routeBottomBtnL{
     border-left: 1px solid #545E63;
     float: left;
-    height: 25px;
+    height: 23px;
     padding-top: 8px;
     text-align: center;
     width: 24%;
@@ -313,7 +313,7 @@ html { overflow-y: scroll; }
 .routeBottomBtnR{
     border-left: 1px solid #545E63;
     float: right;
-    height: 25px;
+    height: 23px;
     padding-top: 8px;
     text-align: center;
     width: 24%;
