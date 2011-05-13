@@ -155,6 +155,8 @@ function logerror($errno,$errstr){
      $data = date("Y-m-d\TH:i:s\Z") . ";" . $errno . ";" . $errstr . ";" . selfURL() . "\n";
      fwrite($handle, $data);
      fclose($handle);
+     date_default_timezone_set("Europe/Brussels");//For iso8601
+
 }
 //help function for logging purposes
 function selfURL() { 
