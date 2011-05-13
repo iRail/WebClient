@@ -52,6 +52,10 @@ $i18n=array(
 		"andothers" => "And vele anderen",
 		"stealthiscode" => "Steel deze code (AGPL)",
 		"ErrNoResults" => "Sorry, er werden geen resultaten gevonden",
-		"aboutUs" => "Over ons"
+		"aboutUs" => "Over ons",
+		"fromStation" => "van station",
+		"toStation" => "naar station",
+		"ofStation" => "van station",
+		"to_optionalStation" => "naar station (optional)"
      );
 ?>

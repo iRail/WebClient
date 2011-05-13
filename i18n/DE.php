@@ -24,10 +24,10 @@ $i18n=array(
 		"of" => "von",
 		"to_optional" => "Nach (optional)",
 		"show_live_board" => "Live Fahrplan anzeigen",
-		"earliestRide" => "Früheste Verbindung", // Verbindung == connection, if that is out of context, let me know
-		"rideEarlier" => "frühere Verbindung",
-		"rideLater" => "spätere Verbindung",
-		"latestRide" => "Letzte Verbidung",
+		"earliestRide" => "Früheste", // Verbindung == connection, if that is out of context, let me know
+		"rideEarlier" => "frühere",
+		"rideLater" => "spätere",
+		"latestRide" => "Letzte",
 		"english" => "Englisch",
 		"dutch" => "Niederländisch",
 		"pickLanguage" => "Sprache",
@@ -52,6 +52,10 @@ $i18n=array(
 		"andothers" => "Und viele andere",
 		"stealthiscode" => "Steal this code (AGPL)",
 		"ErrNoResults" => "Leider haben wir nichts gefunden.",
-		"aboutUs" => "Über uns"
+		"aboutUs" => "Über uns",
+		"fromStation" => "from station",
+		"toStation" => "to station",
+		"ofStation" => "from station",
+		"to_optionalStation" => "to station (optional)"
      );
 ?>

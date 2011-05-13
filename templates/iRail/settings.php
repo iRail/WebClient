@@ -43,7 +43,7 @@
 			<form action="" method="get" name="settings">
 				<div class="languageDiv">
 					<label for="language" style="font-weight: bold; font-size: 1.2em;padding-top:10px;"><?=$i18n["pickLanguage"] ?></label><br/>
-					<select name="lang" size="1" onchange="settings.submit()" style="margin-top: 10px;padding:5px;">
+					<select id="language" name="lang" size="1" onchange="settings.submit()" style="margin-top: 10px;padding:5px;">
 						<?
 						$arrayLang = $this->AVAILABLE_LANGUAGES;
 						for($i=0;$i<sizeof($arrayLang);$i++)

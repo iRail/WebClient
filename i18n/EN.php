@@ -53,5 +53,9 @@ $i18n=array(
 		"stealthiscode" => "Steal this code (AGPL)",
 		"ErrNoResults" => "Sorry, couldn't find any results",
 		"aboutUs" => "About us",
+		"fromStation" => "from station",
+		"toStation" => "to station",
+		"ofStation" => "from station",
+		"to_optionalStation" => "to station (optional)"
      );
 ?>

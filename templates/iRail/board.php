@@ -110,7 +110,7 @@ if(isset($_GET['from'])){
                     <div class="listButton">
                         <div class="buttonFav"><a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="favorite" width="40" height="25" class="floatRight"/></a></div>
                     </div>
-                    <div class="fromHeader"><?=$i18n["of"] ?></div>
+                    <div class="fromHeader"><label for="from"><?=$i18n["of"] ?></label></div>
                 </div>
 <?
 $last = $this->user->getLastUsedBoard();
@@ -118,15 +118,15 @@ $lastof = $last["of"];
 $lastto = $last["to"];
 ?>
                 <div class="inputFrom">
-                    <input autocomplete="off" onKeyPress="return disableEnterKey(event);" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" class="inputStyle" type="text" id="from" name="from" value="<?=$last["of"]?>"/>
+                    <input autocomplete="off" placeholder="<?=$i18n["ofStation"] ?>" onKeyPress="return disableEnterKey(event);" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" class="inputStyle" type="text" id="from" name="from" value="<?=$last["of"]?>"/>
 					<div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
 				</div>
                 <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="change" width="25" height="30"/></div>
                 <div class="inputMid"></div>
-                <div class="toHeader"><?=$i18n["to_optional"] ?></div>
+                <div class="toHeader"><label for="to"><?=$i18n["to_optional"] ?></label></div>
                 <div class="inputTo">
-                    <input autocomplete="off" onKeyPress="return disableEnterKey(event);" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" class="inputStyle" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
+                    <input autocomplete="off" placeholder="<?=$i18n["to_optionalStation"] ?>" onKeyPress="return disableEnterKey(event);" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" class="inputStyle" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>               
 			   </div>

@@ -24,10 +24,10 @@ $i18n=array(
 		"of" => "Ou",
 		"to_optional" => "Vers (option)",
 		"show_live_board" => "Afficher le Liveboard",
-		"earliestRide" => "Trajet le plus rapide",
-		"rideEarlier" => "Voyager plus tôt",
-		"rideLater" => "Voyager plus tard",
-		"latestRide" => "Dernier voyage",
+		"earliestRide" => "Première",
+		"rideEarlier" => "Plus tôt",
+		"rideLater" => "Plus tard",
+		"latestRide" => "Dernier",
 		"english" => "Anglais",
 		"dutch" => "Néerlandais",
 		"pickLanguage" => "Langage",
@@ -52,6 +52,10 @@ $i18n=array(
 		"andothers" => "Et de nombreuses autres personnes",
 		"stealthiscode" => "Prenez le code (AGPL)",
 		"ErrNoResults" => "Désole, il n'y a pas des résultats",
-		"aboutUs" => "À propos de nous"
+		"aboutUs" => "À propos de nous",
+		"fromStation" => "from station",
+		"toStation" => "to station",
+		"ofStation" => "from station",
+		"to_optionalStation" => "to station (optional)"
      );
 ?>

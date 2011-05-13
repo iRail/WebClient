@@ -13,18 +13,3 @@ templates/iRail/images/arrow.gif
 templates/iRail/images/trein.png
 templates/iRail/images/arrowRoute.png
 templates/iRail/images/arrowRouteSmall.jpg
-stations/
-stations
-settings/
-settings
-
-NETWORK:
-board/
-route/
-  
-FALLBACK:
-/ stations/
-route/ stations/
-route stations/
-board/ stations/
-board stations/

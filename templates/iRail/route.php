@@ -184,6 +184,10 @@ function setDate(){
 			}
 		}
 
+		function autoSelect(btnType) 
+		{ 
+			document.getElementById(btnType).checked = true;
+		}
         </script>
         <script src="/templates/iRail/js/main.js"></script>
     </head>
@@ -211,21 +215,21 @@ function setDate(){
                     <div class="listButton">
                         <div class="buttonFav"><a href="/stations/"><img src="/templates/iRail/images/fav.png" alt="<?=$i18n["favourite"] ?>" width="40" height="25" class="floatRight"/></a></div>
                     </div>
-                    <div class="fromHeader"><?=$i18n["from"] ?></div>
+                    <div class="fromHeader"><label for="from"><?=$i18n["from"] ?></label></div>
                 </div>
 <?
 $last = $this->user->getLastUsedRoute();
 ?>
                 <div class="inputFrom">
-                    <input autocomplete="off" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from" value="<?=$last["from"]?>" />
+                    <input autocomplete="off" placeholder="<?=$i18n["fromStation"] ?>" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('from', event); changeActiveAutoCompletion('from', event)" type="text" id="from" name="from" value="<?=$last["from"]?>" />
                     <div id="autoCmpletefrom" class="autoCmpletefrom">
                     </div>
                 </div>
                 <div class="inputChange"><img class="pointer" src="/templates/iRail/images/change.png" onclick="swap_From_To()" alt="favorite" width="25" height="30"/></div>
                 <div class="inputMid"></div>
-                <div class="toHeader"><?=$i18n["to"] ?></div>
+                <div class="toHeader"><label for="to"><?=$i18n["to"] ?></label></div>
                 <div class="inputTo">
-                    <input autocomplete="off" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
+                    <input autocomplete="off" placeholder="<?=$i18n["toStation"] ?>" class="inputStyle" onKeyPress="return disableEnterKey(event)" onkeyup="autoComplete('to', event); changeActiveAutoCompletion('to', event)" type="text" id="to" name="to" value="<?=$last["to"]?>"/>
                     <div id="autoCmpleteto" class="autoCmpleteto">
                     </div>
                 </div>
@@ -233,8 +237,8 @@ $last = $this->user->getLastUsedRoute();
             <div class="subMenuContainer">
                 <div class="containerMenu">
                     <div class="containerButtons">
-						<div id="arrAt" class="buttonL"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="arrive" value="arrive" /><label class="centerMenuRoute" onclick="changeActive('arrive')" for="arrive"><?=$i18n["arrival_at"] ?></label></div></div>
-						<div id="deprtAt" class="buttonR buttonActive"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="depart" value="depart" CHECKED /><label class="centerMenuRoute" onclick="changeActive('depart')" for="depart"><?=$i18n["departure_at"] ?></label></div></div>
+						<div id="arrAt" onclick="autoSelect('arrive'); changeActive('arrive')" class="buttonL"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="arrive" value="arrive" /><label for="arrive" class="centerMenuRoute" onclick="changeActive('arrive')" for="arrive"><?=$i18n["arrival_at"] ?></label></div></div>
+						<div id="deprtAt" onclick="autoSelect('depart'); changeActive('depart')" class="buttonR buttonActive"><div class="subMenuBtnText"><Input class="hideRadioBtn" type = 'Radio' Name ='direction' id="depart" value="depart" CHECKED /><label for="depart" class="centerMenuRoute" onclick="changeActive('depart')" for="depart"><?=$i18n["departure_at"] ?></label></div></div>
                     </div>
                 </div>
                 <div class="containerSubMenuDate">
