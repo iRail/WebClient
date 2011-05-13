@@ -113,6 +113,7 @@ function trainMoveFormat($time){
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
 						<?
+				  if(isset($connection["vias"]){
 						$lengte = $connection["vias"]["number"];
 						print formatTime($connection["departure"]["time"]);
 						print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
@@ -126,7 +127,10 @@ function trainMoveFormat($time){
 								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
 								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";												
 						}
+				       }
+				       
 						print formatTime($connection["arrival"]["time"]);
+				       
 						?>
 					</div>
 					<div class="routeCubeRight">
