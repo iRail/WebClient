@@ -56,6 +56,7 @@ $i18n=array(
 		"fromStation" => "from station",
 		"toStation" => "to station",
 		"ofStation" => "from station",
-		"to_optionalStation" => "to station (optional)"
+		"to_optionalStation" => "to station (optional)",
+		"refreshBoard" => "Refresh board"
      );
 ?>

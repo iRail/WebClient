@@ -88,7 +88,7 @@ body {
 .infoRouteRightDelay{
 	float: right;
 	width: 25px;
-	color: #FF0000;
+	color: #E02904;
 	text-align: center;
 }
 .infoRouteMid{
@@ -207,7 +207,7 @@ html { overflow-y: scroll; }
 }
 
 .boardDelay{
-	color: #e8755e;
+	color: #E02904;
 	width: 25px;
 	float: right;
 	height: 100%;
@@ -576,10 +576,10 @@ html { overflow-y: scroll; }
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DD6D56', endColorstr='#732617',GradientType=0 ); /* ie */
 }
 .gradientBtnLogin{
-    background: #D1D1D1; /* old browsers */
-    background: -moz-linear-gradient(top, #D1D1D1 0%, #8E8E8E 14%); /* firefox */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D1D1D1), color-stop(14%,#8E8E8E)); /* webkit */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D1D1D1', endColorstr='#8E8E8E',GradientType=0 ); /* ie */
+	background: #B4BCCC; /* old browsers */
+	background: -moz-linear-gradient(top, #B4BCCC 0%, #919699 15%, #555E63 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B4BCCC), color-stop(15%,#919699), color-stop(100%,#555E63)); /* webkit */1
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#B4BCCC', endColorstr='#555E63',GradientType=0 ); /* ie */
 }
 
 .Btn{
@@ -596,6 +596,21 @@ html { overflow-y: scroll; }
 	filter: dropshadow(color=#732617, offx=1, offy=-1);
 	margin-bottom: 10px;
 	margin-top: 5px;
+}
+
+.BtnRefresh{
+    width: 100%;
+    height: 45px;
+    border: #555E63 solid 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1.2em;
+	text-shadow: 1px -1px 1px #555E63;
+	filter: dropshadow(color=#555E63, offx=1, offy=-1);
+	margin-bottom: 15px;
+	margin-top: 15px;
 }
 
 

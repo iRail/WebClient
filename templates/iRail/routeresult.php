@@ -113,25 +113,31 @@ function trainMoveFormat($time){
 				<div class="routeCubeHeader">
 					<div class="routeCubeLeft">
 						<?
-				  $lengte=0;
-				  if(isset($connection["vias"])){
 						$lengte = $connection["vias"]["number"];
-				  }
 						print formatTime($connection["departure"]["time"]);
-						print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
+						print  "<img src=\"/templates/iRail/images/treinVervoer.png\" style=\"padding-left:10px;padding-right:10px;vertical-align:text-bottom;\" alt=\"arrow\"/>";
 						
 						if($lengte > 0){
 							for($i = 0; $i <= $lengte;$i++){
-								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
-								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
+								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" style=\"vertical-align:text-bottom;\" alt=\"arrow\"/>";
+								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" style=\"padding-left:10px;padding-right:10px;vertical-align:text-bottom;\" alt=\"arrow\"/>";
 							}						
-						}else{
-								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
-								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";												
 						}
-				       
 						print formatTime($connection["arrival"]["time"]);
-				       
+						// $lengte = $connection["vias"]["number"];
+						// print formatTime($connection["departure"]["time"]);
+						// print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
+						
+						// if($lengte > 0){
+							// for($i = 0; $i <= $lengte;$i++){
+								// print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
+								// print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";
+							// }						
+						// }else{
+								// print  "<img src=\"/templates/iRail/images/treinVervoer.png\" alt=\"arrow\" style=\"vertical-align:text-bottom;\"/>";
+								// print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" alt=\"arrow\" style=\"padding-left:10px;padding-right:10px;\"/>";												
+						// }
+						// print formatTime($connection["arrival"]["time"]);
 						?>
 					</div>
 					<div class="routeCubeRight">

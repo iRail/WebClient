@@ -29,6 +29,14 @@ function formatDate($time){
 function formatTime($time){
      return date("H:i",$time);
 }
+
+if(isset($_GET["refresh"])){
+	if(isset($_GET["destination"])){
+		header('Location: /board/'.$_GET['station'].'/'.$_GET['destination']. '/');				
+	}else{
+		header('Location: /board/'.$_GET['station'].'/');				
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +68,14 @@ function formatTime($time){
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
 		</div>
 		<div class="boardHeaderBoard">
-				<p style="padding-left: 5px;">
+		    <div class="containerSubMenuBtn">
+                <div class="centerDivBtn">
+					<form method="get" action="">
+						<input class="gradientBtnLogin BtnRefresh" type="submit" name="refresh" id="refresh" value="<?=$i18n["refreshBoard"] ?>"/>
+					</form>
+                </div>
+            </div>
+				<p style="padding-left: 5px;padding-top:10px;">
 				<?=$content["station"]?><br>
 				<?
      if(isset($_GET["destination"])){
