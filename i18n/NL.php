@@ -49,14 +49,14 @@ $i18n=array(
 		"frontendcoding" => "Front-end coding",
 		"backendcoding" => "Back-end coding",
 		"infrastructure" => "Infrastructuur",
-		"andothers" => "And vele anderen",
+		"andothers" => "En vele anderen",
 		"stealthiscode" => "Steel deze code (AGPL)",
 		"ErrNoResults" => "Sorry, er werden geen resultaten gevonden",
 		"aboutUs" => "Over ons",
-		"fromStation" => "van station",
-		"toStation" => "naar station",
-		"ofStation" => "van station",
-		"to_optionalStation" => "naar station (optional)",
+		"fromStation" => "Selecteer vertrekstation",
+		"toStation" => "Selecteer bestemming",
+		"ofStation" => "Selecteer station",
+		"to_optionalStation" => "Selecteer richting (optioneel)",
 		"refreshBoard" => "Vernieuw"
      );
 ?>
