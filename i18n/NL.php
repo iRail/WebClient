@@ -57,6 +57,6 @@ $i18n=array(
 		"toStation" => "naar station",
 		"ofStation" => "van station",
 		"to_optionalStation" => "naar station (optional)",
-		"refreshBoard" => "Vernieuw dit live bord"
+		"refreshBoard" => "Vernieuw"
      );
 ?>
