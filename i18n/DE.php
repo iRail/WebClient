@@ -53,10 +53,11 @@ $i18n=array(
 		"stealthiscode" => "Steal this code (AGPL)",
 		"ErrNoResults" => "Leider haben wir nichts gefunden.",
 		"aboutUs" => "Über uns",
-		"fromStation" => "from station",
-		"toStation" => "to station",
-		"ofStation" => "from station",
-		"to_optionalStation" => "to station (optional)",
-		"refreshBoard" => "Erfrischen"
+		"fromStation" => "Klicken Sie",
+		"toStation" => "Klicken Sie",
+		"ofStation" => "Klicken Sie",
+		"to_optionalStation" => "Klicken Sie",
+		"refreshBoard" => "Erfrischen",
+		"marketLink" => "Download des offiziellen App"
      );
 ?>

@@ -57,6 +57,7 @@ $i18n=array(
 		"toStation" => "Sélectionnez direction",
 		"ofStation" => "from station",
 		"to_optionalStation" => "Sélectionnez direction (optionnel)",
-		"refreshBoard" => "Rafraîchir"
+		"refreshBoard" => "Rafraîchir",
+		"marketLink" => "Téléchargez le app officielle"
      );
 ?>

@@ -57,6 +57,7 @@ $i18n=array(
 		"toStation" => "Select destination",
 		"ofStation" => "Select station",
 		"to_optionalStation" => "Click here for destination (optional)",
-		"refreshBoard" => "Refresh"
+		"refreshBoard" => "Refresh",
+		"marketLink" => "Download the official app"
      );
 ?>

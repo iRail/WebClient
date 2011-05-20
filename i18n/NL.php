@@ -57,6 +57,7 @@ $i18n=array(
 		"toStation" => "Selecteer bestemming",
 		"ofStation" => "Selecteer station",
 		"to_optionalStation" => "Selecteer richting (optioneel)",
-		"refreshBoard" => "Vernieuw"
+		"refreshBoard" => "Vernieuw",
+		"marketLink" => "Download de officiële app"
      );
 ?>

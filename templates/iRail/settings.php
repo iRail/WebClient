@@ -40,6 +40,30 @@
                 <div class="bannerCubeContainerScaleFill gradientBanner"></div>
             </div>
 			<div class="settingsContent">
+				<?
+				$agent = $_SERVER['HTTP_USER_AGENT'];
+				$listAgent = array("iPhone", "iPod");
+				if(strstr($agent, "iPhone") || strstr($agent, "iPod"))
+				{
+					print "<div class=\"centerDivBtn\">";
+					print "<input class=\"gradientBtnLogin BtnRefresh\" type=\"submit\" name=\"refresh\" onclick=\"window.location='itms://itunes.apple.com/us/app/betrains/id403631462?mt=8'\" id=\"refresh\" value=\"" . $i18n["marketLink"] . "\"/></form></div>";
+				}
+				if(strstr($agent, "Android")){
+					print "<div class=\"centerDivBtn\">";
+					print "<input class=\"gradientBtnLogin BtnRefresh\" type=\"submit\" name=\"refresh\" onclick=\"window.location='market://search?q=pname:tof.cv.mpp'\" id=\"refresh\" value=\"" . $i18n["marketLink"] . "\"/></form></div>";
+				}
+				if(strstr($agent, "Maemo Browser")){
+					print "<div class=\"centerDivBtn\">";
+					print "<input class=\"gradientBtnLogin BtnRefresh\" type=\"submit\" name=\"refresh\" onclick=\"window.location='http://maleadt.be:8080/downloads/BeTrains.Qt/nightlies/maemo/betrains-20110417_armel.deb'\" id=\"refresh\" value=\"" . $i18n["marketLink"] . "\"/></form></div>";		
+				}
+				if(strstr($agent, "Windows Phone")){
+					print "<div class=\"centerDivBtn\">";
+					print "<input class=\"gradientBtnLogin BtnRefresh\" type=\"submit\" name=\"refresh\" onclick=\"window.location='http://social.zune.net/redirect?type=phoneApp&amp;id=807c02b6-7a4d-e011-854c-00237de2db9e'\" id=\"refresh\" value=\"" . $i18n["marketLink"] . "\"/></form></div>";		
+				}
+				
+				?>					
+				
+				
 			<form action="" method="get" name="settings">
 				<div class="languageDiv">
 					<label for="language" style="font-weight: bold; font-size: 1.2em;padding-top:10px;"><?=$i18n["pickLanguage"] ?></label><br/>
@@ -58,25 +82,7 @@
 						}
 						?>
 					</select>
-				</div>
-				<?
-				$agent = $_SERVER['HTTP_USER_AGENT'];
-				$listAgent = array("iPhone", "iPod");
-				if(strstr($agent, "iPhone") || strstr($agent, "iPod"))
-				{
-					print "<a href=\"itms://itunes.apple.com/us/app/betrains/id403631462?mt=8\">Appstore</a>";
-				}
-				if(strstr($agent, "Android")){
-					print "<a href=\"market://search?q=pname:tof.cv.mpp\">Android Market</a>";
-				}
-				if(strstr($agent, "Maemo browser")){
-					print "<a href=\"http://maleadt.be:8080/downloads/BeTrains.Qt/nightlies/maemo/betrains-20110417_armel.deb\">Android Market</a>";
-				}
-				if(strstr($agent, "Windows Phone")){
-					print "<a href=\"http://social.zune.net/redirect?type=phoneApp&amp;id=807c02b6-7a4d-e011-854c-00237de2db9e\">Windows application</a>";
-				}
-				
-				?>				
+				</div>			
 				<div style="padding-bottom: 5px; padding-left: 5px; font-size: 1.2em; font-weight: bold;"><?=$i18n["aboutUs"] ?></div>
 				<div class="about">
 					<ul class="aboutlist">
