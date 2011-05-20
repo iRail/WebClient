@@ -29,3 +29,10 @@ templates/iRail/images/right.png
 templates/iRail/images/tram.png
 templates/iRail/images/tram2.png
 templates/iRail/images/treinVervoer.png
+
+NETWORK
+
+stations/
+route/
+board/
+settings/
