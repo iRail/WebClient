@@ -118,7 +118,7 @@ function trainMoveFormat($time){
 						print  "<img src=\"/templates/iRail/images/treinVervoer.png\" style=\"padding-left:10px;padding-right:10px;vertical-align:text-bottom;\" alt=\"arrow\"/>";
 						
 						if($lengte > 0){
-							for($i = 0; $i <= $lengte;$i++){
+							for($i = 0; $i < $lengte;$i++){
 								print  "<img src=\"/templates/iRail/images/arrowRouteSmall.jpg\" style=\"vertical-align:text-bottom;\" alt=\"arrow\"/>";
 								print  "<img src=\"/templates/iRail/images/treinVervoer.png\" style=\"padding-left:10px;padding-right:10px;vertical-align:text-bottom;\" alt=\"arrow\"/>";
 							}						
