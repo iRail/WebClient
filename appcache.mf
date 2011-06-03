@@ -1,5 +1,6 @@
 CACHE MANIFEST
 
+CACHE:
 templates/iRail/css/main.css
 templates/iRail/js/main.js
 templates/iRail/images/settings.png
@@ -30,7 +31,7 @@ templates/iRail/images/tram.png
 templates/iRail/images/tram2.png
 templates/iRail/images/treinVervoer.png
 
-NETWORK
+NETWORK:
 
 stations/
 route/
