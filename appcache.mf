@@ -21,7 +21,6 @@ templates/iRail/images/arrRoute.png
 templates/iRail/images/bgwave.png
 templates/iRail/images/bus.png
 templates/iRail/images/bus2.png
-templates/iRail/images/CC.png
 templates/iRail/images/fgwave.png
 templates/iRail/images/foot.png
 templates/iRail/images/left.png
