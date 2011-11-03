@@ -91,7 +91,8 @@ class DataLayer {
 	       "to" => $to,
 	       "timeSel" => $direction,
 	       "time" => $time,
-	       "date" => $date
+	       "date" => $date,
+               "fast" => "true"
 	       );
 	  try{
 	       return APICall::execute("connections", $args);
@@ -106,7 +107,8 @@ class DataLayer {
 	       "lang" => $this->lang,
 	       "station" => $station,
 	       "arrdep" => $direction,
-	       "time" => $time
+	       "time" => $time,
+               "fast"=> "true"
 	       );
 	  try{
 	       $liveboard= APICall::execute("liveboard", $args);
@@ -147,7 +149,8 @@ class DataLayer {
      public function getVehicleinfo($vehicleid){
 	  $args = array(
 	       "lang" => $this->lang,
-	       "id" => $vehicleid
+	       "id" => $vehicleid,
+               "fast" => "true";
 	       );
 	  try{
 	       return APICall::execute("vehicle", $args);
