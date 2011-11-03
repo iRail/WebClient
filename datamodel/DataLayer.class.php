@@ -150,7 +150,7 @@ class DataLayer {
 	  $args = array(
 	       "lang" => $this->lang,
 	       "id" => $vehicleid,
-               "fast" => "true";
+               "fast" => "true"
 	       );
 	  try{
 	       return APICall::execute("vehicle", $args);
