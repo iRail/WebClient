@@ -13,7 +13,7 @@ More information can be found on [Project iRail](http://project.irail.be/).
 
 This branch has been written from scratch and therefor relicensed to: AGPL
 
-(c) 2011 iRail vzw/asbl
+(c) 2012 iRail vzw/asbl
 
 # Developers
 

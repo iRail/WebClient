@@ -94,7 +94,7 @@
 						<li><?=$i18n["backendcoding"]?>: Pieter Colpaert
 						<li><?=$i18n["infrastructure"]?>: <a style="text-decoration: none;" href="http://yeri.be" target="_blank">Yeri Tiete</a>
 						<li><?=$i18n["andothers"]?>
-						<li>&copy; 2011 iRail <?=$i18n["npo"];?>
+						<li>&copy; 2012 iRail <?=$i18n["npo"];?>
 						<li style="padding-top:15px;"><a href="http://www.github.com/iRail/WebClient/" target="_blank"><?=$i18n["stealthiscode"];?></a>
 					</ul>
 				</div>
