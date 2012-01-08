@@ -31,7 +31,6 @@ templates/iRail/images/tram2.png
 templates/iRail/images/treinVervoer.png
 
 NETWORK:
-
 stations/
 route/
 board/
