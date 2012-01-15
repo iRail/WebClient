@@ -29,6 +29,29 @@ You need:
  * url rewrite mod
  * http request
 
+# Translations
+
+The website uses PHP arrays to translate strings, handled by the Transifex platform.
+
+All translation files are located in `i18n/`, and should be adhere to the `xx.php` format.
+
+Note: the `en.php` file is a treated in a special way. It is used as the source for all other translations. Whenever a string in the code is change this file must be updated to reflect those changes. See below for the syncing procedure.
+
+
+## Syncing with Transifex
+
+We are using http://transifex.net as a frontend for translating the client, use the "transifex client":http://help.transifex.net/features/client/index.html to fetch new translations from transifex.
+
+### Pushing new source strings
+
+1. Update `i18n/en.php` to reflect the changes
+2. `tx push -s`
+
+### Fetching new translations
+
+1. `tx pull -a`
+3. `git add` new translations from `i18n/`
+
 # Some interesting links:
 
  * Source: <http://github.com/iRail/iRail>
