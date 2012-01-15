@@ -17,14 +17,14 @@ abstract class Page {
 
      //CONFIGURATION OF THIS CLASS
      protected $AVAILABLE_TEMPLATES = array("iRail");
-     protected $AVAILABLE_LANGUAGES = array("EN", "NL", "FR", "DE");
+     protected $AVAILABLE_LANGUAGES = array("en", "nl", "fr", "de");
      private $template = "iRail";
      private $detectLanguage = true;
      private $doErrorhandling = true;
 
      //DON'T TOUCH
      private $pageName;
-     private $lang = "EN";
+     private $lang = "en";
 
      protected $user;
 
@@ -78,7 +78,7 @@ abstract class Page {
 	       }
 	   
 	  }else{
-	       $this->lang = "EN";
+	       $this->lang = "en";
 	  }
 	  if (isset($_GET["lang"])) {
 	       $lang = $_GET["lang"];
