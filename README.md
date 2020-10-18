@@ -1,3 +1,5 @@
+This project was used between 2011 and 2014 on irail.be. You can find the new irail.be project here: https://github.com/irail/hyperrail
+
 # iRail
 
 This is the WebClient hosted at [http://iRail.be]. Unstable versions can be found at [http://dev.iRail.be] (bleeding edge). It's built upon the iRail api ([http://api.iRail.be]) which delivers public transport information to online applications, free of charge and free as in beer.
